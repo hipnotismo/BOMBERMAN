@@ -18,7 +18,7 @@ public class CreateBomb : MonoBehaviour
         if (Input.GetButtonDown("Jump"))
         {
             Debug.Log("bomb");
-            Instantiate(bomb, playerPos.position, playerPos.rotation);
+            Instantiate(bomb, playerPos.position , playerPos.rotation);
         }
     }
 }

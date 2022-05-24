@@ -4,14 +4,8 @@ using UnityEngine;
 
 public class Timer : MonoBehaviour
 {
-
-    void Start()
-    {
-        
-    }
-
     void Update()
     {
-        Destroy(gameObject,5f);
+        Destroy(gameObject,3.5f);
     }
 }

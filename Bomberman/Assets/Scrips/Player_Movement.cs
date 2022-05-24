@@ -8,7 +8,7 @@ public class Player_Movement : MonoBehaviour
 
     Vector2 movement;
 
-    private float speed = 12f;
+    [SerializeField] private float speed;
 
     void Start()
     {
