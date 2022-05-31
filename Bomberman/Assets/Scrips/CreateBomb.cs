@@ -22,4 +22,6 @@ public class CreateBomb : MonoBehaviour
                 Mathf.Round(playerPos.position.z)), playerPos.rotation);
         }
     }
+
+    
 }

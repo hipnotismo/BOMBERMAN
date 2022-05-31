@@ -17,15 +17,21 @@ public class DestroyBomb : MonoBehaviour
         Debug.Log(destroTimer);
         if (destroTimer > destroyTime)
         {
+            Vector3 forward = transform.TransformDirection(Vector3.forward) * 10;
+            Debug.DrawRay(transform.position, forward, Color.green);
+
             if (Physics.Raycast(transform.position, transform.forward,out hit, range))
             {
-                Debug.Log(hit.transform);
+                Debug.Log(hit.transform.name);
+                Iterface isHit = hit.collider.GetComponent<Iterface>();
 
+                if (isHit != null)
+                {
+                    isHit.damageable();
+                }
             }
-            Vector3 forward = transform.TransformDirection(Vector3.forward) * 10;
-            Debug.DrawRay(transform.position, forward, Color.green,4f);
-            Debug.Log("its time");
-
+            
         }
     }
+    
 }

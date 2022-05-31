@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Player_Movement : MonoBehaviour
-{
+{ 
     [SerializeField] CharacterController controller;
 
     Vector2 movement;
@@ -12,7 +12,7 @@ public class Player_Movement : MonoBehaviour
 
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -20,10 +20,11 @@ public class Player_Movement : MonoBehaviour
     {
         movement.x = Input.GetAxis("Horizontal");
         movement.y = Input.GetAxis("Vertical");
-        
+
         Vector3 move = transform.right * movement.x + transform.forward * movement.y;
 
         controller.Move(move * speed * Time.deltaTime);
-    
+
     }
 }
+
