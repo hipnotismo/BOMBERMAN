@@ -12,7 +12,6 @@ public class DestroyBomb : MonoBehaviour
     {
         RaycastHit hit;
 
-        //Destroy(gameObject,3f);
         destroTimer += 1 * Time.deltaTime;
         Debug.Log(destroTimer);
         if (destroTimer > destroyTime)
@@ -30,7 +29,8 @@ public class DestroyBomb : MonoBehaviour
                     isHit.damageable();
                 }
             }
-            
+
+            Destroy(gameObject);
         }
     }
     
