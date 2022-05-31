@@ -18,7 +18,8 @@ public class CreateBomb : MonoBehaviour
         if (Input.GetButtonDown("Jump"))
         {
             Debug.Log("bomb");
-            Instantiate(bomb, playerPos.position , playerPos.rotation);
+            Instantiate(bomb,new Vector3(Mathf.Round(playerPos.position.x), Mathf.Round(playerPos.position.y),
+                Mathf.Round(playerPos.position.z)), playerPos.rotation);
         }
     }
 }
