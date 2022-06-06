@@ -6,7 +6,7 @@ public class DestroyBomb : MonoBehaviour
 {
     int destroyTime = 3;
     float destroTimer =0;
-    float range = 40f;
+    float range = 1f;
     List<Vector3> directions = new List<Vector3>();
 
     private void Awake()
@@ -25,13 +25,14 @@ public class DestroyBomb : MonoBehaviour
         destroTimer += 1 * Time.deltaTime;
         Debug.Log(destroTimer);
 
-        
+        Vector3 forward = transform.TransformDirection(Vector3.forward) * 1;
+
+        Debug.DrawRay(transform.position, forward, Color.green);
+
         if (destroTimer > destroyTime)
         {
             for (int i = 0; i < 4; i++)
             {
-                Vector3 forward = transform.TransformDirection(Vector3.forward) * 10;
-                Debug.DrawRay(transform.position, forward, Color.green);
 
                 if (Physics.Raycast(transform.position, directions[i], out hit, range))
                 {
