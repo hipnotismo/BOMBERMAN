@@ -5,5 +5,5 @@ using UnityEngine;
 public interface  Iterface
 {
     public void damageable();
-    
+    //public void Increase();
 }
