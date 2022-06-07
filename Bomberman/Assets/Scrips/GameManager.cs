@@ -1,13 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class GameManager : MonoBehaviour
 {
-    public delegate void BoxCount();
-    public static event BoxCount boxC;
+    
     int AmountOfBoxes;
     int DestroyedBoxes;
+
+    public static Action EnableDoor;
+
     private void OnEnable()
     {
         DestroyWall.OnBoxSpawned += AddCount;
@@ -25,7 +26,10 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        
+        if (AmountOfBoxes == DestroyedBoxes)
+        {
+            EnableDoor?.Invoke();
+        }
     }
 
     void AddCount()

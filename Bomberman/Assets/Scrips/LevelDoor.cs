@@ -1,32 +1,39 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class LevelDoor : MonoBehaviour
 {
-    private int BlockCount;
+    private void OnEnable()
+    {
+      //  GameManager.EnableDoor += Enable;
+    }
+
     void Start()
     {
-        BlockCount = 0;
-        Debug.Log("count is "+ BlockCount);
+       
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-    private void OnCollisionEnter(Collision collision)
+
+    void OnControllerColliderHit(Collision collision)
     {
-        //if ()
+        //if (this.ActiveSelf == true)
         //{
+        //    Debug.Log("Hell yeah");
+        //}
+        //else
+        //{
+        //    Debug.Log("Fuck");
 
         //}
+        Debug.Log("Fuck");
     }
 
-    public void Increase()
-    {
-        BlockCount++;
-    }
 }
