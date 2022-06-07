@@ -18,7 +18,6 @@ public class CreateBomb : MonoBehaviour
     {
         if (Input.GetButtonDown("Jump") && CoolDown)
         {
-            Debug.Log("bomb");
             Instantiate(bomb, new Vector3(Mathf.Round(playerPos.position.x), 0.5f /**Mathf.Round(playerPos.position.y)*/,
                 Mathf.Round(playerPos.position.z)), playerPos.rotation);
             CoolDown = !CoolDown;

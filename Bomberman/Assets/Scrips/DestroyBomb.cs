@@ -1,14 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class DestroyBomb : MonoBehaviour
 {
+
+    public static Action OnBoxDestroyed;
+
     int destroyTime = 3;
     float destroTimer =0;
     float range = 1f;
     List<Vector3> directions = new List<Vector3>();
 
+    private void OnEnable()
+    {
+    }
+
+    private void OnDisable()
+    {
+        
+    }
     private void Awake()
     {
         directions.Add(transform.forward);
@@ -42,6 +54,9 @@ public class DestroyBomb : MonoBehaviour
                     if (isHit != null)
                     {
                         isHit.damageable();
+                        OnBoxDestroyed?.Invoke();
+
+                        //LevelControler.inst.increase();
                     }
                 }
 

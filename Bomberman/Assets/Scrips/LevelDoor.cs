@@ -19,10 +19,10 @@ public class LevelDoor : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (BlockCount == 7)
-        {
+        //if ()
+        //{
 
-        }
+        //}
     }
 
     public void Increase()
