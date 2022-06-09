@@ -22,7 +22,7 @@ public class LevelDoor : MonoBehaviour
     }
 
 
-    void OnControllerColliderHit(Collision collision)
+    void OnCollisionEnter /*OnControllerColliderHit*/(Collision collision)
     {
         //if (this.ActiveSelf == true)
         //{
