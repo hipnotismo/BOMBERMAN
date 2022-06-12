@@ -5,14 +5,16 @@ using System;
 
 public class LevelDoor : MonoBehaviour
 {
+
+    private bool active;
     private void OnEnable()
     {
-      //  GameManager.EnableDoor += Enable;
+        GameManager.EnableDoor += Enable;
     }
 
     void Start()
     {
-       
+        active = false;
     }
 
     // Update is called once per frame
@@ -21,34 +23,21 @@ public class LevelDoor : MonoBehaviour
 
     }
 
-
-    void /*OnCollisionEnter*/ OnControllerColliderHit(ControllerColliderHit hit)
-    {
-        //if (this.ActiveSelf == true)
-        //{
-        //    Debug.Log("Hell yeah");
-        //}
-        //else
-        //{
-        //    Debug.Log("Fuck");
-
-        //}
-        Debug.Log("Fuck");
-    }
-
     void OnTriggerEnter(Collider other)
     {
-        //if (this.ActiveSelf == true)
-        //{
-        //    Debug.Log("Hell yeah");
-        //}
-        //else
-        //{
-        //    Debug.Log("Fuck");
+        if (active == true)
+        {
+            Debug.Log("It open");
+        }
+        else
+        {
+            Debug.Log("not open");
 
-        //}
-        Debug.Log("Hell");
+        }
     }
 
-
+    private void Enable()
+    {
+        active = true;
+    }
 }

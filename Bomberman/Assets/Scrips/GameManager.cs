@@ -26,21 +26,27 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if (AmountOfBoxes == DestroyedBoxes)
+     //   Debug.Log("Destroy "+DestroyedBoxes);
+
+     //   Debug.Log("Created box: " + DestroyedBoxes);
+
+        if (AmountOfBoxes <= DestroyedBoxes)
         {
             EnableDoor?.Invoke();
-            Debug.Log("YEAH");
+            Debug.Log("Destoy and create are equal");
         }
     }
 
     void AddCount()
     {
         AmountOfBoxes++;
+        Debug.Log("Created box: " + AmountOfBoxes);
+
     }
 
     void DestructionCount()
     {
         DestroyedBoxes++;
-        Debug.Log("Destro: " + DestroyedBoxes);
+        Debug.Log("Destroy box: " + DestroyedBoxes);
     }
 }

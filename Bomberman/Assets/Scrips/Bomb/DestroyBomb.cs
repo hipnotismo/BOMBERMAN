@@ -35,7 +35,7 @@ public class DestroyBomb : MonoBehaviour
         RaycastHit hit;
 
         destroTimer += 1 * Time.deltaTime;
-        Debug.Log(destroTimer);
+      //  Debug.Log(destroTimer);
 
         Vector3 forward = transform.TransformDirection(Vector3.forward) * 1;
 
@@ -56,7 +56,6 @@ public class DestroyBomb : MonoBehaviour
                         isHit.damageable();
                         OnBoxDestroyed?.Invoke();
 
-                        //LevelControler.inst.increase();
                     }
                 }
 
