@@ -10,7 +10,7 @@ public class Player_Life : MonoBehaviour, Iterface
         _life = 3;
     }
 
-    void update()
+    private void Update()
     {
         if (_life <=0)
         {
