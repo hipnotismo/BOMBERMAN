@@ -5,6 +5,7 @@ using System;
 
 public class LevelDoor : MonoBehaviour
 {
+    [SerializeField] private GameObject WinMenu;
 
     private bool active;
     private void OnEnable()
@@ -28,6 +29,8 @@ public class LevelDoor : MonoBehaviour
         if (active == true)
         {
             Debug.Log("It open");
+            WinMenu.SetActive(true);
+            Time.timeScale = 0f;
         }
         else
         {

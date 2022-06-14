@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerLife : MonoBehaviour, Iterface
 {
+    [SerializeField] private GameObject LoseMenu;
+
     private int _life;
     void Start()
     {
@@ -14,7 +16,8 @@ public class PlayerLife : MonoBehaviour, Iterface
     {
         if (_life <=0)
         {
-            Destroy(gameObject);
+            LoseMenu.SetActive(true);
+            Time.timeScale = 0f;
         }
     }
     public void damageable()

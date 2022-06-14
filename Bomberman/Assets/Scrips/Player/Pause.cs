@@ -8,12 +8,12 @@ public class Pause : MonoBehaviour
     private static bool GameIsPause = false;
 
     [SerializeField] private GameObject PauseMenu;
-    [SerializeField] private GameObject WinMenu;
-    [SerializeField] private GameObject LoseMenu;
-
+   
     void Start()
     {
-        
+        PauseMenu.SetActive(false);
+        Time.timeScale = 1f;
+        GameIsPause = false;
     }
 
     // Update is called once per frame
@@ -48,7 +48,15 @@ public class Pause : MonoBehaviour
 
     public  void ReturnToMenu()
     {
+        
         SceneManager.LoadScene("MainMenu");
 
+    }
+
+    public void Reset()
+    {
+        Debug.Log("Reset");
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

@@ -244,6 +244,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f66265ace83729c4989f566b661f886e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PauseMenu: {fileID: 1263563488217973859, guid: 934d535917d3c5246be4944ccdb30a2e, type: 3}
+  WinMenu: {fileID: 0}
+  LoseMenu: {fileID: 0}
 --- !u!1001 &8671579501723769547
 PrefabInstance:
   m_ObjectHideFlags: 0
