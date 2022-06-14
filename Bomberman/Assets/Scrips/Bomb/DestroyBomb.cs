@@ -8,7 +8,7 @@ public class DestroyBomb : MonoBehaviour
 
     public static Action OnBoxDestroyed;
 
-    int destroyTime = 3;
+    int destroyTime = 2;
     float destroTimer =0;
     float range = 1f;
     int RycastAmount = 4;
