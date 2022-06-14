@@ -1,10 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Pause : MonoBehaviour
 {
     private static bool GameIsPause = false;
+
+    [SerializeField] private GameObject PauseMenu;
+    [SerializeField] private GameObject WinMenu;
+    [SerializeField] private GameObject LoseMenu;
 
     void Start()
     {
@@ -27,17 +32,23 @@ public class Pause : MonoBehaviour
         }
     }
 
-    public void Resume()
+    private void Resume()
     {
-       // PauseMenu.SetActive(false);
+        PauseMenu.SetActive(false);
         Time.timeScale = 1f;
         GameIsPause = false;
     }
 
     private void Pouse()
     {
-   // PauseMenu.SetActive(true);
+        PauseMenu.SetActive(true);
         Time.timeScale = 0f;
         GameIsPause = true;
+    }
+
+    public  void ReturnToMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+
     }
 }
