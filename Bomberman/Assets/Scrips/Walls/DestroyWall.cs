@@ -10,16 +10,10 @@ public class DestroyWall : MonoBehaviour, Iterface
     private void Start()
     {
         OnBoxSpawned?.Invoke();
-
     }
 
     public void damageable()
     {
         Destroy(gameObject);
-    }
-
-    public void Increase()
-    {
-        
     }
 }

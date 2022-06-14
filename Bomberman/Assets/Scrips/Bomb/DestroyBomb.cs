@@ -11,7 +11,11 @@ public class DestroyBomb : MonoBehaviour
     int destroyTime = 3;
     float destroTimer =0;
     float range = 1f;
+    int RycastAmount = 4;
     List<Vector3> directions = new List<Vector3>();
+    Collider m_Collider;
+
+    bool AboutToBlow = false;
 
     private void OnEnable()
     {
@@ -27,11 +31,16 @@ public class DestroyBomb : MonoBehaviour
         directions.Add(-transform.forward);
         directions.Add(transform.right);
         directions.Add(-transform.right);
+        m_Collider = GetComponent<Collider>();
 
 
     }
     void Update()
     {
+        if (AboutToBlow)
+        {
+            Destroy(gameObject);
+        }
         RaycastHit hit;
 
         destroTimer += 1 * Time.deltaTime;
@@ -43,12 +52,12 @@ public class DestroyBomb : MonoBehaviour
 
         if (destroTimer > destroyTime)
         {
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < RycastAmount; i++)
             {
 
                 if (Physics.Raycast(transform.position, directions[i], out hit, range))
                 {
-                    Debug.Log(hit.transform.name);
+                    Debug.Log(hit.collider.name);
                     Iterface isHit = hit.collider.GetComponent<Iterface>();
 
                     if (isHit != null)
@@ -60,9 +69,24 @@ public class DestroyBomb : MonoBehaviour
                 }
 
             }
+            AboutToBlow = true;
 
-            Destroy(gameObject);
         }
     }
-    
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (AboutToBlow)
+        {
+            Iterface isHit = other.GetComponent<Iterface>();
+
+            if (isHit != null)
+            {
+                isHit.damageable();
+                // OnBoxDestroyed?.Invoke();
+            }
+        }
+        
+    }
+
 }
