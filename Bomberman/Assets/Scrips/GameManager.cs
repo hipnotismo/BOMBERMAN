@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
         if (AmountOfBoxes <= DestroyedBoxes)
         {
             EnableDoor?.Invoke();
-            Debug.Log("Destoy and create are equal");
+            //Debug.Log("Destoy and create are equal");
         }
     }
 

@@ -14,6 +14,14 @@ public class ScreenManager : MonoBehaviour
     public void exitButton()
     {
         Application.Quit();
+
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#endif
+
+#if UNITY_ANDRIOD
+
+#endif
         Debug.Log("quit");
     }
 }

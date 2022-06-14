@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player_Life : MonoBehaviour, Iterface
+public class PlayerLife : MonoBehaviour, Iterface
 {
     private int _life;
     void Start()
