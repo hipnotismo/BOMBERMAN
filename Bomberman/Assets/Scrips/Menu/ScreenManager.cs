@@ -24,4 +24,6 @@ public class ScreenManager : MonoBehaviour
 #endif
         Debug.Log("quit");
     }
+
+ 
 }
