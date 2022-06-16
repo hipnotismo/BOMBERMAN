@@ -6,18 +6,17 @@ public class EnemyMovement : MonoBehaviour, Iterface
 {
     int RycastAmount = 4;
     List<Vector3> directions = new List<Vector3>();
-    List<Vector3> AvailableDirections = new List<Vector3>();
-    int ListRandom;
+    List<Vector3> availableDirections = new List<Vector3>();
+    int listRandom;
     private float m_Speed = 3f;
 
     Rigidbody m_Rigidbody;
 
     float range = 1f;
-    float MegaRange = 40f;
+    float megaRange = 40f;
     float distance;
-    int TruncatedDistance;
-    bool Destiny;
-    bool There;
+    int truncatedDistance;
+    bool destiny;
     Vector3 TargetPos;
 
     private void Awake()
@@ -28,8 +27,7 @@ public class EnemyMovement : MonoBehaviour, Iterface
         directions.Add(-transform.right);
 
         m_Rigidbody = GetComponent<Rigidbody>();
-        Destiny = true;
-        There = false;
+        destiny = true;
     }
 
     void Start()
@@ -41,7 +39,7 @@ public class EnemyMovement : MonoBehaviour, Iterface
     {
        
 
-        if (Destiny)
+        if (destiny)
         {
             RaycastHit hit;
 
@@ -58,35 +56,34 @@ public class EnemyMovement : MonoBehaviour, Iterface
                 }
                 else
                 {
-                    AvailableDirections.Add(directions[i]);
+                    availableDirections.Add(directions[i]);
                 }
 
             }
 
-            ListRandom = Random.Range(0, AvailableDirections.Count);
-            Destiny = true;
+            listRandom = Random.Range(0, availableDirections.Count);
+            destiny = true;
 
-            if (Physics.Raycast(transform.position, AvailableDirections[ListRandom], out hit, MegaRange))
+            if (Physics.Raycast(transform.position, availableDirections[listRandom], out hit, megaRange))
             {
                 distance = Vector3.Distance(hit.transform.position, gameObject.transform.position);
-                TruncatedDistance = (int)distance;
-                There = true;
+                truncatedDistance = (int)distance;
 
             }
-            TargetPos = transform.position+(TruncatedDistance* AvailableDirections[ListRandom]);
-            Destiny = false;
+            TargetPos = transform.position+(truncatedDistance * availableDirections[listRandom]);
+            destiny = false;
 
         }
         else
         {
             if (transform.position == TargetPos)
             {
-                Destiny = true;
+                destiny = true;
 
             }
             else
             {
-                m_Rigidbody.MovePosition(transform.position + AvailableDirections[ListRandom] * Time.deltaTime * m_Speed);
+                m_Rigidbody.MovePosition(transform.position + availableDirections[listRandom] * Time.deltaTime * m_Speed);
             }
 
         }
