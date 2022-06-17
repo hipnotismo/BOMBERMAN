@@ -17,6 +17,7 @@ public class EnemyMovement : MonoBehaviour, Iterface
     float distance;
     int truncatedDistance;
     bool destiny;
+    float redution = 0.75f;
     Vector3 TargetPos;
 
     private void Awake()
@@ -37,15 +38,14 @@ public class EnemyMovement : MonoBehaviour, Iterface
 
     void Update()
     {
-       
+
 
         if (destiny)
         {
+            //Debug.Log("listRandom pimera: " + listRandom);
+            Debug.LogWarning("listRandom pimera: " + listRandom);
+
             RaycastHit hit;
-
-            Vector3 forward = transform.TransformDirection(Vector3.forward) * 1;
-
-            Debug.DrawRay(transform.position, forward, Color.green);
 
             for (int i = 0; i < RycastAmount; i++)
             {
@@ -62,7 +62,9 @@ public class EnemyMovement : MonoBehaviour, Iterface
             }
 
             listRandom = Random.Range(0, availableDirections.Count);
+
             destiny = true;
+
 
             if (Physics.Raycast(transform.position, availableDirections[listRandom], out hit, megaRange))
             {
@@ -71,23 +73,69 @@ public class EnemyMovement : MonoBehaviour, Iterface
 
             }
             TargetPos = transform.position+(truncatedDistance * availableDirections[listRandom]);
+      //      Debug.Log("TargetPos: " + TargetPos);
+            Vector3 jada = TargetPos;
+
+            Debug.Log("TargetPos minus: " + jada);
+            Debug.Log("listRandom segunda: " + listRandom);
+
             destiny = false;
 
         }
         else
         {
-            if (transform.position == TargetPos)
-            {
-                destiny = true;
 
-            }
-            else
+            switch (listRandom)
             {
-                m_Rigidbody.MovePosition(transform.position + availableDirections[listRandom] * Time.deltaTime * m_Speed);
+                case 0:
+                    if (transform.position.z >= TargetPos.z - redution)
+                    {
+                        destiny = true;
+                    }
+                    else
+                    {
+                        m_Rigidbody.MovePosition(transform.position + availableDirections[listRandom] * Time.deltaTime * m_Speed);
+                    }
+                    break;
+                case 1:
+                    if (transform.position.x >= TargetPos.x - redution)
+                    {
+                        destiny = true;
+                    }
+                    else
+                    {
+                        m_Rigidbody.MovePosition(transform.position + availableDirections[listRandom] * Time.deltaTime * m_Speed);
+                    }
+                    break;
+                case 2:
+                    if (transform.position.x <= TargetPos.x - redution)
+                    {
+                        destiny = true;
+                    }
+                    else
+                    {
+                        m_Rigidbody.MovePosition(transform.position + availableDirections[listRandom] * Time.deltaTime * m_Speed);
+                    }
+                    break;
+                case 3:
+                    if (transform.position.z <= TargetPos.z - redution)
+                    {
+                        destiny = true;
+                    }
+                    else
+                    {
+                        m_Rigidbody.MovePosition(transform.position + availableDirections[listRandom] * Time.deltaTime * m_Speed);
+                    }
+                    break;
             }
-
         }
 
+        Debug.DrawRay(transform.position, directions[0], Color.red);
+        Debug.DrawRay(transform.position, directions[1], Color.green);
+        Debug.DrawRay(transform.position, directions[2], Color.blue);
+        Debug.DrawRay(transform.position, directions[3], Color.cyan);
+
+        Debug.DrawRay(transform.position, availableDirections[listRandom] * megaRange, Color.red);
         //if (There)
         //{
         //    if (transform.position != AvailableDirections[ListRandom])

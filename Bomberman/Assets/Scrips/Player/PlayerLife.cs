@@ -6,10 +6,9 @@ public class PlayerLife : MonoBehaviour, Iterface
 {
     [SerializeField] private GameObject LoseMenu;
 
-    private int _life;
+    [SerializeField] private int _life;
     void Start()
     {
-        _life = 3;
     }
 
     private void Update()
