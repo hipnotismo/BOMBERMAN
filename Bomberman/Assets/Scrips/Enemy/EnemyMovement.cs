@@ -197,15 +197,6 @@ public class EnemyMovement : MonoBehaviour, Iterface
                     }
                     break;
             }
-
-            //if (transform.position == availableDirections[listRandom])
-            //{
-            //    m_Rigidbody.MovePosition(transform.position + availableDirections[listRandom] * Time.deltaTime * m_Speed);
-            //}
-            //else
-            //{
-            //    destiny = true;
-            //}
         }
 
         Debug.DrawRay(transform.position, directions[0], Color.red);
@@ -213,20 +204,7 @@ public class EnemyMovement : MonoBehaviour, Iterface
         Debug.DrawRay(transform.position, directions[2], Color.blue);
         Debug.DrawRay(transform.position, directions[3], Color.cyan);
 
-        Debug.DrawRay(transform.position, availableDirections[listRandom] * megaRange, Color.red);
-        //if (There)
-        //{
-        //    if (transform.position != AvailableDirections[ListRandom])
-        //    {
-        //        m_Rigidbody.MovePosition(transform.position + AvailableDirections[ListRandom] * Time.deltaTime * m_Speed);
-        //    }
-        //    else
-        //    {
-        //        There = false;
-        //    }
-
-        //}
-
+        Debug.DrawRay(transform.position, availableDirections[listRandom] * megaRange, Color.red);      
     }
 
     public void damageable()
