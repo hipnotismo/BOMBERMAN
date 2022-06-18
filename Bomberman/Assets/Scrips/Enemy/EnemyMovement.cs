@@ -9,7 +9,7 @@ public class EnemyMovement : MonoBehaviour, Iterface
     List<Vector3> availableDirections = new List<Vector3>();
     int listRandom;
     private float m_Speed = 3f;
-
+    int directionIs;
     Rigidbody m_Rigidbody;
 
     float range = 1f;
@@ -17,11 +17,12 @@ public class EnemyMovement : MonoBehaviour, Iterface
     float distance;
     int truncatedDistance;
     bool destiny;
-    float redution = 0.75f;
+    float redution = 0.80f;
     Vector3 TargetPos;
 
     private void Awake()
     {
+        //4 direcciones a las que se tiran raycast
         directions.Add(transform.forward);
         directions.Add(-transform.forward);
         directions.Add(transform.right);
@@ -42,11 +43,9 @@ public class EnemyMovement : MonoBehaviour, Iterface
 
         if (destiny)
         {
-            //Debug.Log("listRandom pimera: " + listRandom);
-            Debug.LogWarning("listRandom pimera: " + listRandom);
-
+            availableDirections.Clear();
             RaycastHit hit;
-
+            //se tiran los 4 rayos, los que no tocan ningun bloqeu se guardan en una lsita
             for (int i = 0; i < RycastAmount; i++)
             {
 
@@ -56,16 +55,16 @@ public class EnemyMovement : MonoBehaviour, Iterface
                 }
                 else
                 {
+                    Debug.Log("DIR: " + directions[i]);
                     availableDirections.Add(directions[i]);
                 }
 
             }
-
+            //se elegi un elemento random de esa lista
             listRandom = Random.Range(0, availableDirections.Count);
-
             destiny = true;
 
-
+            //raycast mas largo para saber a cuanta distancia esta el proximo bloque
             if (Physics.Raycast(transform.position, availableDirections[listRandom], out hit, megaRange))
             {
                 distance = Vector3.Distance(hit.transform.position, gameObject.transform.position);
@@ -73,61 +72,140 @@ public class EnemyMovement : MonoBehaviour, Iterface
 
             }
             TargetPos = transform.position+(truncatedDistance * availableDirections[listRandom]);
-      //      Debug.Log("TargetPos: " + TargetPos);
+            Debug.Log("listRandom: " + availableDirections[listRandom]);
+            Debug.Log("Targetpos X: " + TargetPos.x );
+            Debug.Log("Targetpos redsuction X: " + (TargetPos.x - redution));
+            Debug.Log("Targetpos Z: " + TargetPos.z);
+            Debug.Log("Targetpos redsuction Z: " + (TargetPos.z + redution));
             Vector3 jada = TargetPos;
 
-            Debug.Log("TargetPos minus: " + jada);
-            Debug.Log("listRandom segunda: " + listRandom);
+            if (availableDirections[listRandom] == directions[0])
+            {
+                directionIs = 0;
+            }
 
+            for (int i = 0; i < RycastAmount; i++)
+            {
+                if (availableDirections[listRandom] == directions[i])
+                {
+                    directionIs = i;
+                }
+            }
+            Debug.Log("directionIs: " + directionIs);
+
+            //bool a negativo para que el proceso solo se haga un vez hasta que el jugador llegue al destino
             destiny = false;
-
         }
         else
         {
-
-            switch (listRandom)
+            switch (directionIs)
             {
+                //case 0:
+                //    if (transform.position.z >= TargetPos.z - redution)
+                //    {
+                //        destiny = true; Debug.Log("SALE0");
+                //    }
+                //    else
+                //    {
+                //        Debug.Log("Entra0");
+
+                //        m_Rigidbody.MovePosition(transform.position + availableDirections[listRandom] * Time.deltaTime * m_Speed);
+                //    }
+                //    break;
+                //case 1:
+                //    if (transform.position.z <= TargetPos.z + redution)
+                //    {
+                //        destiny = true; Debug.Log("SALE1");
+                //    }
+                //    else
+                //    {
+                //        Debug.Log("Entra1");
+
+                //        m_Rigidbody.MovePosition(transform.position + availableDirections[listRandom] * Time.deltaTime * m_Speed);
+                //    }
+                //    break;
+                //case 2:
+                //    if (transform.position.x >= TargetPos.x - redution)
+                //    {
+                //        Debug.Log("Sale2");
+                //        destiny = true;
+                //    }
+                //    else
+                //    {
+                //        Debug.Log("Entra2");
+                //        m_Rigidbody.MovePosition(transform.position + availableDirections[listRandom] * Time.deltaTime * m_Speed);
+                //    }
+                //    break;
+                //case 3:
+                //    if (transform.position.x <= TargetPos.x + redution)
+                //    {
+                //        destiny = true;
+                //        Debug.Log("SALE3");
+                //    }
+                //    else
+                //    {
+                //        Debug.Log("Entra3");
+                //        m_Rigidbody.MovePosition(transform.position + availableDirections[listRandom] * Time.deltaTime * m_Speed);
+                //    }
+                //    break;
                 case 0:
                     if (transform.position.z >= TargetPos.z - redution)
                     {
-                        destiny = true;
+                        destiny = true; Debug.Log("SALE0");
                     }
                     else
                     {
+                        Debug.Log("Entra0");
+
                         m_Rigidbody.MovePosition(transform.position + availableDirections[listRandom] * Time.deltaTime * m_Speed);
                     }
                     break;
                 case 1:
-                    if (transform.position.x >= TargetPos.x - redution)
+                    if (transform.position.z <= TargetPos.z + redution)
                     {
-                        destiny = true;
+                        destiny = true; Debug.Log("SALE1");
                     }
                     else
                     {
+                        Debug.Log("Entra1");
+
                         m_Rigidbody.MovePosition(transform.position + availableDirections[listRandom] * Time.deltaTime * m_Speed);
                     }
                     break;
                 case 2:
-                    if (transform.position.x <= TargetPos.x - redution)
+                    if (transform.position.x >= TargetPos.x - redution)
                     {
+                        Debug.Log("Sale2");
                         destiny = true;
                     }
                     else
                     {
+                        Debug.Log("Entra2");
                         m_Rigidbody.MovePosition(transform.position + availableDirections[listRandom] * Time.deltaTime * m_Speed);
                     }
                     break;
                 case 3:
-                    if (transform.position.z <= TargetPos.z - redution)
+                    if (transform.position.x <= TargetPos.x + redution)
                     {
                         destiny = true;
+                        Debug.Log("SALE3");
                     }
                     else
                     {
+                        Debug.Log("Entra3");
                         m_Rigidbody.MovePosition(transform.position + availableDirections[listRandom] * Time.deltaTime * m_Speed);
                     }
                     break;
             }
+
+            //if (transform.position == availableDirections[listRandom])
+            //{
+            //    m_Rigidbody.MovePosition(transform.position + availableDirections[listRandom] * Time.deltaTime * m_Speed);
+            //}
+            //else
+            //{
+            //    destiny = true;
+            //}
         }
 
         Debug.DrawRay(transform.position, directions[0], Color.red);

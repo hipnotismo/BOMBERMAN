@@ -29,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6049291130356200252}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.196, y: 0.538, z: 1.091}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -179,10 +179,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -3316209038747775882, guid: b451eff9ba36d1040a3691f7bdb25387, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7d5dad89765472d408c83d9855647acf, type: 2}
+    - target: {fileID: -3035608602465568333, guid: b451eff9ba36d1040a3691f7bdb25387, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7d5dad89765472d408c83d9855647acf, type: 2}
+    - target: {fileID: -264430861247414160, guid: b451eff9ba36d1040a3691f7bdb25387, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7d5dad89765472d408c83d9855647acf, type: 2}
     - target: {fileID: 919132149155446097, guid: b451eff9ba36d1040a3691f7bdb25387, type: 3}
       propertyPath: m_Name
       value: Flyder
       objectReference: {fileID: 0}
+    - target: {fileID: 2929640277652407947, guid: b451eff9ba36d1040a3691f7bdb25387, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7d5dad89765472d408c83d9855647acf, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b451eff9ba36d1040a3691f7bdb25387, type: 3}
 --- !u!4 &6087141867092105240 stripped
