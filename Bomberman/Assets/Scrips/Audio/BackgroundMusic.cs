@@ -11,6 +11,7 @@ public class BackgroundMusic : MonoBehaviour
     {
         if (BackgroundMusic.inst == null)
         {
+            PlayerPrefs.SetFloat("MusicVolume", 1f);
             BackgroundMusic.inst = this;
             DontDestroyOnLoad(gameObject);
             _music = GetComponent<AudioSource>();
@@ -21,14 +22,8 @@ public class BackgroundMusic : MonoBehaviour
         }
     }
 
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
-        
+        _music.volume = PlayerPrefs.GetFloat("MusicVolume");
     }
 }
