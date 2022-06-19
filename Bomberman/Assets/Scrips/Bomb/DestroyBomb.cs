@@ -48,9 +48,10 @@ public class DestroyBomb : MonoBehaviour
                     {                       
                         isHit.damageable();
                         OnBoxDestroyed?.Invoke();
-                    }                   
+                    }
                 }
             }
+            Destroy(gameObject);
         }
     }
 }
