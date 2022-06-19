@@ -17,14 +17,6 @@ public class DestroyBomb : MonoBehaviour
 
     bool AboutToBlow = false;
 
-    private void OnEnable()
-    {
-    }
-
-    private void OnDisable()
-    {
-        
-    }
     private void Awake()
     {
         directions.Add(transform.forward);
@@ -37,10 +29,10 @@ public class DestroyBomb : MonoBehaviour
     }
     void Update()
     {
-        if (AboutToBlow)
-        {
-            Destroy(gameObject);
-        }
+        //if (AboutToBlow)
+        //{
+        //    Destroy(gameObject);
+        //}
         RaycastHit hit;
 
         destroTimer += 1 * Time.deltaTime;
@@ -61,10 +53,10 @@ public class DestroyBomb : MonoBehaviour
                     Iterface isHit = hit.collider.GetComponent<Iterface>();
 
                     if (isHit != null)
-                    {
+                    {                       
                         isHit.damageable();
                         OnBoxDestroyed?.Invoke();
-
+                        Destroy(gameObject);
                     }
                 }
 
@@ -74,19 +66,19 @@ public class DestroyBomb : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay(Collider other)
-    {
-        if (AboutToBlow)
-        {
-            Iterface isHit = other.GetComponent<Iterface>();
+    //private void OnTriggerStay(Collider other)
+    //{
+    //    if (AboutToBlow)
+    //    {
+    //        Iterface isHit = other.GetComponent<Iterface>();
 
-            if (isHit != null)
-            {
-                isHit.damageable();
-                // OnBoxDestroyed?.Invoke();
-            }
-        }
+    //        if (isHit != null)
+    //        {
+    //            isHit.damageable();
+    //            // OnBoxDestroyed?.Invoke();
+    //        }
+    //    }
         
-    }
+    //}
 
 }

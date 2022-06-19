@@ -55,13 +55,16 @@ public class EnemyMovement : MonoBehaviour, Iterface
                 }
                 else
                 {
-                    Debug.Log("DIR: " + directions[i]);
                     availableDirections.Add(directions[i]);
                 }
 
             }
             //se elegi un elemento random de esa lista
             listRandom = Random.Range(0, availableDirections.Count);
+            if (listRandom > 0)
+            {
+                listRandom = 0;
+            }
             destiny = true;
 
             //raycast mas largo para saber a cuanta distancia esta el proximo bloque
@@ -71,12 +74,7 @@ public class EnemyMovement : MonoBehaviour, Iterface
                 truncatedDistance = (int)distance;
 
             }
-            TargetPos = transform.position+(truncatedDistance * availableDirections[listRandom]);
-            Debug.Log("listRandom: " + availableDirections[listRandom]);
-            Debug.Log("Targetpos X: " + TargetPos.x );
-            Debug.Log("Targetpos redsuction X: " + (TargetPos.x - redution));
-            Debug.Log("Targetpos Z: " + TargetPos.z);
-            Debug.Log("Targetpos redsuction Z: " + (TargetPos.z + redution));
+            TargetPos = transform.position+(truncatedDistance * availableDirections[listRandom]);          
             Vector3 jada = TargetPos;
 
             if (availableDirections[listRandom] == directions[0])
@@ -91,7 +89,6 @@ public class EnemyMovement : MonoBehaviour, Iterface
                     directionIs = i;
                 }
             }
-            Debug.Log("directionIs: " + directionIs);
 
             //bool a negativo para que el proceso solo se haga un vez hasta que el jugador llegue al destino
             destiny = false;
@@ -99,88 +96,34 @@ public class EnemyMovement : MonoBehaviour, Iterface
         else
         {
             switch (directionIs)
-            {
-                //case 0:
-                //    if (transform.position.z >= TargetPos.z - redution)
-                //    {
-                //        destiny = true; Debug.Log("SALE0");
-                //    }
-                //    else
-                //    {
-                //        Debug.Log("Entra0");
-
-                //        m_Rigidbody.MovePosition(transform.position + availableDirections[listRandom] * Time.deltaTime * m_Speed);
-                //    }
-                //    break;
-                //case 1:
-                //    if (transform.position.z <= TargetPos.z + redution)
-                //    {
-                //        destiny = true; Debug.Log("SALE1");
-                //    }
-                //    else
-                //    {
-                //        Debug.Log("Entra1");
-
-                //        m_Rigidbody.MovePosition(transform.position + availableDirections[listRandom] * Time.deltaTime * m_Speed);
-                //    }
-                //    break;
-                //case 2:
-                //    if (transform.position.x >= TargetPos.x - redution)
-                //    {
-                //        Debug.Log("Sale2");
-                //        destiny = true;
-                //    }
-                //    else
-                //    {
-                //        Debug.Log("Entra2");
-                //        m_Rigidbody.MovePosition(transform.position + availableDirections[listRandom] * Time.deltaTime * m_Speed);
-                //    }
-                //    break;
-                //case 3:
-                //    if (transform.position.x <= TargetPos.x + redution)
-                //    {
-                //        destiny = true;
-                //        Debug.Log("SALE3");
-                //    }
-                //    else
-                //    {
-                //        Debug.Log("Entra3");
-                //        m_Rigidbody.MovePosition(transform.position + availableDirections[listRandom] * Time.deltaTime * m_Speed);
-                //    }
-                //    break;
+            {              
                 case 0:
                     if (transform.position.z >= TargetPos.z - redution)
                     {
-                        destiny = true; Debug.Log("SALE0");
+                        destiny = true;
                     }
                     else
                     {
-                        Debug.Log("Entra0");
-
                         m_Rigidbody.MovePosition(transform.position + availableDirections[listRandom] * Time.deltaTime * m_Speed);
                     }
                     break;
                 case 1:
                     if (transform.position.z <= TargetPos.z + redution)
                     {
-                        destiny = true; Debug.Log("SALE1");
+                        destiny = true; 
                     }
                     else
                     {
-                        Debug.Log("Entra1");
-
                         m_Rigidbody.MovePosition(transform.position + availableDirections[listRandom] * Time.deltaTime * m_Speed);
                     }
                     break;
                 case 2:
                     if (transform.position.x >= TargetPos.x - redution)
                     {
-                        Debug.Log("Sale2");
                         destiny = true;
                     }
                     else
                     {
-                        Debug.Log("Entra2");
                         m_Rigidbody.MovePosition(transform.position + availableDirections[listRandom] * Time.deltaTime * m_Speed);
                     }
                     break;
@@ -188,11 +131,9 @@ public class EnemyMovement : MonoBehaviour, Iterface
                     if (transform.position.x <= TargetPos.x + redution)
                     {
                         destiny = true;
-                        Debug.Log("SALE3");
                     }
                     else
                     {
-                        Debug.Log("Entra3");
                         m_Rigidbody.MovePosition(transform.position + availableDirections[listRandom] * Time.deltaTime * m_Speed);
                     }
                     break;
@@ -203,7 +144,6 @@ public class EnemyMovement : MonoBehaviour, Iterface
         Debug.DrawRay(transform.position, directions[1], Color.green);
         Debug.DrawRay(transform.position, directions[2], Color.blue);
         Debug.DrawRay(transform.position, directions[3], Color.cyan);
-
         Debug.DrawRay(transform.position, availableDirections[listRandom] * megaRange, Color.red);      
     }
 

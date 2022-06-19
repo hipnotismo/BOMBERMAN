@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6049291130356200231}
   - component: {fileID: 6049291130356200230}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -99,7 +99,7 @@ SphereCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.3
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!114 &6049291130356200231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -141,15 +141,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b451eff9ba36d1040a3691f7bdb25387, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.0059998035
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b451eff9ba36d1040a3691f7bdb25387, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.538
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b451eff9ba36d1040a3691f7bdb25387, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.016000032
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b451eff9ba36d1040a3691f7bdb25387, type: 3}
       propertyPath: m_LocalRotation.w

@@ -40,13 +40,13 @@ public class GameManager : MonoBehaviour
     void AddCount()
     {
         AmountOfBoxes++;
-        Debug.Log("Created box: " + AmountOfBoxes);
+       // Debug.Log("Created box: " + AmountOfBoxes);
 
     }
 
     void DestructionCount()
     {
         DestroyedBoxes++;
-        Debug.Log("Destroy box: " + DestroyedBoxes);
+       // Debug.Log("Destroy box: " + DestroyedBoxes);
     }
 }
