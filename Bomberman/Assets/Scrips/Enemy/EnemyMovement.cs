@@ -8,7 +8,7 @@ public class EnemyMovement : MonoBehaviour, Iterface
     List<Vector3> directions = new List<Vector3>();
     List<Vector3> availableDirections = new List<Vector3>();
     int listRandom;
-    private float m_Speed = 3f;
+    [SerializeField] private float m_Speed;
     int directionIs;
     Rigidbody m_Rigidbody;
 

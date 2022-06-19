@@ -8,14 +8,13 @@ public class DestroyBomb : MonoBehaviour
 
     public static Action OnBoxDestroyed;
 
-    int destroyTime = 2;
+    int destroyTime = 1;
     float destroTimer =0;
     float range = 1f;
     int RycastAmount = 4;
     List<Vector3> directions = new List<Vector3>();
-    Collider m_Collider;
 
-    bool AboutToBlow = false;
+    public AudioSource explosion;
 
     private void Awake()
     {
@@ -23,7 +22,6 @@ public class DestroyBomb : MonoBehaviour
         directions.Add(-transform.forward);
         directions.Add(transform.right);
         directions.Add(-transform.right);
-        m_Collider = GetComponent<Collider>();
     }
     void Update()
     {
@@ -34,9 +32,10 @@ public class DestroyBomb : MonoBehaviour
         Vector3 forward = transform.TransformDirection(Vector3.forward) * 1;
 
         Debug.DrawRay(transform.position, forward, Color.green);
-
+        Debug.Log(destroTimer);
         if (destroTimer > destroyTime)
         {
+            explosion.Play();
             for (int i = 0; i < RycastAmount; i++)
             {
 
@@ -49,11 +48,9 @@ public class DestroyBomb : MonoBehaviour
                     {                       
                         isHit.damageable();
                         OnBoxDestroyed?.Invoke();
-                        Destroy(gameObject);
-                    }
+                    }                   
                 }
             }
-            AboutToBlow = true;
         }
     }
 }
