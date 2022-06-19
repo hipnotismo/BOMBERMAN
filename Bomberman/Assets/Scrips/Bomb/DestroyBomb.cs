@@ -24,19 +24,12 @@ public class DestroyBomb : MonoBehaviour
         directions.Add(transform.right);
         directions.Add(-transform.right);
         m_Collider = GetComponent<Collider>();
-
-
     }
     void Update()
     {
-        //if (AboutToBlow)
-        //{
-        //    Destroy(gameObject);
-        //}
         RaycastHit hit;
 
         destroTimer += 1 * Time.deltaTime;
-      //  Debug.Log(destroTimer);
 
         Vector3 forward = transform.TransformDirection(Vector3.forward) * 1;
 
@@ -59,26 +52,8 @@ public class DestroyBomb : MonoBehaviour
                         Destroy(gameObject);
                     }
                 }
-
             }
             AboutToBlow = true;
-
         }
     }
-
-    //private void OnTriggerStay(Collider other)
-    //{
-    //    if (AboutToBlow)
-    //    {
-    //        Iterface isHit = other.GetComponent<Iterface>();
-
-    //        if (isHit != null)
-    //        {
-    //            isHit.damageable();
-    //            // OnBoxDestroyed?.Invoke();
-    //        }
-    //    }
-        
-    //}
-
 }

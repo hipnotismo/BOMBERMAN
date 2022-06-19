@@ -13,6 +13,7 @@ public class Pause : MonoBehaviour
         PauseMenu.SetActive(false);
         Time.timeScale = 1f;
         GameIsPause = false;
+
     }
 
     // Update is called once per frame
@@ -40,11 +41,8 @@ public class Pause : MonoBehaviour
 
     private void Pouse()
     {
-        Debug.Log("yes");
         PauseMenu.SetActive(true);
         Time.timeScale = 0f;
         GameIsPause = true;
     }
-
-
 }

@@ -384,7 +384,7 @@ GameObject:
   - component: {fileID: 5363734474235594322}
   - component: {fileID: 5363734474235594321}
   m_Layer: 5
-  m_Name: Button (4)
+  m_Name: Exit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -506,7 +506,7 @@ GameObject:
   - component: {fileID: 5363734474405334333}
   - component: {fileID: 5363734474405334332}
   m_Layer: 5
-  m_Name: Button (2)
+  m_Name: Options
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -614,7 +614,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5363734474405334333}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5363734475076520168}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5363734474882859882
 GameObject:
   m_ObjectHideFlags: 0
@@ -628,7 +640,7 @@ GameObject:
   - component: {fileID: 5363734474882859886}
   - component: {fileID: 5363734474882859885}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: Reset
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1447,7 +1459,7 @@ GameObject:
   - component: {fileID: 5363734475846431521}
   - component: {fileID: 5363734475846431520}
   m_Layer: 5
-  m_Name: Button (3)
+  m_Name: Return
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1557,8 +1569,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 5363734474405773164}
-        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
-        m_MethodName: ReturnToMenu
+        m_TargetAssemblyTypeName: InGameMenu, Assembly-CSharp
+        m_MethodName: Options
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

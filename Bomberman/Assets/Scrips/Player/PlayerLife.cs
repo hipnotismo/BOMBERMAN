@@ -1,17 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerLife : MonoBehaviour, Iterface
 {
     [SerializeField] private GameObject LoseMenu;
-
+    [SerializeField] private Button inmune;
     [SerializeField] private int life;
 
     void Start()
     {
         PlayerPrefs.SetInt("PlayerLife",life);
-        Debug.Log(PlayerPrefs.GetInt("PlayerLife"));
+        Debug.Log(PlayerPrefs.GetInt("PlayerLife"));     
     }
 
     private void Update()
@@ -37,15 +38,17 @@ public class PlayerLife : MonoBehaviour, Iterface
     {        
         life--;
         Debug.Log("player hit " + life);
-        PlayerPrefs.SetInt("PlayerLife", life);              
+        PlayerPrefs.SetInt("PlayerLife", life);
+        StartCoroutine(StopCollision());
     }
 
     IEnumerator StopCollision()
     {
+        inmune.gameObject.SetActive(true);
         gameObject.layer = LayerMask.NameToLayer("Ignore collision");
-
         yield return new WaitForSeconds(3);
         gameObject.layer = LayerMask.NameToLayer("Player");
+        inmune.gameObject.SetActive(false);
 
     }
 }

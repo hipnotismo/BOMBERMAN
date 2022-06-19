@@ -17,7 +17,7 @@ public class EnemyMovement : MonoBehaviour, Iterface
     float distance;
     int truncatedDistance;
     bool destiny;
-    float redution = 0.80f;
+    float redution = 0.75f;//0.80f;
     Vector3 TargetPos;
 
     private void Awake()
@@ -74,8 +74,8 @@ public class EnemyMovement : MonoBehaviour, Iterface
                 truncatedDistance = (int)distance;
 
             }
-            TargetPos = transform.position+(truncatedDistance * availableDirections[listRandom]);          
-            Vector3 jada = TargetPos;
+            TargetPos = transform.position+(truncatedDistance * availableDirections[listRandom]);
+            Debug.Log(TargetPos);
 
             if (availableDirections[listRandom] == directions[0])
             {
@@ -87,6 +87,7 @@ public class EnemyMovement : MonoBehaviour, Iterface
                 if (availableDirections[listRandom] == directions[i])
                 {
                     directionIs = i;
+                    Debug.Log(directionIs);
                 }
             }
 
@@ -108,7 +109,7 @@ public class EnemyMovement : MonoBehaviour, Iterface
                     }
                     break;
                 case 1:
-                    if (transform.position.z <= TargetPos.z + redution)
+                    if (transform.position.z <= TargetPos.z + (redution))
                     {
                         destiny = true; 
                     }

@@ -15,6 +15,8 @@ public class InGameMenu : MonoBehaviour
     {
 
         SceneManager.LoadScene("MainMenu");
+        PlayerPrefs.SetString("LastScene", SceneManager.GetActiveScene().name);
+        Debug.Log(SceneManager.GetActiveScene().name);
 
     }
 
@@ -31,4 +33,11 @@ public class InGameMenu : MonoBehaviour
         Debug.Log("quit");
     }
 
+    public void Options()
+    {
+        Debug.Log("Options");
+        PlayerPrefs.SetString("LastScene", SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene("Options");
+
+    }
 }

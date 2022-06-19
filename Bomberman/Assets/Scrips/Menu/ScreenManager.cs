@@ -5,9 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class ScreenManager : MonoBehaviour
 {
-
     public void button(string name)
     {
+        PlayerPrefs.SetString("LastScene", SceneManager.GetActiveScene().name);
         SceneManager.LoadScene(name);
     }
 
@@ -25,5 +25,11 @@ public class ScreenManager : MonoBehaviour
         Debug.Log("quit");
     }
 
- 
+    public void returnToLatScene()
+    {
+        Debug.Log("Options");
+        Debug.Log(PlayerPrefs.GetString("LastScene"));
+
+        SceneManager.LoadScene(PlayerPrefs.GetString("LastScene"));
+    }
 }
