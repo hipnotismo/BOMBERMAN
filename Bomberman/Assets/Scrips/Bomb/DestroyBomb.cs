@@ -22,6 +22,9 @@ public class DestroyBomb : MonoBehaviour
         directions.Add(-transform.forward);
         directions.Add(transform.right);
         directions.Add(-transform.right);
+        explosion = GetComponent<AudioSource>();
+        explosion.Play();
+        explosion.Pause();
     }
     void Update()
     {
@@ -33,9 +36,14 @@ public class DestroyBomb : MonoBehaviour
 
         Debug.DrawRay(transform.position, forward, Color.green);
         Debug.Log(destroTimer);
+        explosion.UnPause();
+        explosion.Pause();
+
         if (destroTimer > destroyTime)
         {
-            explosion.Play();
+            // explosion.Play();
+            explosion.UnPause();
+
             for (int i = 0; i < RycastAmount; i++)
             {
 
@@ -50,8 +58,10 @@ public class DestroyBomb : MonoBehaviour
                         OnBoxDestroyed?.Invoke();
                     }
                 }
-            }
-            Destroy(gameObject);
+            }        
+            Destroy(gameObject);            
         }
+      
+
     }
 }
