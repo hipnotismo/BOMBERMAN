@@ -22,7 +22,7 @@ public class BackgroundMusic : MonoBehaviour
         }
     }
 
-    void Update()
+    void Update()//cambiar a una funcion normal y poner una instancia en el menu de opciones
     {
         _music.volume = PlayerPrefs.GetFloat("MusicVolume");
     }

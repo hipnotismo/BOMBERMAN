@@ -25,27 +25,24 @@ public class DestroyBomb : MonoBehaviour
         directions.Add(-transform.forward);
         directions.Add(transform.right);
         directions.Add(-transform.right);
-        explosion.volume = PlayerPrefs.GetFloat("FXVolume");
+        //explosion.volume = PlayerPrefs.GetFloat("FXVolume");
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
-        
+        destroTimer += 1 * Time.deltaTime;
+        explosion.volume = 1;
+        Eliminate();
+
     }
 
-    public void Update()
+    public void FixedUpdate()
     {
         RaycastHit hit;
 
-        destroTimer += 1 * Time.deltaTime;     
-        explosion.UnPause();
-        explosion.Pause();
 
         if (destroTimer >= destroyTime)
-        {
-            // explosion.Play();
-            explosion.UnPause();
-
+        {            
             for (int i = 0; i < RycastAmount; i++)
             {
 
@@ -56,7 +53,7 @@ public class DestroyBomb : MonoBehaviour
 
                     if (isHit != null)
                     {
-                        if (hit.collider.CompareTag("Player"))
+                        if (hit.collider.CompareTag("Player") || hit.collider.CompareTag("Enemy"))
                         {
 
                         }
@@ -95,10 +92,14 @@ public class DestroyBomb : MonoBehaviour
 
             }
 
-            Destroy(gameObject);            
         }
 
+    }
 
+    void Eliminate()
+    {
+        explosion.Play();
+        Destroy(gameObject, explosion.clip.length);
     }
 
     private void OnDrawGizmosSelected()

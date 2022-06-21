@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerLife : MonoBehaviour, Interface
+public class PlayerLife : MonoBehaviour, Interface//separar el control de las vidas del control de la UI
 {
     [SerializeField] private GameObject LoseMenu;
     [SerializeField] private Button inmune;

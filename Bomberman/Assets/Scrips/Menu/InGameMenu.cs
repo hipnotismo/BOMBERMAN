@@ -5,26 +5,17 @@ using UnityEngine.SceneManagement;
 
 public class InGameMenu : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     public void ReturnToMenu()
     {
 
         SceneManager.LoadScene("MainMenu");
         PlayerPrefs.SetString("LastScene", SceneManager.GetActiveScene().name);
         Debug.Log(SceneManager.GetActiveScene().name);
-
     }
 
     public void Reset()
     {
         Debug.Log("Reset");
-
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 
     }
