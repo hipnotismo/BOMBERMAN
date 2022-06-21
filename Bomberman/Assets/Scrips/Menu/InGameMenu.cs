@@ -24,7 +24,9 @@ public class InGameMenu : MonoBehaviour
     {
         Debug.Log("Reset");
 
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+
     }
 
     public void ExitButton()

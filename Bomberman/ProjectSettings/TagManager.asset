@@ -6,6 +6,7 @@ TagManager:
   tags:
   - BrickWall
   - Enemy
+  - Door
   layers:
   - Default
   - TransparentFX
@@ -16,7 +17,7 @@ TagManager:
   - Ignore collision
   - Player
   - Enemy
-  - 
+  - Door
   - test
   - 
   - 

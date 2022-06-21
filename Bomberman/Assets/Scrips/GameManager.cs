@@ -4,8 +4,8 @@ using System;
 public class GameManager : MonoBehaviour
 {
     
-    int AmountOfBoxes;
-    int DestroyedBoxes;
+    private int AmountOfBoxes;
+    private int DestroyedBoxes;
 
     public static Action EnableDoor;
 
@@ -33,20 +33,20 @@ public class GameManager : MonoBehaviour
         if (AmountOfBoxes <= DestroyedBoxes)
         {
             EnableDoor?.Invoke();
-            //Debug.Log("Destoy and create are equal");
+            Debug.Log("Destoy and create are equal");
         }
     }
 
     void AddCount()
     {
         AmountOfBoxes++;
-       // Debug.Log("Created box: " + AmountOfBoxes);
+        Debug.Log("Created box: " + AmountOfBoxes);
 
     }
 
     void DestructionCount()
     {
         DestroyedBoxes++;
-       // Debug.Log("Destroy box: " + DestroyedBoxes);
+        Debug.Log("Destroy box: " + DestroyedBoxes);
     }
 }

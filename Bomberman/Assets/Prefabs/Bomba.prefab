@@ -60,6 +60,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc9bac14e08257647bc5d4939adb5447, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  layer:
+    serializedVersion: 2
+    m_Bits: 1535
   explosion: {fileID: 0}
 --- !u!82 &1973992512443103883
 AudioSource:

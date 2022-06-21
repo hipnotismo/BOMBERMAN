@@ -1,18 +1,92 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
+using System.Collections.Generic;
 
 public class LevelCreation : MonoBehaviour
 {
-    [SerializeField] private GameObject wall;
+    [Header("Prefabs")]
+    [SerializeField] private GameObject wallPrefab;
+    [SerializeField] private GameObject romPrefab;
+    [SerializeField] private GameObject enemyPrefab;
+
     private int cant = 3;
+
+    [Header("References")]
+    [SerializeField] GameObject playerReference = null;
+    [SerializeField] GameObject levelDoorReference = null;
+    [SerializeField] GameObject floorReference = null;
+
+    FileStream fileStreamOpen;
+    StreamReader streamReader;
+
+    List<string> stringMap;
+
+    List<Vector3> levelDoorPositions;
+    int posCounter;
+    int doorPos;
+
+    bool floorScale = false; 
+    const char wall = 'X';
+    const char player = 'P';
+    const char enemy = 'E';
+    const char nothing = 'N';
+    const char romp = 'R';
+
+    void Awake()
+    {
+        posCounter = 0;
+        fileStreamOpen = File.OpenRead("Assets/Asets/Map text/Level2.txt");
+        streamReader = new StreamReader(fileStreamOpen);
+
+        stringMap = new List<string>();
+
+        while (!streamReader.EndOfStream)
+        {
+            stringMap.Add(streamReader.ReadLine());
+        }
+    }
 
     void Start()
     {
-        for (int i = 0; i < cant; i++)
+        float playerFloor = 1f;
+        float levelDoorFloor = 0.5f;
+        float romFloor = 0.5f;
+
+        for (int i = 0; i < stringMap.Count; i++)
         {
-            Instantiate(wall, new Vector3(i,0,0), Quaternion.identity);
+            for (int j = 0; j < stringMap[i].Length; j++)
+            {
+
+                if (floorScale)
+                {
+                    floorReference.transform.localScale = new Vector3(stringMap[i].Length,0, stringMap[i].Length);
+                    floorScale = !floorScale;
+                }
+
+                switch (stringMap[i][j])
+                {
+                    case player:                      
+                        playerReference.transform.position = new Vector3(j, playerFloor, -i);
+                        break;
+                    case wall:
+                        Instantiate(wallPrefab,new Vector3(j,0,-i), wallPrefab.transform.rotation);
+                        break;
+                    case romp:
+                        Instantiate(romPrefab, new Vector3(j, romFloor, -i), romPrefab.transform.rotation);
+                        Debug.Log(i);
+                        Debug.Log(j);
+                     //   levelDoorPositions[posCounter] =(Vector3 (j,0,i));
+                       // posCounter++;
+                        break;
+                    case enemy:
+                        Instantiate(enemyPrefab, new Vector3(j, romFloor, -i), enemyPrefab.transform.rotation);
+
+                        break;
+                }
+            }
         }
+        //doorPos = Random.Range(0, levelDoorPositions.Count);
+       // levelDoorReference.transform.position = levelDoorPositions[doorPos];
     }
 
     void Update()

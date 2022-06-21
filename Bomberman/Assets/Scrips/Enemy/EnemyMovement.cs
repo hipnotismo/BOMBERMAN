@@ -17,7 +17,9 @@ public class EnemyMovement : MonoBehaviour, Iterface
     float distance;
     int truncatedDistance;
     bool destiny;
-    float redution = 0.75f;//0.80f;
+    float redutionZ = 1f;//0.80f;
+    float redutionX = 1f;//0.80f;
+
     Vector3 TargetPos;
 
     private void Awake()
@@ -99,7 +101,7 @@ public class EnemyMovement : MonoBehaviour, Iterface
             switch (directionIs)
             {              
                 case 0:
-                    if (transform.position.z >= TargetPos.z - redution)
+                    if (transform.position.z >= TargetPos.z - redutionZ)
                     {
                         destiny = true;
                     }
@@ -109,7 +111,7 @@ public class EnemyMovement : MonoBehaviour, Iterface
                     }
                     break;
                 case 1:
-                    if (transform.position.z <= TargetPos.z + (redution))
+                    if (transform.position.z <= TargetPos.z + redutionZ)
                     {
                         destiny = true; 
                     }
@@ -119,7 +121,7 @@ public class EnemyMovement : MonoBehaviour, Iterface
                     }
                     break;
                 case 2:
-                    if (transform.position.x >= TargetPos.x - redution)
+                    if (transform.position.x >= TargetPos.x - redutionX)
                     {
                         destiny = true;
                     }
@@ -129,7 +131,7 @@ public class EnemyMovement : MonoBehaviour, Iterface
                     }
                     break;
                 case 3:
-                    if (transform.position.x <= TargetPos.x + redution)
+                    if (transform.position.x <= TargetPos.x + redutionX)
                     {
                         destiny = true;
                     }

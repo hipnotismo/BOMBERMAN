@@ -12,7 +12,10 @@ public class DestroyBomb : MonoBehaviour
     float destroTimer =0;
     float range = 1f;
     int RycastAmount = 4;
+    float sphereRadius = 0.5f;
+
     List<Vector3> directions = new List<Vector3>();
+    [SerializeField] private LayerMask layer;
 
     public AudioSource explosion;
 
@@ -26,20 +29,15 @@ public class DestroyBomb : MonoBehaviour
         explosion.Play();
         explosion.Pause();
     }
-    void Update()
+    public void Update()
     {
         RaycastHit hit;
 
-        destroTimer += 1 * Time.deltaTime;
-
-        Vector3 forward = transform.TransformDirection(Vector3.forward) * 1;
-
-        Debug.DrawRay(transform.position, forward, Color.green);
-        Debug.Log(destroTimer);
+        destroTimer += 1 * Time.deltaTime;     
         explosion.UnPause();
         explosion.Pause();
 
-        if (destroTimer > destroyTime)
+        if (destroTimer >= destroyTime)
         {
             // explosion.Play();
             explosion.UnPause();
@@ -49,7 +47,7 @@ public class DestroyBomb : MonoBehaviour
 
                 if (Physics.Raycast(transform.position, directions[i], out hit, range))
                 {
-                    Debug.Log(hit.collider.name);
+                    //Debug.Log(hit.collider.name);
                     Iterface isHit = hit.collider.GetComponent<Iterface>();
 
                     if (isHit != null)
@@ -58,10 +56,29 @@ public class DestroyBomb : MonoBehaviour
                         OnBoxDestroyed?.Invoke();
                     }
                 }
-            }        
-            Destroy(gameObject);            
-        }
-      
 
+                if (Physics.SphereCast(transform.position, sphereRadius, directions[i], out hit, range, layer, QueryTriggerInteraction.UseGlobal))
+                {
+                    Debug.Log(hit.collider.name);
+                    Iterface isHit = hit.collider.GetComponent<Iterface>();                
+                    if (isHit != null)
+                    {
+                        isHit.damageable();
+                        OnBoxDestroyed?.Invoke();
+                    }
+                }
+
+            }
+            Destroy(gameObject);            
+        }  
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        for (int i = 0; i < directions.Count; i++)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(directions[i], sphereRadius);
+        }
     }
 }
