@@ -58,7 +58,16 @@ public class DestroyBomb : MonoBehaviour
 
                     }
                 }
-
+                if (Physics.SphereCast(transform.position, sphereRadius,new Vector3 (0,0,0), out hit, 0.1f, layer, QueryTriggerInteraction.UseGlobal))
+                {
+                    Debug.Log(hit.collider.name);
+                    Iterface isHit = hit.collider.GetComponent<Iterface>();
+                    if (isHit != null)
+                    {
+                        isHit.damageable();
+                        OnBoxDestroyed?.Invoke();
+                    }
+                }
                 //if (Physics.SphereCast(transform.position, sphereRadius, directions[i], out hit, 0.5f, layer, QueryTriggerInteraction.UseGlobal))
                 //{
                 //    Debug.Log(hit.collider.name);
