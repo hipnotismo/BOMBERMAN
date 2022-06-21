@@ -25,16 +25,14 @@ public class DestroyBomb : MonoBehaviour
         directions.Add(-transform.forward);
         directions.Add(transform.right);
         directions.Add(-transform.right);
-       // explosion = GetComponent<AudioSource>();
         explosion.volume = PlayerPrefs.GetFloat("FXVolume");
-        //explosion.Play();
-        //explosion.Pause();
     }
 
     private void FixedUpdate()
     {
         
     }
+
     public void Update()
     {
         RaycastHit hit;
@@ -58,9 +56,17 @@ public class DestroyBomb : MonoBehaviour
 
                     if (isHit != null)
                     {
-                        isHit.damageable();
-                        OnBoxDestroyed?.Invoke();
+                        if (hit.collider.CompareTag("Player"))
+                        {
 
+                        }
+                        else
+                        {
+                            OnBoxDestroyed?.Invoke();
+
+                        }
+                        isHit.damageable();
+                        
                     }
 
                 }
@@ -74,7 +80,6 @@ public class DestroyBomb : MonoBehaviour
                         isHit.damageable();
                         OnBoxDestroyed?.Invoke();
                     }
-
                 }
 
                 //if (Physics.SphereCast(transform.position, sphereRadius, directions[i], out hit, 0.5f, layer, QueryTriggerInteraction.UseGlobal))
@@ -91,8 +96,9 @@ public class DestroyBomb : MonoBehaviour
             }
 
             Destroy(gameObject);            
-        } 
-        
+        }
+
+
     }
 
     private void OnDrawGizmosSelected()
