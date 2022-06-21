@@ -599,6 +599,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8413121745018788162, guid: 0aa0dae1dfd189347a656ff68cfbc79a, type: 3}
+      propertyPath: WinMenu
+      value: 
+      objectReference: {fileID: 128186055}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0aa0dae1dfd189347a656ff68cfbc79a, type: 3}
 --- !u!1 &656389814 stripped
@@ -798,12 +802,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05c4bf114bc12d44ca4ebe09b4f55b65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelTextFile: Level2
   wallPrefab: {fileID: 1911552659075155360, guid: f1126ebe3e30a5b4d8366fdc601314b5, type: 3}
   romPrefab: {fileID: 5143988583867059482, guid: bc9a84607dbd90d4ab94698f8f4f76f4, type: 3}
   enemyPrefab: {fileID: 3606852676734007321, guid: f19a012123f845444ae0fc206d278cee, type: 3}
   playerReference: {fileID: 372242395}
-  levelDoorReference: {fileID: 1616713146}
-  floorReference: {fileID: 0}
+  levelDoorReference: {fileID: 1434946729}
+  floorReference: {fileID: 1562464095}
 --- !u!4 &917332565
 Transform:
   m_ObjectHideFlags: 0
@@ -902,7 +907,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1019685890
 MonoBehaviour:
@@ -1086,6 +1091,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1434946729 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7182989008812523344, guid: 0aa0dae1dfd189347a656ff68cfbc79a, type: 3}
+  m_PrefabInstance: {fileID: 554084742}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1472405896
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1281,11 +1291,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1616713146 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1626358945959361970, guid: 0aa0dae1dfd189347a656ff68cfbc79a, type: 3}
-  m_PrefabInstance: {fileID: 554084742}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1971884967 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7825081290876025422, guid: 03fd91a86e60e3b49b17f7eda154569a, type: 3}

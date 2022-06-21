@@ -599,6 +599,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8413121745018788162, guid: 0aa0dae1dfd189347a656ff68cfbc79a, type: 3}
+      propertyPath: WinMenu
+      value: 
+      objectReference: {fileID: 128186055}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0aa0dae1dfd189347a656ff68cfbc79a, type: 3}
 --- !u!1 &656389814 stripped
@@ -798,7 +802,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05c4bf114bc12d44ca4ebe09b4f55b65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelTextFile: Level2
+  levelTextFile: Level1
   wallPrefab: {fileID: 1911552659075155360, guid: f1126ebe3e30a5b4d8366fdc601314b5, type: 3}
   romPrefab: {fileID: 5143988583867059482, guid: bc9a84607dbd90d4ab94698f8f4f76f4, type: 3}
   enemyPrefab: {fileID: 3606852676734007321, guid: f19a012123f845444ae0fc206d278cee, type: 3}
