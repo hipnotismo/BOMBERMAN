@@ -4,6 +4,9 @@ using System.Collections.Generic;
 
 public class LevelCreation : MonoBehaviour
 {
+    [SerializeField] private string levelTextFile;
+
+
     [Header("Prefabs")]
     [SerializeField] private GameObject wallPrefab;
     [SerializeField] private GameObject romPrefab;
@@ -31,11 +34,12 @@ public class LevelCreation : MonoBehaviour
     const char enemy = 'E';
     const char nothing = 'N';
     const char romp = 'R';
+    const char door = 'D';
 
     void Awake()
     {
         posCounter = 0;
-        fileStreamOpen = File.OpenRead("Assets/Asets/Map text/Level2.txt");
+        fileStreamOpen = File.OpenRead("Assets/Asets/Map text/"+ levelTextFile + ".txt");
         streamReader = new StreamReader(fileStreamOpen);
 
         stringMap = new List<string>();
@@ -80,7 +84,9 @@ public class LevelCreation : MonoBehaviour
                         break;
                     case enemy:
                         Instantiate(enemyPrefab, new Vector3(j, romFloor, -i), enemyPrefab.transform.rotation);
-
+                        break;
+                    case door:
+                        levelDoorReference.transform.position = new Vector3(j, romFloor, -i);
                         break;
                 }
             }
