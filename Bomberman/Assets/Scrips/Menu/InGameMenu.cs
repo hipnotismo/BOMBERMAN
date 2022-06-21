@@ -15,8 +15,10 @@ public class InGameMenu : MonoBehaviour
 
     public void Reset()
     {
+        Time.timeScale = 1f;
         Debug.Log("Reset");
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
     }
 

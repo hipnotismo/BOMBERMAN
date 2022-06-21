@@ -43,8 +43,7 @@ public class EnemyMovement : MonoBehaviour, Interface
 
     void Update()
     {
-
-
+        // si tengo un destino
         if (destiny)
         {
             availableDirections.Clear();
@@ -52,16 +51,10 @@ public class EnemyMovement : MonoBehaviour, Interface
             //se tiran los 4 rayos, los que no tocan ningun bloqeu se guardan en una lsita
             for (int i = 0; i < RycastAmount; i++)
             {
-
-                if (Physics.Raycast(transform.position, directions[i], out hit, range))
-                {
-
-                }
-                else
+                if (!Physics.Raycast(transform.position, directions[i], out hit, range))
                 {
                     availableDirections.Add(directions[i]);
                 }
-
             }
 
             //se elegi un elemento random de esa lista
@@ -71,6 +64,7 @@ public class EnemyMovement : MonoBehaviour, Interface
                 listRandom = 0;
             }
 
+            //error: redundancia
             destiny = true;
 
             //raycast mas largo para saber a cuanta distancia esta el proximo bloque
@@ -78,7 +72,6 @@ public class EnemyMovement : MonoBehaviour, Interface
             {
                 distance = Vector3.Distance(hit.transform.position, gameObject.transform.position);
                 truncatedDistance = (int)distance;
-
             }
 
             TargetPos = transform.position+(truncatedDistance * availableDirections[listRandom]);
@@ -100,6 +93,7 @@ public class EnemyMovement : MonoBehaviour, Interface
 
             //bool a negativo para que el proceso solo se haga un vez hasta que el jugador llegue al destino
             destiny = false;
+            Debug.Log(destiny);
         }
         else
         {

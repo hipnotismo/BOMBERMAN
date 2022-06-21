@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class PlayerMovement : MonoBehaviour
 { 
@@ -10,12 +11,8 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] private float speed;
 
-    void Start()
-    {
+public static Action<PlayerMovement> onPlayerSpawn;
 
-    }
-
-    // Update is called once per frame
     void Update()
     {   
         movement.x = Input.GetAxis("Horizontal");
@@ -26,5 +23,6 @@ public class PlayerMovement : MonoBehaviour
         controller.Move(move * speed * Time.deltaTime);
 
     }
+
 }
 

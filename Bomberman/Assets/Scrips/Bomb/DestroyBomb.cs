@@ -33,7 +33,6 @@ public class DestroyBomb : MonoBehaviour
     {
         destroTimer += 1 * Time.deltaTime;
         explosion.volume = 1;
-
     }
 
     public void FixedUpdate()
@@ -43,6 +42,8 @@ public class DestroyBomb : MonoBehaviour
 
         if (destroTimer >= destroyTime)
         {
+            Debug.Log(destroTimer);
+
             if (once==true)
             {
                 for (int i = 0; i < RycastAmount; i++)

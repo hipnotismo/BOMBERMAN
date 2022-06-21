@@ -31,6 +31,16 @@ public class LevelCreation : MonoBehaviour
     const char door = 'D';
     //
     //
+
+    //private void OnEnable()
+    //{
+    //    PlayerMovement.onPlayerSpawn += GetReference;
+    //}
+
+    //void GetReference(PlayerMovement player)
+    //{
+    //    playerReference = player.gameObject;
+    //}
     void Awake()
     {
         fileStreamOpen = File.OpenRead("Assets/Asets/Map text/"+ levelTextFile + ".txt");
@@ -65,16 +75,13 @@ public class LevelCreation : MonoBehaviour
                 switch (stringMap[i][j])
                 {
                     case player:
-                        Debug.Log("Player is move");
                         playerReference.transform.position = new Vector3(j, playerFloor, -i);
                         break;
                     case wall:
                         Instantiate(wallPrefab,new Vector3(j,0,-i), wallPrefab.transform.rotation);
                         break;
                     case romp:
-                        Instantiate(romPrefab, new Vector3(j, romFloor, -i), romPrefab.transform.rotation);
-                        Debug.Log(i);
-                        Debug.Log(j);                    
+                        Instantiate(romPrefab, new Vector3(j, romFloor, -i), romPrefab.transform.rotation);                      
                         break;
                     case enemy:
                         Instantiate(enemyPrefab, new Vector3(j, 0, -i), enemyPrefab.transform.rotation);
