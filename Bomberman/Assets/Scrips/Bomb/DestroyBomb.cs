@@ -47,17 +47,18 @@ public class DestroyBomb : MonoBehaviour
 
                 if (Physics.Raycast(transform.position, directions[i], out hit, range))
                 {
-                    //Debug.Log(hit.collider.name);
+                    Debug.Log(hit.collider.name);
                     Iterface isHit = hit.collider.GetComponent<Iterface>();
 
                     if (isHit != null)
-                    {                       
+                    {
                         isHit.damageable();
                         OnBoxDestroyed?.Invoke();
+
                     }
                 }
 
-                if (Physics.SphereCast(transform.position, sphereRadius, directions[i], out hit, range, layer, QueryTriggerInteraction.UseGlobal))
+                if (Physics.SphereCast(transform.position, sphereRadius, directions[i], out hit, 0.5f, layer, QueryTriggerInteraction.UseGlobal))
                 {
                     Debug.Log(hit.collider.name);
                     Iterface isHit = hit.collider.GetComponent<Iterface>();                

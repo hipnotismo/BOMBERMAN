@@ -63,7 +63,7 @@ MonoBehaviour:
   layer:
     serializedVersion: 2
     m_Bits: 1535
-  explosion: {fileID: 0}
+  explosion: {fileID: 1973992512443103883}
 --- !u!82 &1973992512443103883
 AudioSource:
   m_ObjectHideFlags: 0
