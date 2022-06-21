@@ -8,17 +8,19 @@ public class EnemyMovement : MonoBehaviour, Interface
     List<Vector3> directions = new List<Vector3>();
     List<Vector3> availableDirections = new List<Vector3>();
     int listRandom;
-    [SerializeField] private float m_Speed;
     int directionIs;
+
+    [SerializeField] private float m_Speed;
+
     Rigidbody m_Rigidbody;
 
+    int truncatedDistance;
     float range = 1f;
     float megaRange = 40f;
     float distance;
-    int truncatedDistance;
-    bool destiny;
     float redutionZ = 1f;//0.80f;
     float redutionX = 1f;//0.80f;
+    bool destiny;
 
     Vector3 TargetPos;
 
@@ -61,12 +63,14 @@ public class EnemyMovement : MonoBehaviour, Interface
                 }
 
             }
+
             //se elegi un elemento random de esa lista
             listRandom = Random.Range(0, availableDirections.Count);
             if (listRandom > 0)
             {
                 listRandom = 0;
             }
+
             destiny = true;
 
             //raycast mas largo para saber a cuanta distancia esta el proximo bloque
@@ -76,6 +80,7 @@ public class EnemyMovement : MonoBehaviour, Interface
                 truncatedDistance = (int)distance;
 
             }
+
             TargetPos = transform.position+(truncatedDistance * availableDirections[listRandom]);
             Debug.Log(TargetPos);
 
@@ -141,6 +146,7 @@ public class EnemyMovement : MonoBehaviour, Interface
                     }
                     break;
             }
+
         }
 
         Debug.DrawRay(transform.position, directions[0], Color.red);
