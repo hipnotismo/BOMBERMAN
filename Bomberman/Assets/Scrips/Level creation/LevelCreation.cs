@@ -12,8 +12,6 @@ public class LevelCreation : MonoBehaviour
     [SerializeField] private GameObject romPrefab;
     [SerializeField] private GameObject enemyPrefab;
 
-    private int cant = 3;
-
     [Header("References")]
     [SerializeField] GameObject playerReference = null;
     [SerializeField] GameObject levelDoorReference = null;
@@ -23,10 +21,6 @@ public class LevelCreation : MonoBehaviour
     StreamReader streamReader;
 
     List<string> stringMap;
-
-    List<Vector3> levelDoorPositions;
-    int posCounter;
-    int doorPos;
 
     bool floorScale = false; 
     const char wall = 'X';
@@ -38,7 +32,6 @@ public class LevelCreation : MonoBehaviour
 
     void Awake()
     {
-        posCounter = 0;
         fileStreamOpen = File.OpenRead("Assets/Asets/Map text/"+ levelTextFile + ".txt");
         streamReader = new StreamReader(fileStreamOpen);
 
@@ -48,6 +41,7 @@ public class LevelCreation : MonoBehaviour
         {
             stringMap.Add(streamReader.ReadLine());
         }
+
     }
 
     void Start()
@@ -78,9 +72,7 @@ public class LevelCreation : MonoBehaviour
                     case romp:
                         Instantiate(romPrefab, new Vector3(j, romFloor, -i), romPrefab.transform.rotation);
                         Debug.Log(i);
-                        Debug.Log(j);
-                     //   levelDoorPositions[posCounter] =(Vector3 (j,0,i));
-                       // posCounter++;
+                        Debug.Log(j);                    
                         break;
                     case enemy:
                         Instantiate(enemyPrefab, new Vector3(j, 0, -i), enemyPrefab.transform.rotation);
@@ -89,10 +81,11 @@ public class LevelCreation : MonoBehaviour
                         levelDoorReference.transform.position = new Vector3(j, levelDoorFloor, -i);
                         break;
                 }
+
             }
+
         }
-        //doorPos = Random.Range(0, levelDoorPositions.Count);
-       // levelDoorReference.transform.position = levelDoorPositions[doorPos];
+ 
     }
 
     void Update()

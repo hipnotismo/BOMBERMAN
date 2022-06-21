@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerLife : MonoBehaviour, Iterface
+public class PlayerLife : MonoBehaviour, Interface
 {
     [SerializeField] private GameObject LoseMenu;
     [SerializeField] private Button inmune;

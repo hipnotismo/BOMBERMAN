@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyMovement : MonoBehaviour, Iterface
+public class EnemyMovement : MonoBehaviour, Interface
 {
     int RycastAmount = 4;
     List<Vector3> directions = new List<Vector3>();

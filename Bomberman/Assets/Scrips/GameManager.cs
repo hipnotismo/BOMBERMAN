@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-     //   Debug.Log("Destroy "+DestroyedBoxes);
+       // Debug.Log("Destroy "+DestroyedBoxes);
 
      //   Debug.Log("Created box: " + DestroyedBoxes);
 

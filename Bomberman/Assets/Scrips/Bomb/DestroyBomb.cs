@@ -25,10 +25,15 @@ public class DestroyBomb : MonoBehaviour
         directions.Add(-transform.forward);
         directions.Add(transform.right);
         directions.Add(-transform.right);
-        explosion = GetComponent<AudioSource>();
+       // explosion = GetComponent<AudioSource>();
         explosion.volume = PlayerPrefs.GetFloat("FXVolume");
-        explosion.Play();
-        explosion.Pause();
+        //explosion.Play();
+        //explosion.Pause();
+    }
+
+    private void FixedUpdate()
+    {
+        
     }
     public void Update()
     {
@@ -48,8 +53,8 @@ public class DestroyBomb : MonoBehaviour
 
                 if (Physics.Raycast(transform.position, directions[i], out hit, range))
                 {
-                    Debug.Log(hit.collider.name);
-                    Iterface isHit = hit.collider.GetComponent<Iterface>();
+                    Debug.Log("Normal raycast: " + hit.collider.name);
+                    Interface isHit = hit.collider.GetComponent<Interface>();
 
                     if (isHit != null)
                     {
@@ -57,17 +62,21 @@ public class DestroyBomb : MonoBehaviour
                         OnBoxDestroyed?.Invoke();
 
                     }
+
                 }
+
                 if (Physics.SphereCast(transform.position, sphereRadius,new Vector3 (0,0,0), out hit, 0.1f, layer, QueryTriggerInteraction.UseGlobal))
                 {
-                    Debug.Log(hit.collider.name);
-                    Iterface isHit = hit.collider.GetComponent<Iterface>();
+                    Debug.Log("Sphere raycast:" + hit.collider.name);
+                    Interface isHit = hit.collider.GetComponent<Interface>();
                     if (isHit != null)
                     {
                         isHit.damageable();
                         OnBoxDestroyed?.Invoke();
                     }
+
                 }
+
                 //if (Physics.SphereCast(transform.position, sphereRadius, directions[i], out hit, 0.5f, layer, QueryTriggerInteraction.UseGlobal))
                 //{
                 //    Debug.Log(hit.collider.name);
@@ -80,8 +89,10 @@ public class DestroyBomb : MonoBehaviour
                 //}
 
             }
+
             Destroy(gameObject);            
-        }  
+        } 
+        
     }
 
     private void OnDrawGizmosSelected()
@@ -91,5 +102,7 @@ public class DestroyBomb : MonoBehaviour
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(directions[i], sphereRadius);
         }
+
     }
+
 }
