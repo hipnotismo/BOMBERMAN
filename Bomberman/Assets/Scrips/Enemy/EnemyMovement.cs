@@ -33,7 +33,7 @@ public class EnemyMovement : MonoBehaviour, Interface
         directions.Add(-transform.right);
 
         m_Rigidbody = GetComponent<Rigidbody>();
-        destiny = true;
+        destiny =false;
     }
 
     void Start()
@@ -43,8 +43,8 @@ public class EnemyMovement : MonoBehaviour, Interface
 
     void Update()
     {
-        // si tengo un destino
-        if (destiny)
+        // si no tengo un destino
+        if (!destiny)
         {
             availableDirections.Clear();
             RaycastHit hit;
@@ -92,7 +92,7 @@ public class EnemyMovement : MonoBehaviour, Interface
             }
 
             //bool a negativo para que el proceso solo se haga un vez hasta que el jugador llegue al destino
-            destiny = false;
+            destiny = true;
             Debug.Log(destiny);
         }
         else
@@ -102,7 +102,7 @@ public class EnemyMovement : MonoBehaviour, Interface
                 case 0:
                     if (transform.position.z >= TargetPos.z - redutionZ)
                     {
-                        destiny = true;
+                        destiny = false;
                     }
                     else
                     {
@@ -112,7 +112,7 @@ public class EnemyMovement : MonoBehaviour, Interface
                 case 1:
                     if (transform.position.z <= TargetPos.z + redutionZ)
                     {
-                        destiny = true; 
+                        destiny = false; 
                     }
                     else
                     {
@@ -122,7 +122,7 @@ public class EnemyMovement : MonoBehaviour, Interface
                 case 2:
                     if (transform.position.x >= TargetPos.x - redutionX)
                     {
-                        destiny = true;
+                        destiny = false;
                     }
                     else
                     {
@@ -132,7 +132,7 @@ public class EnemyMovement : MonoBehaviour, Interface
                 case 3:
                     if (transform.position.x <= TargetPos.x + redutionX)
                     {
-                        destiny = true;
+                        destiny = false;
                     }
                     else
                     {
