@@ -12,5 +12,5 @@
 * >Mail:pludaandres@gmail.com
 * >Instagram: pludaandres
 
-*>Rocio Victoria Gimenez
-*>Instagram: @rouxy.art
+* >Rocio Victoria Gimenez
+* >Instagram: @rouxy.art
