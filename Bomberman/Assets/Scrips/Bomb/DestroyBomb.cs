@@ -26,6 +26,7 @@ public class DestroyBomb : MonoBehaviour
         directions.Add(transform.right);
         directions.Add(-transform.right);
         explosion = GetComponent<AudioSource>();
+        explosion.volume = PlayerPrefs.GetFloat("FXVolume");
         explosion.Play();
         explosion.Pause();
     }

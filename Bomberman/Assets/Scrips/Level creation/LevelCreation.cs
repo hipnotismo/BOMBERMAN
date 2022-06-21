@@ -83,10 +83,10 @@ public class LevelCreation : MonoBehaviour
                        // posCounter++;
                         break;
                     case enemy:
-                        Instantiate(enemyPrefab, new Vector3(j, romFloor, -i), enemyPrefab.transform.rotation);
+                        Instantiate(enemyPrefab, new Vector3(j, 0, -i), enemyPrefab.transform.rotation);
                         break;
                     case door:
-                        levelDoorReference.transform.position = new Vector3(j, romFloor, -i);
+                        levelDoorReference.transform.position = new Vector3(j, levelDoorFloor, -i);
                         break;
                 }
             }
