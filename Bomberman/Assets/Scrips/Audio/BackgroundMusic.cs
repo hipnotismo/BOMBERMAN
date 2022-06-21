@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class BackgroundMusic : MonoBehaviour
 {
@@ -20,10 +21,12 @@ public class BackgroundMusic : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
     }
 
-    void Update()//cambiar a una funcion normal y poner una instancia en el menu de opciones
+    public void SetVolume()
     {
         _music.volume = PlayerPrefs.GetFloat("MusicVolume");
+
     }
 }

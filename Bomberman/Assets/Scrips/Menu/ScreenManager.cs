@@ -5,10 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class ScreenManager : MonoBehaviour
 {
+    BackgroundMusic inst;
     public void button(string name)
     {
         PlayerPrefs.SetString("LastScene", SceneManager.GetActiveScene().name);
         SceneManager.LoadScene(name);
+        inst.SetVolume();
     }
 
     public void exitButton()

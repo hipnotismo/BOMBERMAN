@@ -64,7 +64,8 @@ public class LevelCreation : MonoBehaviour
 
                 switch (stringMap[i][j])
                 {
-                    case player:                      
+                    case player:
+                        Debug.Log("Player is move");
                         playerReference.transform.position = new Vector3(j, playerFloor, -i);
                         break;
                     case wall:
