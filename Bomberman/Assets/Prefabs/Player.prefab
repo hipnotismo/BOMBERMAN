@@ -38,6 +38,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6722897244521225199}
+  - {fileID: 4044192573481529476}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -150,6 +151,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LoseMenu: {fileID: 0}
+  inmune: {fileID: 0}
   life: 3
 --- !u!114 &6714162339187471877
 MonoBehaviour:
@@ -197,6 +199,103 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!1 &8435596397902688934
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 84a0f8e874e9ced44996fe063b8646be, type: 3}
+  m_PrefabInstance: {fileID: 6540983755155094532}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6722897244521225199}
+  m_Layer: 0
+  m_Name: 'BOMBERMAN big (1) (Missing Prefab with guid: 84a0f8e874e9ced44996fe063b8646be)'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6722897244521225199
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 84a0f8e874e9ced44996fe063b8646be, type: 3}
+  m_PrefabInstance: {fileID: 6540983755155094532}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8435596397902688934}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6540983755011971802}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &4581676818043426671
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 6540983755011971802}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 92334686ecc245b4d90658a70d4b6aee, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 92334686ecc245b4d90658a70d4b6aee, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 92334686ecc245b4d90658a70d4b6aee, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 92334686ecc245b4d90658a70d4b6aee, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 92334686ecc245b4d90658a70d4b6aee, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 92334686ecc245b4d90658a70d4b6aee, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 92334686ecc245b4d90658a70d4b6aee, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 92334686ecc245b4d90658a70d4b6aee, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 92334686ecc245b4d90658a70d4b6aee, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 92334686ecc245b4d90658a70d4b6aee, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 92334686ecc245b4d90658a70d4b6aee, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 92334686ecc245b4d90658a70d4b6aee, type: 3}
+      propertyPath: m_Name
+      value: BOMBERMAN
+      objectReference: {fileID: 0}
+    - target: {fileID: 1341398135026520800, guid: 92334686ecc245b4d90658a70d4b6aee, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b3d6c54de5d59ee4a98efee0061a84f3, type: 2}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 92334686ecc245b4d90658a70d4b6aee, type: 3}
+--- !u!4 &4044192573481529476 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 92334686ecc245b4d90658a70d4b6aee, type: 3}
+  m_PrefabInstance: {fileID: 4581676818043426671}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6540983755155094532
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -530,8 +629,3 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 84a0f8e874e9ced44996fe063b8646be, type: 3}
---- !u!4 &6722897244521225199 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 84a0f8e874e9ced44996fe063b8646be, type: 3}
-  m_PrefabInstance: {fileID: 6540983755155094532}
-  m_PrefabAsset: {fileID: 0}
