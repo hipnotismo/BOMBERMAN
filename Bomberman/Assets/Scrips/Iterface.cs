@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IDamageable//IDamageable
 {
-    public void damageable();//cambiar a un vervo
+    public void takeDamage();//cambiar a un vervo
 }

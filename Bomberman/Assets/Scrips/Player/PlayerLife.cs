@@ -30,11 +30,11 @@ public class PlayerLife : MonoBehaviour, IDamageable//separar el control de las 
         if (other.gameObject.tag == "Enemy")
         {
             Debug.Log("hit");
-            damageable();
+            takeDamage();
             StartCoroutine(StopCollision());
         }
     }
-    public void damageable()
+    public void takeDamage()
     {        
         life--;
         Debug.Log("player hit " + life);

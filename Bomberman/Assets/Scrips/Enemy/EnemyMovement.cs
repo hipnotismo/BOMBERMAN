@@ -150,7 +150,7 @@ public class EnemyMovement : MonoBehaviour, IDamageable
         Debug.DrawRay(transform.position, availableDirections[listRandom] * megaRange, Color.red);      
     }
 
-    public void damageable()
+    public void takeDamage()
     {
         Destroy(gameObject);
     }

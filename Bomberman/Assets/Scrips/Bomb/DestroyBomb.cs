@@ -65,7 +65,7 @@ public class DestroyBomb : MonoBehaviour
                                 OnBoxDestroyed?.Invoke();
 
                             }
-                            isHit.damageable();
+                            isHit.takeDamage();
 
                         }
 
@@ -77,7 +77,7 @@ public class DestroyBomb : MonoBehaviour
                         IDamageable isHit = hit.collider.GetComponent<IDamageable>();
                         if (isHit != null)
                         {
-                            isHit.damageable();
+                            isHit.takeDamage();
                             OnBoxDestroyed?.Invoke();
                         }
                     }

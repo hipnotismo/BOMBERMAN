@@ -12,7 +12,7 @@ public class DestroyWall : MonoBehaviour, IDamageable
         OnBoxSpawned?.Invoke();
     }
 
-    public void damageable()
+    public void takeDamage()
     {
         Destroy(gameObject);
     }
