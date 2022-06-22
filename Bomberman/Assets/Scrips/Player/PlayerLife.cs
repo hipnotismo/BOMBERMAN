@@ -1,14 +1,18 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class PlayerLife : MonoBehaviour, IDamageable//separar el control de las vidas del control de la UI
 {
+    
+    [SerializeField] private int life;
     [SerializeField] private GameObject LoseMenu;
     [SerializeField] private Button inmune;
-    [SerializeField] private int life;
 
+    public static Action LifeUi;
+
+    
     void Start()
     {
         PlayerPrefs.SetInt("PlayerLife",life);

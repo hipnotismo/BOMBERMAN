@@ -13,6 +13,11 @@ public class LevelDoor : MonoBehaviour
         GameManager.EnableDoor += Enable;
     }
 
+    private void OnDisable()
+    {
+        GameManager.EnableDoor -= Enable;
+
+    }
     void Start()
     {
         active = false;
