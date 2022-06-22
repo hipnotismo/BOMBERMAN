@@ -15,21 +15,8 @@ public class GameManager : MonoBehaviour
         DestroyBomb.OnBoxDestroyed += DestructionCount;
     }
 
-    private void OnDisable()
-    {
-        
-    }
-    void Start()
-    {
-
-    }
-
     void Update()
     {
-       // Debug.Log("Destroy "+DestroyedBoxes);
-
-     //   Debug.Log("Created box: " + DestroyedBoxes);
-
         if (AmountOfBoxes <= DestroyedBoxes)
         {
             EnableDoor?.Invoke();

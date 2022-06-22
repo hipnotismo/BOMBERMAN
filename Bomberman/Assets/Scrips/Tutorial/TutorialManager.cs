@@ -16,4 +16,5 @@ public class TutorialManager : MonoBehaviour
         Time.timeScale = 1f;
         Canvas.SetActive(false);
     }
+
 }

@@ -5,8 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class WinScript : MonoBehaviour
 {
-    private void Reset()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    }
+    //private void Reset()
+    //{
+    //    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    //}
 }

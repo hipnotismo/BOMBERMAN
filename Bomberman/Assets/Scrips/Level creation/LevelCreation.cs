@@ -6,7 +6,6 @@ public class LevelCreation : MonoBehaviour
 {
     [SerializeField] private string levelTextFile;
 
-
     [Header("Prefabs")]
     [SerializeField] private GameObject wallPrefab;
     [SerializeField] private GameObject romPrefab;
@@ -29,18 +28,7 @@ public class LevelCreation : MonoBehaviour
     const char nothing = 'N';
     const char romp = 'R';
     const char door = 'D';
-    //
-    //
-
-    //private void OnEnable()
-    //{
-    //    PlayerMovement.onPlayerSpawn += GetReference;
-    //}
-
-    //void GetReference(PlayerMovement player)
-    //{
-    //    playerReference = player.gameObject;
-    //}
+   
     void Awake()
     {
         fileStreamOpen = File.OpenRead("Assets/Asets/Map text/"+ levelTextFile + ".txt");
@@ -97,8 +85,4 @@ public class LevelCreation : MonoBehaviour
  
     }
 
-    void Update()
-    {
-        
-    }
 }
