@@ -8,6 +8,7 @@ public class BackgroundMusic : MonoBehaviour
     [SerializeField] private AudioSource _music;
     public static BackgroundMusic inst;
 
+
     private void Awake()
     {
         if (BackgroundMusic.inst == null)

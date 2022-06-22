@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DestroyWall : MonoBehaviour, Interface
+public class DestroyWall : MonoBehaviour, IDamageable
 {
 
     public static Action OnBoxSpawned;

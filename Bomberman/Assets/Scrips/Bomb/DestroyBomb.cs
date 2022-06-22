@@ -52,7 +52,7 @@ public class DestroyBomb : MonoBehaviour
                     if (Physics.Raycast(transform.position, directions[i], out hit, range))
                     {
                         Debug.Log("Normal raycast: " + hit.collider.name);
-                        Interface isHit = hit.collider.GetComponent<Interface>();
+                        IDamageable isHit = hit.collider.GetComponent<IDamageable>();
 
                         if (isHit != null)
                         {
@@ -74,7 +74,7 @@ public class DestroyBomb : MonoBehaviour
                     if (Physics.SphereCast(transform.position, sphereRadius, new Vector3(0, 0, 0), out hit, 0.1f, layer, QueryTriggerInteraction.UseGlobal))
                     {
                         Debug.Log("Sphere raycast:" + hit.collider.name);
-                        Interface isHit = hit.collider.GetComponent<Interface>();
+                        IDamageable isHit = hit.collider.GetComponent<IDamageable>();
                         if (isHit != null)
                         {
                             isHit.damageable();
