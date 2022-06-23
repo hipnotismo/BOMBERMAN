@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
@@ -10,11 +9,11 @@ namespace bomberman
 
         public static Action OnBoxDestroyed;
 
-        int destroyTime = 1;
+        int destroyTime = 3;
         float destroTimer = 0;
         float range = 1f;
         int RycastAmount = 4;
-        float sphereRadius = 0.5f;
+        float sphereRadius = 9.5f;
         bool once = true;
         List<Vector3> directions = new List<Vector3>();
         [SerializeField] private LayerMask layer;
@@ -44,8 +43,6 @@ namespace bomberman
 
             if (destroTimer >= destroyTime)
             {
-                Debug.Log(destroTimer);
-
                 if (once == true)
                 {
                     for (int i = 0; i < RycastAmount; i++)
@@ -53,47 +50,47 @@ namespace bomberman
 
                         if (Physics.Raycast(transform.position, directions[i], out hit, range))
                         {
-                            Debug.Log("Normal raycast: " + hit.collider.name);
-                            IDamageable isHit = hit.collider.GetComponent<IDamageable>();
+                            //Debug.Log("Normal raycast: " + hit.collider.name);
+                           IDamageable isHit = hit.collider.GetComponent<IDamageable>();
 
-                            if (isHit != null)
-                            {
-                                if (hit.collider.CompareTag("Player") || hit.collider.CompareTag("Enemy"))
-                                {
+                        //    if (isHit != null)
+                        //    {
+                        //        if (hit.collider.CompareTag("Player") || hit.collider.CompareTag("Enemy"))
+                        //        {
 
-                                }
-                                else
-                                {
-                                    OnBoxDestroyed?.Invoke();
+                        //        }
+                        //        else
+                        //        {
+                        //            OnBoxDestroyed?.Invoke();
 
-                                }
-                                isHit.takeDamage();
+                        //        }
+                        //        isHit.takeDamage();
 
-                            }
+                        //    }
 
-                        }
+                        //}
 
-                        if (Physics.SphereCast(transform.position, sphereRadius, new Vector3(0, 0, 0), out hit, 0.1f, layer, QueryTriggerInteraction.UseGlobal))
-                        {
-                            Debug.Log("Sphere raycast:" + hit.collider.name);
-                            IDamageable isHit = hit.collider.GetComponent<IDamageable>();
-                            if (isHit != null)
-                            {
-                                isHit.takeDamage();
-                                OnBoxDestroyed?.Invoke();
-                            }
-                        }
+                        //if (Physics.SphereCast(transform.position, sphereRadius, new Vector3(0, 0, 0), out hit, 0.1f, layer, QueryTriggerInteraction.UseGlobal))
+                        //{
+                        //    Debug.Log("Sphere raycast:" + hit.collider.name);
+                        //    IDamageable isHit = hit.collider.GetComponent<IDamageable>();
+                        //    if (isHit != null)
+                        //    {
+                        //        isHit.takeDamage();
+                        //        OnBoxDestroyed?.Invoke();
+                        //    }
+                        //}
 
                         //if (Physics.SphereCast(transform.position, sphereRadius, directions[i], out hit, 0.5f, layer, QueryTriggerInteraction.UseGlobal))
                         //{
                         //    Debug.Log(hit.collider.name);
-                        //    Iterface isHit = hit.collider.GetComponent<Iterface>();                
+                        //    IDamageable isHit = hit.collider.GetComponent<IDamageable>();
                         //    if (isHit != null)
                         //    {
-                        //        isHit.damageable();
+                        //        isHit.takeDamage();
                         //        OnBoxDestroyed?.Invoke();
                         //    }
-                        //}
+                        }
                         once = false;
                     }
                 }
@@ -115,10 +112,17 @@ namespace bomberman
             for (int i = 0; i < directions.Count; i++)
             {
                 Gizmos.color = Color.red;
-                Gizmos.DrawWireSphere(directions[i], sphereRadius);
+                Gizmos.DrawWireSphere(new Vector3(0,0,0), sphereRadius);
             }
 
         }
 
+        private void OnTriggerEnter(Collider other)
+        {
+            //Debug.Log("Normal raycast: " + hit.collider.name);
+            IDamageable isHit = other.GetComponent<IDamageable>();
+            OnBoxDestroyed?.Invoke();
+        }
+       
     }
 }

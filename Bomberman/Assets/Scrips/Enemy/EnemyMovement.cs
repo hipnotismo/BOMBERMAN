@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -36,11 +35,6 @@ namespace bomberman
 
             m_Rigidbody = GetComponent<Rigidbody>();
             destiny = false;
-        }
-
-        void Start()
-        {
-
         }
 
         void Update()

@@ -31,6 +31,12 @@ namespace bomberman
             }
         }
 
+        void LoseAllLifes()
+        {
+            LoseMenu.SetActive(true);
+            Time.timeScale = 0f;
+            Debug.Log("player hit " + life);
+        }
         private void OnTriggerEnter(Collider other)
         {
             if (other.gameObject.tag == "Enemy")

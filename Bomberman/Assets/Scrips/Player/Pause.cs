@@ -1,47 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace bomberman
 {
     public class Pause : MonoBehaviour
     {
         private static bool GameIsPause;
-        [SerializeField] private GameObject pauseMenu;
 
-        private void OnEnable()
-        {
-            Player.OnPauseButton += PauseState;
-        }
-
-        private void OnDisable()
+      
+        private void OnDestroy()
         {
             Player.OnPauseButton -= PauseState;
         }
         void Start()
         {
-            pauseMenu.SetActive(false);
-            GameIsPause = false;
-            pauseMenu.GetComponent<Canvas>();
-            Debug.Log("Pause");
+            Player.OnPauseButton += PauseState;        
+            gameObject.SetActive(false);
 
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.P))
-            {
-                //if (GameIsPause)
-                //{
-                //    Resume();
-                //}
-                //else
-                //{
-                //    IsPause();
-                //}
-            }
         }
 
         void PauseState()
@@ -55,16 +29,17 @@ namespace bomberman
                 IsPause();
             }
         }
+
         private void Resume()
         {
-            pauseMenu.SetActive(false);
+            gameObject.SetActive(false);
             Time.timeScale = 1f;
             GameIsPause = false;
         }
 
         private void IsPause()
         {
-            pauseMenu.SetActive(true);
+            gameObject.SetActive(true);
             Time.timeScale = 0f;
             GameIsPause = true;
         }

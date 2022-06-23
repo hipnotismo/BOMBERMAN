@@ -5,15 +5,15 @@ public class Player : MonoBehaviour
 {
     public static Action OnPauseButton;
 
-    private void OnEnable()
-    {
+    //private void OnEnable()
+    //{
         
-    }
+    //}
 
-    private void OnDisable()
-    {
+    //private void OnDisable()
+    //{
         
-    }
+    //}
 
     void Start()
     {
@@ -21,12 +21,11 @@ public class Player : MonoBehaviour
 
     }
 
-    // Update is called once per frame
     void Update()
     {
-        Debug.Log("Working");
         if (Input.GetKeyDown(KeyCode.P))
         {
+            Debug.Log("player press");
             OnPauseButton();
         }
 
