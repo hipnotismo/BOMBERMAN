@@ -17,6 +17,12 @@ namespace bomberman
             DestroyBomb.OnBoxDestroyed += DestructionCount;
         }
 
+        private void OnDisable()
+        {
+            DestroyWall.OnBoxSpawned -= AddCount;
+            DestroyBomb.OnBoxDestroyed -= DestructionCount;
+        }
+
         void Update()
         {
             if (AmountOfBoxes <= DestroyedBoxes)

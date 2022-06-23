@@ -1,48 +1,45 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace bomberman
 {
     public class Pause : MonoBehaviour
     {
         private static bool GameIsPause;
-        [SerializeField] private GameObject PauseMenu;
 
+      
+        private void OnDestroy()
+        {
+            Player.OnPauseButton -= PauseState;
+        }
         void Start()
         {
-            PauseMenu.SetActive(false);
-            GameIsPause = false;
+            Player.OnPauseButton += PauseState;        
+            gameObject.SetActive(false);
 
         }
 
-        // Update is called once per frame
-        void Update()
+        void PauseState()
         {
-            if (Input.GetKeyDown(KeyCode.P))
+            if (GameIsPause)
             {
-                if (GameIsPause)
-                {
-                    Resume();
-                }
-                else
-                {
-                    Pouse();
-                }
+                Resume();
+            }
+            else
+            {
+                IsPause();
             }
         }
 
         private void Resume()
         {
-            PauseMenu.SetActive(false);
+            gameObject.SetActive(false);
             Time.timeScale = 1f;
             GameIsPause = false;
         }
 
-        private void Pouse()
+        private void IsPause()
         {
-            PauseMenu.SetActive(true);
+            gameObject.SetActive(true);
             Time.timeScale = 0f;
             GameIsPause = true;
         }

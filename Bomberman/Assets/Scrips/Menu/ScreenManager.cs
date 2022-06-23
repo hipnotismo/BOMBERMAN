@@ -1,16 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using System;
 
 namespace bomberman
 {
     public class ScreenManager : MonoBehaviour
     {
         BackgroundMusic inst;
-
-        public static Action setVolume;
 
         private void OnEnable()
         {
@@ -28,10 +23,6 @@ namespace bomberman
 
 #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;
-#endif
-
-#if UNITY_ANDRIOD
-
 #endif
             Debug.Log("quit");
         }
