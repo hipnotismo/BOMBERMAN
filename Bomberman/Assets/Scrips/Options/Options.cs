@@ -2,22 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Options : MonoBehaviour
+namespace bomberman
 {
-    public static Options inst;
-
-    private void Awake()
+    public class Options : MonoBehaviour
     {
-        if (Options.inst == null)
+        public static Options inst;
+
+        private void Awake()
         {
-            Options.inst = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
+            if (Options.inst == null)
+            {
+                Options.inst = this;
+                DontDestroyOnLoad(gameObject);
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
+
         }
 
     }
-
 }

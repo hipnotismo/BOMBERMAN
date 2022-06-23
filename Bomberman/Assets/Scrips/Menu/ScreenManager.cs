@@ -4,42 +4,44 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System;
 
-public class ScreenManager : MonoBehaviour
+namespace bomberman
 {
-    BackgroundMusic inst;
-
-    public static Action setVolume;
-
-    private void OnEnable()
+    public class ScreenManager : MonoBehaviour
     {
+        BackgroundMusic inst;
 
-    }
-    public void Button(string name)
-    {
-        PlayerPrefs.SetString("LastScene", SceneManager.GetActiveScene().name);
-        SceneManager.LoadScene(name);
-    }
+        public static Action setVolume;
 
-    public void ExitButton()
-    {
-        Application.Quit();
+        private void OnEnable()
+        {
+
+        }
+        public void Button(string name)
+        {
+            PlayerPrefs.SetString("LastScene", SceneManager.GetActiveScene().name);
+            SceneManager.LoadScene(name);
+        }
+
+        public void ExitButton()
+        {
+            Application.Quit();
 
 #if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
+            UnityEditor.EditorApplication.isPlaying = false;
 #endif
 
 #if UNITY_ANDRIOD
 
 #endif
-        Debug.Log("quit");
-    }
+            Debug.Log("quit");
+        }
 
-    public void ReturnToLatScene()
-    {
-        Debug.Log("Options");
-        Debug.Log(PlayerPrefs.GetString("LastScene"));
+        public void ReturnToLatScene()
+        {
+            Debug.Log("Options");
+            Debug.Log(PlayerPrefs.GetString("LastScene"));
 
-        SceneManager.LoadScene(PlayerPrefs.GetString("LastScene"));
-    //    inst.SetVolume();
+            SceneManager.LoadScene(PlayerPrefs.GetString("LastScene"));
+        }
     }
 }

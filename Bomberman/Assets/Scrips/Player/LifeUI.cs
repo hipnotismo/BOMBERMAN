@@ -1,28 +1,31 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class LifeUI : MonoBehaviour
+namespace bomberman
 {
-    [SerializeField] private Text lifesLeft;
-   
-
-    private void OnEnable()
+    public class LifeUI : MonoBehaviour
     {
+        [SerializeField] private Text lifesLeft;
 
-    }
 
-    private void OnDisable()
-    {
+        private void OnEnable()
+        {
 
-    }
+        }
 
-    void Start()
-    {
-        lifesLeft.text = PlayerPrefs.GetInt("PlayerLife").ToString();
-    }
+        private void OnDisable()
+        {
 
-    void Update()
-    {
-        lifesLeft.text = "Lifes left: " + PlayerPrefs.GetInt("PlayerLife").ToString();
+        }
+
+        void Start()
+        {
+            lifesLeft.text = PlayerPrefs.GetInt("PlayerLife").ToString();
+        }
+
+        void Update()
+        {
+            lifesLeft.text = "Lifes left: " + PlayerPrefs.GetInt("PlayerLife").ToString();
+        }
     }
 }

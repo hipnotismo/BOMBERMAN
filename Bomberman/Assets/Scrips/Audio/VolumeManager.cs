@@ -3,20 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class VolumeManager : MonoBehaviour
+namespace bomberman
 {
-
-    [SerializeField] private Slider volume;
-    [SerializeField] private Slider FXvolume;
-    void Start()
+    public class VolumeManager : MonoBehaviour
     {
-        volume.value = PlayerPrefs.GetFloat("MusicVolume");
-        FXvolume.value = PlayerPrefs.GetFloat("FXvolume");
-    }
 
-    public void SetVolumes()
-    {
-        PlayerPrefs.SetFloat("MusicVolume", volume.value);
-        PlayerPrefs.SetFloat("FXvolume", FXvolume.value);
+        [SerializeField] private Slider volume;
+        [SerializeField] private Slider FXvolume;
+        void Start()
+        {
+            volume.value = PlayerPrefs.GetFloat("MusicVolume");
+            FXvolume.value = PlayerPrefs.GetFloat("FXvolume");
+        }
+
+        public void SetVolumes()
+        {
+            PlayerPrefs.SetFloat("MusicVolume", volume.value);
+            PlayerPrefs.SetFloat("FXvolume", FXvolume.value);
+        }
     }
 }

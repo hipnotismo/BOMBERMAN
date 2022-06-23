@@ -3,45 +3,48 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Pause : MonoBehaviour
+namespace bomberman
 {
-    private static bool GameIsPause;
-    [SerializeField] private GameObject PauseMenu;
-
-    void Start()
+    public class Pause : MonoBehaviour
     {
-        PauseMenu.SetActive(false);
-        GameIsPause = false;
+        private static bool GameIsPause;
+        [SerializeField] private GameObject PauseMenu;
 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.P))
+        void Start()
         {
-            if (GameIsPause)
+            PauseMenu.SetActive(false);
+            GameIsPause = false;
+
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.P))
             {
-                Resume();
-            }
-            else
-            {
-                Pouse();
+                if (GameIsPause)
+                {
+                    Resume();
+                }
+                else
+                {
+                    Pouse();
+                }
             }
         }
-    }
 
-    private void Resume()
-    {
-        PauseMenu.SetActive(false);
-        Time.timeScale = 1f;
-        GameIsPause = false;
-    }
+        private void Resume()
+        {
+            PauseMenu.SetActive(false);
+            Time.timeScale = 1f;
+            GameIsPause = false;
+        }
 
-    private void Pouse()
-    {
-        PauseMenu.SetActive(true);
-        Time.timeScale = 0f;
-        GameIsPause = true;
+        private void Pouse()
+        {
+            PauseMenu.SetActive(true);
+            Time.timeScale = 0f;
+            GameIsPause = true;
+        }
     }
 }

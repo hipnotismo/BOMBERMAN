@@ -3,56 +3,59 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 
-public class PlayerLife : MonoBehaviour, IDamageable//separar el control de las vidas del control de la UI
+namespace bomberman
 {
-    
-    [SerializeField] private int life;
-    [SerializeField] private GameObject LoseMenu;
-    [SerializeField] private Button inmune;
-
-    public static Action LifeUi;
-
-    
-    void Start()
+    public class PlayerLife : MonoBehaviour, IDamageable//separar el control de las vidas del control de la UI
     {
-        PlayerPrefs.SetInt("PlayerLife",life);
-        Debug.Log(PlayerPrefs.GetInt("PlayerLife"));     
-    }
 
-    private void Update()
-    {
-        if (life <=0)
+        [SerializeField] private int life;
+        [SerializeField] private GameObject LoseMenu;
+        [SerializeField] private Button inmune;
+
+        public static Action LifeUi;
+
+
+        void Start()
         {
-            LoseMenu.SetActive(true);
-            Time.timeScale = 0f;
-            Debug.Log("player hit " + life);
+            PlayerPrefs.SetInt("PlayerLife", life);
+            Debug.Log(PlayerPrefs.GetInt("PlayerLife"));
         }
-    }
 
-    private void OnTriggerEnter(Collider other)
-    {    
-        if (other.gameObject.tag == "Enemy")
+        private void Update()
         {
-            Debug.Log("hit");
-            takeDamage();
+            if (life <= 0)
+            {
+                LoseMenu.SetActive(true);
+                Time.timeScale = 0f;
+                Debug.Log("player hit " + life);
+            }
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.gameObject.tag == "Enemy")
+            {
+                Debug.Log("hit");
+                takeDamage();
+                StartCoroutine(StopCollision());
+            }
+        }
+        public void takeDamage()
+        {
+            life--;
+            Debug.Log("player hit " + life);
+            PlayerPrefs.SetInt("PlayerLife", life);
             StartCoroutine(StopCollision());
         }
-    }
-    public void takeDamage()
-    {        
-        life--;
-        Debug.Log("player hit " + life);
-        PlayerPrefs.SetInt("PlayerLife", life);
-        StartCoroutine(StopCollision());
-    }
 
-    IEnumerator StopCollision()
-    {
-        inmune.gameObject.SetActive(true);
-        gameObject.layer = LayerMask.NameToLayer("Ignore collision");
-        yield return new WaitForSeconds(3);
-        gameObject.layer = LayerMask.NameToLayer("Player");
-        inmune.gameObject.SetActive(false);
+        IEnumerator StopCollision()
+        {
+            inmune.gameObject.SetActive(true);
+            gameObject.layer = LayerMask.NameToLayer("Ignore collision");
+            yield return new WaitForSeconds(3);
+            gameObject.layer = LayerMask.NameToLayer("Player");
+            inmune.gameObject.SetActive(false);
 
+        }
     }
 }

@@ -2,32 +2,35 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CreateBomb : MonoBehaviour
+namespace bomberman
 {
-    [SerializeField] private GameObject bomb;
-    [SerializeField] private Transform playerPos;
-    private bool CoolDown;
-
-    void Start()
+    public class CreateBomb : MonoBehaviour
     {
-        CoolDown = true;
-    }
+        [SerializeField] private GameObject bomb;
+        [SerializeField] private Transform playerPos;
+        private bool CoolDown;
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetButtonDown("Jump") && CoolDown)
+        void Start()
         {
-            Instantiate(bomb, new Vector3(Mathf.Round(playerPos.position.x), 0.5f /**Mathf.Round(playerPos.position.y)*/,
-              /*  Mathf.Round(*/playerPos.position.z/*)*/), playerPos.rotation);
-            CoolDown = !CoolDown;
-            StartCoroutine(BombDelay());
+            CoolDown = true;
         }
-    }
 
-    IEnumerator BombDelay()
-    {
-        yield return new WaitForSeconds(3);
-        CoolDown = !CoolDown;
+        // Update is called once per frame
+        void Update()
+        {
+            if (Input.GetButtonDown("Jump") && CoolDown)
+            {
+                Instantiate(bomb, new Vector3(Mathf.Round(playerPos.position.x), 0.5f /**Mathf.Round(playerPos.position.y)*/,
+                  /*  Mathf.Round(*/playerPos.position.z/*)*/), playerPos.rotation);
+                CoolDown = !CoolDown;
+                StartCoroutine(BombDelay());
+            }
+        }
+
+        IEnumerator BombDelay()
+        {
+            yield return new WaitForSeconds(3);
+            CoolDown = !CoolDown;
+        }
     }
 }

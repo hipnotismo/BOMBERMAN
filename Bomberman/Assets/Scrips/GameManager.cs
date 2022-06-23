@@ -1,39 +1,42 @@
 using UnityEngine;
 using System;
 
-public class GameManager : MonoBehaviour
+namespace bomberman
 {
-    
-    private int AmountOfBoxes;
-    private int DestroyedBoxes;
-
-    public static Action EnableDoor;
-
-    private void OnEnable()
+    public class GameManager : MonoBehaviour
     {
-        DestroyWall.OnBoxSpawned += AddCount;
-        DestroyBomb.OnBoxDestroyed += DestructionCount;
-    }
 
-    void Update()
-    {
-        if (AmountOfBoxes <= DestroyedBoxes)
+        private int AmountOfBoxes;
+        private int DestroyedBoxes;
+
+        public static Action EnableDoor;
+
+        private void OnEnable()
         {
-            EnableDoor?.Invoke();
-            Debug.Log("Destoy and create are equal");
+            DestroyWall.OnBoxSpawned += AddCount;
+            DestroyBomb.OnBoxDestroyed += DestructionCount;
         }
-    }
 
-    void AddCount()
-    {
-        AmountOfBoxes++;
-        Debug.Log("Created box: " + AmountOfBoxes);
+        void Update()
+        {
+            if (AmountOfBoxes <= DestroyedBoxes)
+            {
+                EnableDoor?.Invoke();
+                Debug.Log("Destoy and create are equal");
+            }
+        }
 
-    }
+        void AddCount()
+        {
+            AmountOfBoxes++;
+            Debug.Log("Created box: " + AmountOfBoxes);
 
-    void DestructionCount()
-    {
-        DestroyedBoxes++;
-        Debug.Log("Destroy box: " + DestroyedBoxes);
+        }
+
+        void DestructionCount()
+        {
+            DestroyedBoxes++;
+            Debug.Log("Destroy box: " + DestroyedBoxes);
+        }
     }
 }

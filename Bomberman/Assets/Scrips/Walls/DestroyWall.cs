@@ -2,18 +2,21 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DestroyWall : MonoBehaviour, IDamageable
+namespace bomberman
 {
-
-    public static Action OnBoxSpawned;
-
-    private void Start()
+    public class DestroyWall : MonoBehaviour, IDamageable
     {
-        OnBoxSpawned?.Invoke();
-    }
 
-    public void takeDamage()
-    {
-        Destroy(gameObject);
+        public static Action OnBoxSpawned;
+
+        private void Start()
+        {
+            OnBoxSpawned?.Invoke();
+        }
+
+        public void takeDamage()
+        {
+            Destroy(gameObject);
+        }
     }
 }
