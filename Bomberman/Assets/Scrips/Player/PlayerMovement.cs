@@ -16,6 +16,7 @@ namespace bomberman
 
         float horizontal;
         float vertical;
+            
         void Update()
         {
 

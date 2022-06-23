@@ -8,12 +8,23 @@ namespace bomberman
     public class Pause : MonoBehaviour
     {
         private static bool GameIsPause;
-        [SerializeField] private GameObject PauseMenu;
+        [SerializeField] private GameObject pauseMenu;
 
+        private void OnEnable()
+        {
+            Player.OnPauseButton += PauseState;
+        }
+
+        private void OnDisable()
+        {
+            Player.OnPauseButton -= PauseState;
+        }
         void Start()
         {
-            PauseMenu.SetActive(false);
+            pauseMenu.SetActive(false);
             GameIsPause = false;
+            pauseMenu.GetComponent<Canvas>();
+            Debug.Log("Pause");
 
         }
 
@@ -22,27 +33,38 @@ namespace bomberman
         {
             if (Input.GetKeyDown(KeyCode.P))
             {
-                if (GameIsPause)
-                {
-                    Resume();
-                }
-                else
-                {
-                    Pouse();
-                }
+                //if (GameIsPause)
+                //{
+                //    Resume();
+                //}
+                //else
+                //{
+                //    IsPause();
+                //}
             }
         }
 
+        void PauseState()
+        {
+            if (GameIsPause)
+            {
+                Resume();
+            }
+            else
+            {
+                IsPause();
+            }
+        }
         private void Resume()
         {
-            PauseMenu.SetActive(false);
+            pauseMenu.SetActive(false);
             Time.timeScale = 1f;
             GameIsPause = false;
         }
 
-        private void Pouse()
+        private void IsPause()
         {
-            PauseMenu.SetActive(true);
+            pauseMenu.SetActive(true);
             Time.timeScale = 0f;
             GameIsPause = true;
         }

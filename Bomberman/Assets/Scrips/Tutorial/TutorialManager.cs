@@ -6,7 +6,7 @@ namespace bomberman
 {
     public class TutorialManager : MonoBehaviour
     {
-        [SerializeField] private GameObject Canvas;
+        [SerializeField] private GameObject canvas;
 
         void Update()
         {
@@ -16,7 +16,7 @@ namespace bomberman
         public void Skip()
         {
             Time.timeScale = 1f;
-            Canvas.SetActive(false);
+            canvas.SetActive(false);
         }
 
     }

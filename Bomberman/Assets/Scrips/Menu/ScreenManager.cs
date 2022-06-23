@@ -10,8 +10,6 @@ namespace bomberman
     {
         BackgroundMusic inst;
 
-        public static Action setVolume;
-
         private void OnEnable()
         {
 
