@@ -4,31 +4,25 @@ using System;
 public class Player : MonoBehaviour
 {
     public static Action OnPauseButton;
+    public static Action OnLoseGame;
 
-    //private void OnEnable()
-    //{
-        
-    //}
-
-    //private void OnDisable()
-    //{
-        
-    //}
-
+    private int lifes;
     void Start()
     {
-        Debug.Log("Stazrts");
-
+        lifes = 3;
     }
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.P))
         {
-            Debug.Log("player press");
             OnPauseButton();
         }
 
+        if (lifes <= 0)
+        {
+
+        }
     }
 
 }

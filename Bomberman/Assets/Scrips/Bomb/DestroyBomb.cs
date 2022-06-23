@@ -111,10 +111,10 @@ namespace bomberman
         {
             for (int i = 0; i < directions.Count; i++)
             {
-                Gizmos.color = Color.red;
-                Gizmos.DrawWireSphere(new Vector3(0,0,0), sphereRadius);
+                
             }
-
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(transform.position, sphereRadius);
         }
 
         private void OnTriggerEnter(Collider other)
