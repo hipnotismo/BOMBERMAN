@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -5,27 +6,22 @@ namespace bomberman
 {
     public class LifeUI : MonoBehaviour
     {
-        [SerializeField] private Text lifesLeft;
-
-
-        private void OnEnable()
+        [SerializeField] private TMP_Text lifeTrac;
+  
+        void Awake()
         {
-
+            PlayerLife.OnLifeUpdate += UpdateUILife;
         }
 
         private void OnDisable()
         {
+            PlayerLife.OnLifeUpdate -= UpdateUILife;
 
         }
 
-        void Start()
+        void UpdateUILife(int life)
         {
-            lifesLeft.text = PlayerPrefs.GetInt("PlayerLife").ToString();
-        }
-
-        void Update()
-        {
-            lifesLeft.text = "Lifes left: " + PlayerPrefs.GetInt("PlayerLife").ToString();
+            lifeTrac.text = life.ToString();
         }
     }
 }

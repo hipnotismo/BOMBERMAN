@@ -7,7 +7,7 @@ namespace bomberman
 {
     public class LevelDoor : MonoBehaviour
     {
-        [SerializeField] private GameObject WinMenu;
+        static public Action OnPlayerWin;
 
         private bool active;
         private void OnEnable()
@@ -33,17 +33,13 @@ namespace bomberman
 
         void OnTriggerEnter(Collider other)
         {
-            if (active == true)
+            if (other.CompareTag("Player"))
             {
-                Debug.Log("It open");
-                WinMenu.SetActive(true);
-                Time.timeScale = 0f;
-            }
-            else
-            {
-                Debug.Log("not open");
-
-            }
+                if (active == true)
+                {
+                    OnPlayerWin?.Invoke();
+                }             
+            }   
         }
 
         private void Enable()

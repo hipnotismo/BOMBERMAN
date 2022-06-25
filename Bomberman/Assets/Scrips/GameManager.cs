@@ -28,21 +28,19 @@ namespace bomberman
             if (AmountOfBoxes <= DestroyedBoxes)
             {
                 EnableDoor?.Invoke();
-                Debug.Log("Destoy and create are equal");
+
             }
         }
 
         void AddCount()
         {
             AmountOfBoxes++;
-            Debug.Log("Created box: " + AmountOfBoxes);
 
         }
 
         void DestructionCount()
         {
             DestroyedBoxes++;
-            Debug.Log("Destroy box: " + DestroyedBoxes);
         }
     }
 }

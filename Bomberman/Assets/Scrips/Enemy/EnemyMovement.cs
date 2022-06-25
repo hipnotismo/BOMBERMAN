@@ -19,8 +19,8 @@ namespace bomberman
         float range = 1f;
         float megaRange = 40f;
         float distance;
-        float redutionZ = 1f;//0.80f;
-        float redutionX = 1f;//0.80f;
+        float redutionZ = 1f;
+        float redutionX = 1f;
         bool destiny;
 
         Vector3 TargetPos;
@@ -28,10 +28,10 @@ namespace bomberman
         private void Awake()
         {
             //4 direcciones a las que se tiran raycast
-            directions.Add(transform.forward);
-            directions.Add(-transform.forward);
-            directions.Add(transform.right);
-            directions.Add(-transform.right);
+            directions.Add(Vector3.forward);
+            directions.Add(Vector3.back);
+            directions.Add(Vector3.right);
+            directions.Add(Vector3.left);
 
             m_Rigidbody = GetComponent<Rigidbody>();
             destiny = false;
@@ -55,10 +55,11 @@ namespace bomberman
 
                 //se elegi un elemento random de esa lista
                 listRandom = Random.Range(0, availableDirections.Count);
-                if (listRandom > 0)
-                {
-                    listRandom = 0;
-                }
+
+                //if (listRandom < 0)
+                //{
+                //    listRandom = 0;
+                //}
 
                 //error: redundancia
                 destiny = true;
@@ -146,7 +147,7 @@ namespace bomberman
             Debug.DrawRay(transform.position, availableDirections[listRandom] * megaRange, Color.red);
         }
 
-        public void takeDamage()
+        public void TakeDamage()
         {
             Destroy(gameObject);
         }

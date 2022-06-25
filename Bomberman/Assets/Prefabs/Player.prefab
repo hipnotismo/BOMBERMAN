@@ -57,7 +57,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6540983755011971777}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -152,9 +152,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83309cbdc78dfa74292d682400f7e592, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  life: 3
   LoseMenu: {fileID: 0}
   inmune: {fileID: 0}
-  life: 3
 --- !u!114 &6714162339187471877
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -167,7 +167,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f66265ace83729c4989f566b661f886e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PauseMenu: {fileID: 0}
 --- !u!65 &2490945298739979974
 BoxCollider:
   m_ObjectHideFlags: 0

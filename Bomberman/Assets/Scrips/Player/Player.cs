@@ -1,34 +1,33 @@
 using UnityEngine;
 using System;
 
-public class Player : MonoBehaviour
+namespace bomberman
 {
-    public static Action OnPauseButton;
-
-    //private void OnEnable()
-    //{
-        
-    //}
-
-    //private void OnDisable()
-    //{
-        
-    //}
-
-    void Start()
+    public class Player : MonoBehaviour
     {
-        Debug.Log("Stazrts");
+        public static Action OnPauseButton;
 
-    }
-
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.P))
+        PlayerMovement movement;
+        PlayerLife thisLife;
+       
+        void Start()
         {
-            Debug.Log("player press");
-            OnPauseButton();
+            movement = GetComponent<PlayerMovement>();
+            thisLife = GetComponent<PlayerLife>();
+            Debug.Log("Stazrts");
         }
 
-    }
+        void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.P))
+            {
+                Debug.Log("player press");
 
+                OnPauseButton?.Invoke();
+            }
+
+            movement.Movement();
+        }       
+
+    }
 }

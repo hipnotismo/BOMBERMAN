@@ -6,6 +6,6 @@ namespace bomberman
 {
     public interface IDamageable//IDamageable
     {
-        public void takeDamage();//cambiar a un vervo
+        public void TakeDamage();
     }
 }
