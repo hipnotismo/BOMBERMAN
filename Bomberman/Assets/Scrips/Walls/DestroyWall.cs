@@ -13,7 +13,7 @@ namespace bomberman
             OnBoxSpawned?.Invoke();
         }
 
-        public void takeDamage()
+        public void TakeDamage()
         {
             Destroy(gameObject);
         }

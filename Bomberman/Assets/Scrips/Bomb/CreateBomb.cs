@@ -7,21 +7,20 @@ namespace bomberman
     public class CreateBomb : MonoBehaviour
     {
         [SerializeField] private GameObject bomb;
-        [SerializeField] private Transform playerPos;
         private bool CoolDown;
 
         void Start()
         {
+           
             CoolDown = true;
         }
 
-        // Update is called once per frame
         void Update()
         {
             if (Input.GetButtonDown("Jump") && CoolDown)
             {
-                Instantiate(bomb, new Vector3(Mathf.Round(playerPos.position.x), 0.5f /**Mathf.Round(playerPos.position.y)*/,
-                  /*  Mathf.Round(*/playerPos.position.z/*)*/), playerPos.rotation);
+                Instantiate(bomb, new Vector3(Mathf.Round(transform.position.x), 0.5f,
+                 transform.position.z), transform.rotation);
                 CoolDown = !CoolDown;
                 StartCoroutine(BombDelay());
             }

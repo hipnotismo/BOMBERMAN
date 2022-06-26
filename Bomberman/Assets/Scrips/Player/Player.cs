@@ -1,28 +1,33 @@
 using UnityEngine;
 using System;
 
-public class Player : MonoBehaviour
+namespace bomberman
 {
-    public static Action OnPauseButton;
-    public static Action OnLoseGame;
-
-    private int lifes;
-    void Start()
+    public class Player : MonoBehaviour
     {
-        lifes = 3;
-    }
+        public static Action OnPauseButton;
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.P))
+        PlayerMovement movement;
+        PlayerLife thisLife;
+       
+        void Start()
         {
-            OnPauseButton();
+            movement = GetComponent<PlayerMovement>();
+            thisLife = GetComponent<PlayerLife>();
+            Debug.Log("Stazrts");
         }
 
-        if (lifes <= 0)
+        void Update()
         {
+            if (Input.GetKeyDown(KeyCode.P))
+            {
+                Debug.Log("player press");
 
-        }
+                OnPauseButton?.Invoke();
+            }
+
+            movement.Movement();
+        }       
+
     }
-
 }

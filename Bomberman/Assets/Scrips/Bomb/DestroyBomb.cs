@@ -50,46 +50,47 @@ namespace bomberman
 
                         if (Physics.Raycast(transform.position, directions[i], out hit, range))
                         {
-                            //Debug.Log("Normal raycast: " + hit.collider.name);
+                            Debug.Log("Normal raycast: " + hit.collider.name);
                            IDamageable isHit = hit.collider.GetComponent<IDamageable>();
 
-                        //    if (isHit != null)
-                        //    {
-                        //        if (hit.collider.CompareTag("Player") || hit.collider.CompareTag("Enemy"))
-                        //        {
+                            if (isHit != null)
+                            {
+                                if (hit.collider.CompareTag("Player") || hit.collider.CompareTag("Enemy"))
+                                {
 
-                        //        }
-                        //        else
-                        //        {
-                        //            OnBoxDestroyed?.Invoke();
+                                }
+                                else
+                                {
+                                    OnBoxDestroyed?.Invoke();
 
-                        //        }
-                        //        isHit.takeDamage();
+                                }
 
-                        //    }
+                                isHit.TakeDamage();
 
-                        //}
+                            }
 
-                        //if (Physics.SphereCast(transform.position, sphereRadius, new Vector3(0, 0, 0), out hit, 0.1f, layer, QueryTriggerInteraction.UseGlobal))
-                        //{
-                        //    Debug.Log("Sphere raycast:" + hit.collider.name);
-                        //    IDamageable isHit = hit.collider.GetComponent<IDamageable>();
-                        //    if (isHit != null)
-                        //    {
-                        //        isHit.takeDamage();
-                        //        OnBoxDestroyed?.Invoke();
-                        //    }
-                        //}
+                            //}
 
-                        //if (Physics.SphereCast(transform.position, sphereRadius, directions[i], out hit, 0.5f, layer, QueryTriggerInteraction.UseGlobal))
-                        //{
-                        //    Debug.Log(hit.collider.name);
-                        //    IDamageable isHit = hit.collider.GetComponent<IDamageable>();
-                        //    if (isHit != null)
-                        //    {
-                        //        isHit.takeDamage();
-                        //        OnBoxDestroyed?.Invoke();
-                        //    }
+                            //if (Physics.SphereCast(transform.position, sphereRadius, new Vector3(0, 0, 0), out hit, 0.1f, layer, QueryTriggerInteraction.UseGlobal))
+                            //{
+                            //    Debug.Log("Sphere raycast:" + hit.collider.name);
+                            //    IDamageable isHit = hit.collider.GetComponent<IDamageable>();
+                            //    if (isHit != null)
+                            //    {
+                            //        isHit.takeDamage();
+                            //        OnBoxDestroyed?.Invoke();
+                            //    }
+                            //}
+
+                            //if (Physics.SphereCast(transform.position, sphereRadius, directions[i], out hit, 0.5f, layer, QueryTriggerInteraction.UseGlobal))
+                            //{
+                            //    Debug.Log(hit.collider.name);
+                            //    IDamageable isHit = hit.collider.GetComponent<IDamageable>();
+                            //    if (isHit != null)
+                            //    {
+                            //        isHit.takeDamage();
+                            //        OnBoxDestroyed?.Invoke();
+                            //    }
                         }
                         once = false;
                     }
