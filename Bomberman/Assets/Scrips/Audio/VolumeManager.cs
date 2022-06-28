@@ -7,6 +7,7 @@ namespace bomberman
 {
     public class VolumeManager : MonoBehaviour
     {
+        BackgroundMusic inst;
 
         [SerializeField] private Slider volume;
         [SerializeField] private Slider FXvolume;
@@ -19,9 +20,8 @@ namespace bomberman
         public void SetVolumes()
         {
             PlayerPrefs.SetFloat("MusicVolume", volume.value);
-            PlayerPrefs.SetFloat("FXvolume", FXvolume.value);
-            Debug.Log(PlayerPrefs.GetFloat("MusicVolume"));
-            Debug.Log(PlayerPrefs.GetFloat("FXvolume"));
+            PlayerPrefs.SetFloat("FXvolume", FXvolume.value);      
+            BackgroundMusic.inst.SetVolume();
         }
     }
 }
