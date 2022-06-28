@@ -11,6 +11,16 @@ namespace bomberman
 
         [SerializeField] private Slider volume;
         [SerializeField] private Slider FXvolume;
+
+        private void OnEnable()
+        {
+            
+        }
+
+        private void OnDisable()
+        {
+            
+        }
         void Start()
         {
             volume.value = PlayerPrefs.GetFloat("MusicVolume");

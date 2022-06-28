@@ -27,8 +27,10 @@ namespace bomberman
 
         }
 
-        public void SetVolume()
+      
+        public void SetVolume( )
         {
+
             _music.volume = PlayerPrefs.GetFloat("MusicVolume");
         }
     }

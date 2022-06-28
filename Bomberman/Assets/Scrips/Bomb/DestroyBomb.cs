@@ -27,13 +27,13 @@ namespace bomberman
             directions.Add(transform.right);
             directions.Add(-transform.right);
             explosion.volume = PlayerPrefs.GetFloat("FXvolume");
+            Debug.Log(PlayerPrefs.GetFloat("FXvolume"));
             explosion.Pause();
         }
 
         private void Update()
         {
             destroTimer += 1 * Time.deltaTime;
-            explosion.volume = 1;
 
             Debug.DrawRay(transform.position, directions[0], Color.red);
             Debug.DrawRay(transform.position, directions[1], Color.green);
@@ -77,7 +77,6 @@ namespace bomberman
                     }
                 }
                 Eliminate();
-
             }
 
         }
@@ -85,9 +84,9 @@ namespace bomberman
         void Eliminate()
         {
             explosion.UnPause();
-            explosion.volume = PlayerPrefs.GetFloat("FXvolume");
             Instantiate(particles, transform.position, transform.rotation);
             Destroy(gameObject, explosion.clip.length);
+            Debug.Log("Yes");
         }
 
         private void OnTriggerStay(Collider other)
