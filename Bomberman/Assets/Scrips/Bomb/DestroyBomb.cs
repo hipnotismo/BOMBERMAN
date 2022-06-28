@@ -13,11 +13,11 @@ namespace bomberman
         float destroTimer = 0;
         float range = 1f;
         int RycastAmount = 4;
-        bool once = true;
         List<Vector3> directions = new List<Vector3>();
         [SerializeField] private LayerMask layer;
         [SerializeField] private GameObject particles;
 
+        private bool isDamage = true;
         public AudioSource explosion;
 
         private void Awake()
@@ -27,7 +27,6 @@ namespace bomberman
             directions.Add(transform.right);
             directions.Add(-transform.right);
             explosion.volume = PlayerPrefs.GetFloat("FXvolume");
-            Debug.Log("Volume is: " + PlayerPrefs.GetFloat("FXvolume"));
             explosion.Pause();
         }
 
@@ -35,46 +34,49 @@ namespace bomberman
         {
             destroTimer += 1 * Time.deltaTime;
             explosion.volume = 1;
+
+            Debug.DrawRay(transform.position, directions[0], Color.red);
+            Debug.DrawRay(transform.position, directions[1], Color.green);
+            Debug.DrawRay(transform.position, directions[2], Color.blue);
+            Debug.DrawRay(transform.position, directions[3], Color.cyan);
+
         }
 
         public void FixedUpdate()
         {
             RaycastHit hit;
 
-            Debug.Log("Volume is: " + PlayerPrefs.GetFloat("FXvolume"));
-
             if (destroTimer >= destroyTime)
             {
-                if (once == true)
+
+                for (int i = 0; i < RycastAmount; i++)
                 {
-                    for (int i = 0; i < RycastAmount; i++)
+
+                    if (Physics.Raycast(transform.position, directions[i], out hit, range))
                     {
 
-                        if (Physics.Raycast(transform.position, directions[i], out hit, range))
+                        IDamageable isHit = hit.collider.GetComponent<IDamageable>();
+
+                        if (isHit != null)
                         {
-                            Debug.Log("Normal raycast: " + hit.collider.name);
-                           IDamageable isHit = hit.collider.GetComponent<IDamageable>();
-
-                            if (isHit != null)
+                            if (hit.collider.CompareTag("Player") || hit.collider.CompareTag("Enemy"))
                             {
-                                if (hit.collider.CompareTag("Player") || hit.collider.CompareTag("Enemy"))
-                                {
-
-                                }
-                                else
-                                {
-                                    OnBoxDestroyed?.Invoke();
-
-                                }
-
                                 isHit.TakeDamage();
+                            }
+                            else
+                            {
+                                
+                            }
 
-                            }                        
+                            if (hit.collider.CompareTag("BrickWall"))
+                            {
+                                Debug.Log("Normal raycast: " + hit.collider.name);
+                                OnBoxDestroyed?.Invoke();
+                                isHit.TakeDamage();
+                            }
                         }
-                        once = false;
                     }
                 }
-
                 Eliminate();
 
             }
@@ -83,19 +85,35 @@ namespace bomberman
 
         void Eliminate()
         {
-            Debug.Log(explosion.volume);
             explosion.UnPause();
             explosion.volume = PlayerPrefs.GetFloat("FXvolume");
             Instantiate(particles, transform.position, transform.rotation);
             Destroy(gameObject, explosion.clip.length);
-        }     
-
-        private void OnTriggerEnter(Collider other)
-        {
-            //Debug.Log("Normal raycast: " + hit.collider.name);
-            IDamageable isHit = other.GetComponent<IDamageable>();
-            OnBoxDestroyed?.Invoke();
         }
-       
+
+
+        //private void OnTriggerEnter(Collider other)
+        //{
+
+        //    if (destroTimer >= destroyTime)
+        //    {
+        //        Debug.Log("Is hit by bomb: ");
+        //        IDamageable isHit = other.GetComponent<IDamageable>();
+        //        isHit.TakeDamage();
+        //    }
+
+        //}
+        private void OnTriggerStay(Collider other)
+        {
+            if (isDamage)
+            {
+                if (destroTimer >= destroyTime)
+                {
+                    IDamageable isHit = other.GetComponent<IDamageable>();
+                    isHit.TakeDamage();
+                    isDamage = !isDamage;
+                }
+            }
+        }
     }
 }

@@ -53,15 +53,17 @@ namespace bomberman
             }
             Debug.Log("player hit " + Life);
             PlayerPrefs.SetInt("PlayerLife", Life);
+            gameObject.layer = LayerMask.NameToLayer("Ignore collision");
+            transform.gameObject.tag = "InmunePlayer";
+            OnPlayerDamage?.Invoke();
             StartCoroutine(StopCollision());
         }
 
         IEnumerator StopCollision()
-        {
-            gameObject.layer = LayerMask.NameToLayer("Ignore collision");
-            OnPlayerDamage?.Invoke();
+        {      
             yield return new WaitForSeconds(3);
             gameObject.layer = LayerMask.NameToLayer("Player");
+            transform.gameObject.tag = "Player";
             OnPlayerInmunityEnd?.Invoke();
         }
     }

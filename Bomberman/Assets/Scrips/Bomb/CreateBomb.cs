@@ -20,7 +20,7 @@ namespace bomberman
             if (Input.GetButtonDown("Jump") && CoolDown)
             {
                 Instantiate(bomb, new Vector3(Mathf.Round(transform.position.x), 0.5f,
-                 transform.position.z), transform.rotation);
+                 transform.position.z), Quaternion.identity);
                 CoolDown = !CoolDown;
                 StartCoroutine(BombDelay());
             }
