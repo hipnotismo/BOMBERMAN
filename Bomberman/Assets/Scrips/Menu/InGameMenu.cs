@@ -5,6 +5,8 @@ namespace bomberman
 {
     public class InGameMenu : MonoBehaviour
     {
+        public AudioSource click;
+
         public void ReturnToMenu()
         {
 
@@ -18,6 +20,8 @@ namespace bomberman
         {
             Time.timeScale = 1f;
             Debug.Log("Reset");
+            click.Play();
+
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
         }
