@@ -16,9 +16,10 @@ namespace bomberman
         List<Vector3> directions = new List<Vector3>();
         [SerializeField] private LayerMask layer;
         [SerializeField] private GameObject particles;
+        [SerializeField] private GameObject particles2;
 
         private bool isDamage = true;
-        public AudioSource explosion;
+        [SerializeField] AudioSource explosion;
 
         private void Awake()
         {
@@ -85,12 +86,17 @@ namespace bomberman
         {
             explosion.UnPause();
             Instantiate(particles, transform.position, transform.rotation);
+            //Instantiate(particles2, transform.position, transform.rotation + new Vector3(0,90,0));
+            //Instantiate(particles2, transform.position, transform.rotation);
+            //Instantiate(particles2, transform.position, transform.rotation);
+            //Instantiate(particles2, transform.position, transform.rotation);
+
             Destroy(gameObject, explosion.clip.length);
-            Debug.Log("Yes");
         }
 
         private void OnTriggerStay(Collider other)
         {
+            Debug.Log(other);
             if (isDamage)
             {
                 if (destroTimer >= destroyTime)
@@ -98,6 +104,7 @@ namespace bomberman
                     IDamageable isHit = other.GetComponent<IDamageable>();
                     isHit.TakeDamage();
                     isDamage = !isDamage;
+                    Debug.Log("Istaking damage: " + other);
                 }
             }
         }
