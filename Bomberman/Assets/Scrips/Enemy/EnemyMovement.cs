@@ -1,29 +1,30 @@
 using System.Collections.Generic;
 using UnityEngine;
+using System.Collections;
 
 namespace bomberman
 {
     public class EnemyMovement : MonoBehaviour, IDamageable
     {
-        int RycastAmount = 4;
-        List<Vector3> directions = new List<Vector3>();
-        List<Vector3> availableDirections = new List<Vector3>();
-        int listRandom;
-        int directionIs;
+        private int RycastAmount = 4;
+        private List<Vector3> directions = new List<Vector3>();
+        private List<Vector3> availableDirections = new List<Vector3>();
+        private int listRandom;
+        private int directionIs;
 
         [SerializeField] private float m_Speed;
 
-        Rigidbody m_Rigidbody;
+        private Rigidbody m_Rigidbody;
 
-        int truncatedDistance;
-        float range = 1f;
-        float megaRange = 40f;
-        float distance;
-        float redutionZ = 1f;
-        float redutionX = 1f;
-        bool destiny;
+        private int truncatedDistance;
+        private float range = 1f;
+        private float megaRange = 40f;
+        private float distance;
+        private float redutionZ = 1f;
+        private float redutionX = 1f;
+        private bool destiny;
 
-        Vector3 TargetPos;
+        private Vector3 TargetPos;
 
         private void Awake()
         {
@@ -103,7 +104,9 @@ namespace bomberman
                         }
                         else
                         {
-                            m_Rigidbody.MovePosition(transform.position + availableDirections[listRandom] * Time.deltaTime * m_Speed);
+                             m_Rigidbody.MovePosition(transform.position + availableDirections[listRandom] * Time.deltaTime * m_Speed);
+                            //transform.position += directions[directionIs];
+                            //StartCoroutine(movementTime());
                         }
                         break;
                     case 1:
@@ -114,6 +117,8 @@ namespace bomberman
                         else
                         {
                             m_Rigidbody.MovePosition(transform.position + availableDirections[listRandom] * Time.deltaTime * m_Speed);
+                            //transform.position += directions[directionIs];
+                            //StartCoroutine(movementTime());
                         }
                         break;
                     case 2:
@@ -124,6 +129,8 @@ namespace bomberman
                         else
                         {
                             m_Rigidbody.MovePosition(transform.position + availableDirections[listRandom] * Time.deltaTime * m_Speed);
+                            //transform.position += directions[directionIs];
+                            //StartCoroutine(movementTime());
                         }
                         break;
                     case 3:
@@ -134,6 +141,8 @@ namespace bomberman
                         else
                         {
                             m_Rigidbody.MovePosition(transform.position + availableDirections[listRandom] * Time.deltaTime * m_Speed);
+                            //transform.position += directions[directionIs];
+                            //StartCoroutine(movementTime());
                         }
                         break;
                 }
@@ -150,6 +159,11 @@ namespace bomberman
         public void TakeDamage()
         {
             Destroy(gameObject);
+        }
+
+        IEnumerator movementTime()
+        {
+            yield return new WaitForSeconds(5);
         }
     }
 }

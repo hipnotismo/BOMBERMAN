@@ -20,6 +20,7 @@ namespace bomberman
 
         private void OnDestroy()
         {
+            ActivePanel(false);
             Player.OnPauseButton -= PauseState;
         }
 
