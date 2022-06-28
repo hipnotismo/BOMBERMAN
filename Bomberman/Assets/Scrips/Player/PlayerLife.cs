@@ -8,6 +8,8 @@ namespace bomberman
     {
         public static Action<int> OnLifeUpdate;
         public static Action OnPlayerDeath;
+        public static Action OnPlayerDamage;
+        public static Action OnPlayerInmunityEnd;
 
         [SerializeField] private int life;
 
@@ -57,9 +59,10 @@ namespace bomberman
         IEnumerator StopCollision()
         {
             gameObject.layer = LayerMask.NameToLayer("Ignore collision");
+            OnPlayerDamage?.Invoke();
             yield return new WaitForSeconds(3);
             gameObject.layer = LayerMask.NameToLayer("Player");
-
+            OnPlayerInmunityEnd?.Invoke();
         }
     }
 }
