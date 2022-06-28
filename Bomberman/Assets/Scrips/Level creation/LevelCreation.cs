@@ -34,7 +34,7 @@ namespace bomberman
         void Awake()
         {
             fileStreamOpen = File.OpenRead("Assets/Asets/Map text/" + levelTextFile + ".txt");
-             //Application.streamingAssetsPath + "Assets/Asets/Map text/" + levelTextFile + ".txt";
+            //fileStreamOpen = Application.streamingAssetsPath + "Assets/Asets/Map text/" + levelTextFile + ".txt";
             streamReader = new StreamReader(fileStreamOpen);
 
             stringMap = new List<string>();
