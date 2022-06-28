@@ -57,11 +57,7 @@ namespace bomberman
                 //se elegi un elemento random de esa lista
                 listRandom = Random.Range(0, availableDirections.Count);
 
-                //if (listRandom < 0)
-                //{
-                //    listRandom = 0;
-                //}
-
+               
                 //error: redundancia
                 destiny = true;
 
@@ -73,7 +69,7 @@ namespace bomberman
                 }
 
                 TargetPos = transform.position + (truncatedDistance * availableDirections[listRandom]);
-                Debug.Log(TargetPos);
+               // Debug.Log(TargetPos);
 
                 if (availableDirections[listRandom] == directions[0])
                 {
@@ -85,13 +81,12 @@ namespace bomberman
                     if (availableDirections[listRandom] == directions[i])
                     {
                         directionIs = i;
-                        Debug.Log(directionIs);
+                        //Debug.Log(directionIs);
                     }
                 }
 
                 //bool a negativo para que el proceso solo se haga un vez hasta que el jugador llegue al destino
                 destiny = true;
-                Debug.Log(destiny);
             }
             else
             {

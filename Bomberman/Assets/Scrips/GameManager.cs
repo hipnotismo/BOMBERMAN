@@ -34,12 +34,14 @@ namespace bomberman
 
         void AddCount()
         {
+            Debug.Log(AmountOfBoxes);
             AmountOfBoxes++;
 
         }
 
         void DestructionCount()
         {
+            Debug.Log(DestroyedBoxes);
             DestroyedBoxes++;
         }
     }

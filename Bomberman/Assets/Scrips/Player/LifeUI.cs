@@ -24,7 +24,6 @@ namespace bomberman
 
         void UpdateUILife(int life)
         {
-            Debug.Log(life);
             lifeTrac.text = life.ToString();
         }
 

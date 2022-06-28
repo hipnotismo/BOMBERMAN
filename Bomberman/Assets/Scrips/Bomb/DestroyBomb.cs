@@ -70,7 +70,6 @@ namespace bomberman
 
                             if (hit.collider.CompareTag("BrickWall"))
                             {
-                                Debug.Log("Normal raycast: " + hit.collider.name);
                                 OnBoxDestroyed?.Invoke();
                                 isHit.TakeDamage();
                             }
@@ -91,18 +90,6 @@ namespace bomberman
             Destroy(gameObject, explosion.clip.length);
         }
 
-
-        //private void OnTriggerEnter(Collider other)
-        //{
-
-        //    if (destroTimer >= destroyTime)
-        //    {
-        //        Debug.Log("Is hit by bomb: ");
-        //        IDamageable isHit = other.GetComponent<IDamageable>();
-        //        isHit.TakeDamage();
-        //    }
-
-        //}
         private void OnTriggerStay(Collider other)
         {
             if (isDamage)

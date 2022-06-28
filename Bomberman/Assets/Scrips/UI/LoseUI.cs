@@ -20,6 +20,11 @@ namespace bomberman {
             canvasGroup.interactable = false;
         }
 
+        private void OnDestroy()
+        {
+            PlayerLife.OnPlayerDeath -= ActiveLoseCanvas;
+
+        }
         // Update is called once per frame
         void ActiveLoseCanvas()
         {

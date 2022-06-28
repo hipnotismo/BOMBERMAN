@@ -11,7 +11,13 @@ namespace bomberman {
         private void Awake()
         {
             LevelDoor.OnPlayerWin += OnWin;
-            canvasGroup = GetComponent<CanvasGroup>();
+            canvasGroup = GetComponent<CanvasGroup>();    
+        }
+
+        private void OnDestroy()
+        {
+            LevelDoor.OnPlayerWin -= OnWin;
+
         }
         void Start()
         {
