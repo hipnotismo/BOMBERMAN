@@ -10,12 +10,12 @@ namespace bomberman
         private void Awake()
         {
             canvasGroup = GetComponent<CanvasGroup>();
+            ActivePanel(false);
         }
 
         void Start()
         {
             Player.OnPauseButton += PauseState;
-            ActivePanel(false);
         }
 
         private void OnDestroy()
@@ -55,6 +55,8 @@ namespace bomberman
             ActivePanel(false);
             Time.timeScale = 1f;
             GameIsPause = false;
+            Debug.Log(Time.timeScale);
+
         }
 
         private void IsPause()
@@ -62,6 +64,10 @@ namespace bomberman
             ActivePanel(true);
             Time.timeScale = 0f;
             GameIsPause = true;
+            Debug.Log(Time.timeScale);
+            return;
         }
+
+
     }
 }

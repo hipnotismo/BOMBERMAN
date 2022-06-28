@@ -13,10 +13,10 @@ namespace bomberman
         float destroTimer = 0;
         float range = 1f;
         int RycastAmount = 4;
-        float sphereRadius = 9.5f;
         bool once = true;
         List<Vector3> directions = new List<Vector3>();
         [SerializeField] private LayerMask layer;
+        [SerializeField] private GameObject particles;
 
         public AudioSource explosion;
 
@@ -26,7 +26,8 @@ namespace bomberman
             directions.Add(-transform.forward);
             directions.Add(transform.right);
             directions.Add(-transform.right);
-            //explosion.volume = PlayerPrefs.GetFloat("FXVolume");
+            explosion.volume = PlayerPrefs.GetFloat("FXvolume");
+            Debug.Log("Volume is: " + PlayerPrefs.GetFloat("FXvolume"));
             explosion.Pause();
         }
 
@@ -40,6 +41,7 @@ namespace bomberman
         {
             RaycastHit hit;
 
+            Debug.Log("Volume is: " + PlayerPrefs.GetFloat("FXvolume"));
 
             if (destroTimer >= destroyTime)
             {
@@ -67,30 +69,7 @@ namespace bomberman
 
                                 isHit.TakeDamage();
 
-                            }
-
-                            //}
-
-                            //if (Physics.SphereCast(transform.position, sphereRadius, new Vector3(0, 0, 0), out hit, 0.1f, layer, QueryTriggerInteraction.UseGlobal))
-                            //{
-                            //    Debug.Log("Sphere raycast:" + hit.collider.name);
-                            //    IDamageable isHit = hit.collider.GetComponent<IDamageable>();
-                            //    if (isHit != null)
-                            //    {
-                            //        isHit.takeDamage();
-                            //        OnBoxDestroyed?.Invoke();
-                            //    }
-                            //}
-
-                            //if (Physics.SphereCast(transform.position, sphereRadius, directions[i], out hit, 0.5f, layer, QueryTriggerInteraction.UseGlobal))
-                            //{
-                            //    Debug.Log(hit.collider.name);
-                            //    IDamageable isHit = hit.collider.GetComponent<IDamageable>();
-                            //    if (isHit != null)
-                            //    {
-                            //        isHit.takeDamage();
-                            //        OnBoxDestroyed?.Invoke();
-                            //    }
+                            }                        
                         }
                         once = false;
                     }
@@ -104,19 +83,12 @@ namespace bomberman
 
         void Eliminate()
         {
+            Debug.Log(explosion.volume);
             explosion.UnPause();
-            Destroy(gameObject, 0.7f);
-        }
-
-        private void OnDrawGizmosSelected()
-        {
-            for (int i = 0; i < directions.Count; i++)
-            {
-                
-            }
-            Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(transform.position, sphereRadius);
-        }
+            explosion.volume = PlayerPrefs.GetFloat("FXvolume");
+            Instantiate(particles, transform.position, transform.rotation);
+            Destroy(gameObject, explosion.clip.length);
+        }     
 
         private void OnTriggerEnter(Collider other)
         {

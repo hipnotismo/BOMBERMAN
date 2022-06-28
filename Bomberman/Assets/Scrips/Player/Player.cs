@@ -14,7 +14,6 @@ namespace bomberman
         {
             movement = GetComponent<PlayerMovement>();
             thisLife = GetComponent<PlayerLife>();
-            Debug.Log("Stazrts");
         }
 
         void Update()

@@ -27,8 +27,6 @@ namespace bomberman
         void Start()
         {
             PlayerPrefs.SetInt("PlayerLife", Life);
-            Debug.Log(PlayerPrefs.GetInt("PlayerLife"));
-            Debug.Log("Life here");
             OnLifeUpdate?.Invoke(Life);
         }
 
@@ -47,9 +45,7 @@ namespace bomberman
             Life--;
             OnLifeUpdate?.Invoke(Life);
             if (Life <= 0)
-            {
-                //LoseMenu.SetActive(true);
-                //Time.timeScale = 0f;
+            {              
                 OnPlayerDeath?.Invoke();
                 return;
             }

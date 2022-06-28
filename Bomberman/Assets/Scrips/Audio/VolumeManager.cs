@@ -20,6 +20,8 @@ namespace bomberman
         {
             PlayerPrefs.SetFloat("MusicVolume", volume.value);
             PlayerPrefs.SetFloat("FXvolume", FXvolume.value);
+            Debug.Log(PlayerPrefs.GetFloat("MusicVolume"));
+            Debug.Log(PlayerPrefs.GetFloat("FXvolume"));
         }
     }
 }

@@ -10,6 +10,7 @@ namespace bomberman
 
             SceneManager.LoadScene("MainMenu");
             PlayerPrefs.SetString("LastScene", SceneManager.GetActiveScene().name);
+            Time.timeScale = 1f;
             Debug.Log(SceneManager.GetActiveScene().name);
         }
 
@@ -17,7 +18,6 @@ namespace bomberman
         {
             Time.timeScale = 1f;
             Debug.Log("Reset");
-            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
         }
@@ -30,10 +30,9 @@ namespace bomberman
 
         public void Options()
         {
-            Debug.Log("Options");
+            Time.timeScale = 1f;
             PlayerPrefs.SetString("LastScene", SceneManager.GetActiveScene().name);
             SceneManager.LoadScene("Options");
-
         }
     }
 }
