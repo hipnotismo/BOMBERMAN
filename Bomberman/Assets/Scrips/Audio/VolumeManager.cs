@@ -17,7 +17,7 @@ namespace bomberman
             FXvolume.value = PlayerPrefs.GetFloat("FXvolume");
         }
 
-        public void SetVolumes()
+        public void SaveVolumes()
         {
             PlayerPrefs.SetFloat("MusicVolume", volume.value);
             PlayerPrefs.SetFloat("FXvolume", FXvolume.value);      

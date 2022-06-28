@@ -16,12 +16,14 @@ namespace bomberman
         void Start()
         {
             Player.OnPauseButton += PauseState;
+            InGameMenu.OnRessetButton += Resume;
         }
 
         private void OnDestroy()
         {
             ActivePanel(false);
             Player.OnPauseButton -= PauseState;
+            InGameMenu.OnRessetButton -= Resume;
         }
 
         void ActivePanel(bool active)
@@ -39,6 +41,7 @@ namespace bomberman
             canvasGroup.interactable = active;
             canvasGroup.blocksRaycasts = active;
         }
+
         void PauseState()
         {
             if (GameIsPause)
@@ -47,7 +50,7 @@ namespace bomberman
             }
             else
             {
-                IsPause();
+                SetPause();
             }
         }
 
@@ -60,15 +63,12 @@ namespace bomberman
 
         }
 
-        private void IsPause()
+        private void SetPause()
         {
             ActivePanel(true);
             Time.timeScale = 0f;
             GameIsPause = true;
             Debug.Log(Time.timeScale);
-            return;
         }
-
-
     }
 }
