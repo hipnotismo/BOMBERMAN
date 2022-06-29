@@ -153,6 +153,7 @@ namespace bomberman
 
         public void TakeDamage()
         {
+            Debug.Log("Yes it works ");
             Destroy(gameObject);
         }
 

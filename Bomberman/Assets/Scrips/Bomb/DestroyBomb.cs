@@ -9,7 +9,7 @@ namespace bomberman
 
         public static Action OnBoxDestroyed;
 
-        int destroyTime = 3;
+        [SerializeField] private int destroyTime = 3;
         float destroTimer = 0;
         float range = 1f;
         int RycastAmount = 4;
@@ -64,11 +64,7 @@ namespace bomberman
                             {
                                 isHit.TakeDamage();
                             }
-                            else
-                            {
-                                
-                            }
-
+                           
                             if (hit.collider.CompareTag("BrickWall"))
                             {
                                 OnBoxDestroyed?.Invoke();
@@ -77,6 +73,30 @@ namespace bomberman
                         }
                     }
                 }
+
+                //for(int i = 0; i < RycastAmount; i++)
+                //{
+
+                //    if (Physics.BoxCast(transform.position, transform.lossyScale/2, directions[i], out hit, range))
+                //    {
+
+                //        IDamageable isHit = hit.collider.GetComponent<IDamageable>();
+
+                //        if (isHit != null)
+                //        {
+                //            if (hit.collider.CompareTag("Player") || hit.collider.CompareTag("Enemy"))
+                //            {
+                //                isHit.TakeDamage();
+                //            }
+
+                //            if (hit.collider.CompareTag("BrickWall"))
+                //            {
+                //                OnBoxDestroyed?.Invoke();
+                //                isHit.TakeDamage();
+                //            }
+                //        }
+                //    }
+                //}
                 Eliminate();
             }
 
@@ -104,9 +124,24 @@ namespace bomberman
                     IDamageable isHit = other.GetComponent<IDamageable>();
                     isHit.TakeDamage();
                     isDamage = !isDamage;
-                    Debug.Log("Istaking damage: " + other);
+                    Debug.Log("Istaking damage: " + isDamage);
                 }
             }
         }
+
+        //private void OnTriggerEnter(Collider other)
+        //{
+        //    Debug.Log(other);
+        //    if (isDamage)
+        //    {
+        //        if (destroTimer >= destroyTime)
+        //        {
+        //            IDamageable isHit = other.GetComponent<IDamageable>();
+        //            isHit.TakeDamage();
+        //            isDamage = !isDamage;
+        //            Debug.Log("Istaking damage: " + other);
+        //        }
+        //    }
+        //}
     }
 }
