@@ -74,29 +74,29 @@ namespace bomberman
                     }
                 }
 
-                //for(int i = 0; i < RycastAmount; i++)
-                //{
+                for (int i = 0; i < RycastAmount; i++)
+                {
 
-                //    if (Physics.BoxCast(transform.position, transform.lossyScale/2, directions[i], out hit, range))
-                //    {
+                    if (Physics.BoxCast(transform.position, transform.lossyScale / 2, directions[i], out hit, Quaternion.identity, range))
+                    {
 
-                //        IDamageable isHit = hit.collider.GetComponent<IDamageable>();
+                        IDamageable isHit = hit.collider.GetComponent<IDamageable>();
 
-                //        if (isHit != null)
-                //        {
-                //            if (hit.collider.CompareTag("Player") || hit.collider.CompareTag("Enemy"))
-                //            {
-                //                isHit.TakeDamage();
-                //            }
+                        if (isHit != null)
+                        {
+                            if (hit.collider.CompareTag("Player") || hit.collider.CompareTag("Enemy"))
+                            {
+                                isHit.TakeDamage();
+                            }
 
-                //            if (hit.collider.CompareTag("BrickWall"))
-                //            {
-                //                OnBoxDestroyed?.Invoke();
-                //                isHit.TakeDamage();
-                //            }
-                //        }
-                //    }
-                //}
+                            if (hit.collider.CompareTag("BrickWall"))
+                            {
+                                OnBoxDestroyed?.Invoke();
+                                isHit.TakeDamage();
+                            }
+                        }
+                    }
+                }
                 Eliminate();
             }
 
@@ -129,19 +129,17 @@ namespace bomberman
             }
         }
 
-        //private void OnTriggerEnter(Collider other)
-        //{
-        //    Debug.Log(other);
-        //    if (isDamage)
-        //    {
-        //        if (destroTimer >= destroyTime)
-        //        {
-        //            IDamageable isHit = other.GetComponent<IDamageable>();
-        //            isHit.TakeDamage();
-        //            isDamage = !isDamage;
-        //            Debug.Log("Istaking damage: " + other);
-        //        }
-        //    }
-        //}
+        void OnDrawGizmos()
+        {
+            Gizmos.color = Color.red;
+
+            for (int i = 0; i < RycastAmount; i++)
+            {
+                Gizmos.DrawRay(transform.position, directions[i] * range);
+                //Draw a cube at the maximum distance
+                Gizmos.DrawWireCube(transform.position + directions[i] * range, transform.localScale);
+            }             
+        }
+
     }
 }
