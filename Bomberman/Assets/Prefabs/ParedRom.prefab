@@ -113,7 +113,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: cc4fe0532ba98114ba6cb6c294dd12bb, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 29ea1c52aa1b1b042b62f58f7298185d, type: 2}
+      objectReference: {fileID: 2100000, guid: 0e9d01bef43b604449a5e2a1c81c5b20, type: 2}
     - target: {fileID: 919132149155446097, guid: cc4fe0532ba98114ba6cb6c294dd12bb, type: 3}
       propertyPath: m_Name
       value: Cubo Rompible
