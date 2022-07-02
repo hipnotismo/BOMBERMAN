@@ -65,7 +65,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1535
   particles: {fileID: 9208865447284469785, guid: 2ee21828c78a416409398ccf18491115, type: 3}
-  particles2: {fileID: 9111927924773209286, guid: c210ff4cc14c1094b8eb86edbe9f0bc0, type: 3}
+  particles2: {fileID: 529115308212681771, guid: b01d51b19af694741b9d619579e7957b, type: 3}
   explosion: {fileID: 1973992512443103883}
 --- !u!82 &1973992512443103883
 AudioSource:
