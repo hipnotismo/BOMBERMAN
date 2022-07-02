@@ -106,7 +106,7 @@ namespace bomberman
         {
             explosion.UnPause();
             Instantiate(particles, transform.position, transform.rotation);
-            Instantiate(particles2, transform.position, Quaternion.Euler(0f,180f,0f));
+            Instantiate(particles2, transform.position, transform.rotation, gameObject.transform);
             //Instantiate(particles2, transform.position, transform.rotation);
             //Instantiate(particles2, transform.position, transform.rotation);
             //Instantiate(particles2, transform.position, transform.rotation);
