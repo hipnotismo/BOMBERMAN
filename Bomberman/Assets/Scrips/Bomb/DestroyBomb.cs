@@ -13,6 +13,8 @@ namespace bomberman
         float destroTimer = 0;
         float range = 1f;
         int RycastAmount = 4;
+        float shakeInstensity = 1f;
+        float shakeInsTime = 0.2f;
         List<Vector3> directions = new List<Vector3>();
         [SerializeField] private LayerMask layer;
         [SerializeField] private GameObject particles;
@@ -110,6 +112,7 @@ namespace bomberman
             //Instantiate(particles2, transform.position, transform.rotation);
             //Instantiate(particles2, transform.position, transform.rotation);
             //Instantiate(particles2, transform.position, transform.rotation);
+            CameraShake.Instace.ShakeCamera(shakeInstensity, shakeInsTime);
             Destroy(gameObject, explosion.clip.length);
         }
 
