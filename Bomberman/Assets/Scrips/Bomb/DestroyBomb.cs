@@ -16,6 +16,8 @@ namespace bomberman
         float shakeInstensity = 1f;
         float shakeInsTime = 0.2f;
         List<Vector3> directions = new List<Vector3>();
+        List<Vector3> availableDirections = new List<Vector3>();
+
         [SerializeField] private LayerMask layer;
         [SerializeField] private GameObject particles;
         [SerializeField] private GameObject particles2;
@@ -65,21 +67,26 @@ namespace bomberman
                             if (hit.collider.CompareTag("Player") || hit.collider.CompareTag("Enemy"))
                             {
                                 isHit.TakeDamage();
+                                availableDirections.Add(directions[i]);
                             }
-                           
+                          
                             if (hit.collider.CompareTag("BrickWall"))
                             {
                                 OnBoxDestroyed?.Invoke();
                                 isHit.TakeDamage();
+                                availableDirections.Add(directions[i]);
                             }
                         }
                     }
+                    else
+                    {
+                        availableDirections.Add(directions[i]);
+                    }
                 }
 
-                for (int i = 0; i < RycastAmount; i++)
+                for (int i = 0; i < availableDirections.Count; i++)
                 {
-
-                    if (Physics.BoxCast(transform.position, transform.lossyScale / 2, directions[i], out hit, Quaternion.identity, range))
+                    if (Physics.BoxCast(transform.position, transform.lossyScale / 2, availableDirections[i], out hit, Quaternion.identity, range))
                     {
 
                         IDamageable isHit = hit.collider.GetComponent<IDamageable>();
@@ -98,6 +105,29 @@ namespace bomberman
                             }
                         }
                     }
+
+                //for (int i = 0; i < RycastAmount; i++)
+                //{
+
+                //    if (Physics.BoxCast(transform.position, transform.lossyScale / 2, directions[i], out hit, Quaternion.identity, range))
+                //    {
+
+                //        IDamageable isHit = hit.collider.GetComponent<IDamageable>();
+
+                //        if (isHit != null)
+                //        {
+                //            if (hit.collider.CompareTag("Player") || hit.collider.CompareTag("Enemy"))
+                //            {
+                //                isHit.TakeDamage();
+                //            }
+
+                //            if (hit.collider.CompareTag("BrickWall"))
+                //            {
+                //                OnBoxDestroyed?.Invoke();
+                //                isHit.TakeDamage();
+                //            }
+                //        }
+                //    }
                 }
                 Eliminate();
             }
@@ -135,11 +165,11 @@ namespace bomberman
         {
             Gizmos.color = Color.red;
 
-            for (int i = 0; i < RycastAmount; i++)
+            for (int i = 0; i < availableDirections.Count; i++)
             {
-                Gizmos.DrawRay(transform.position, directions[i] * range);
+                Gizmos.DrawRay(transform.position, availableDirections[i] * range);
                 //Draw a cube at the maximum distance
-                Gizmos.DrawWireCube(transform.position + directions[i] * range, transform.localScale);
+                Gizmos.DrawWireCube(transform.position + availableDirections[i] * range, transform.localScale);
             }             
         }
 
