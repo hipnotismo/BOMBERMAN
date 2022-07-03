@@ -308,7 +308,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1001 &32079107
 PrefabInstance:
@@ -1633,7 +1633,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3606852676734007298, guid: f19a012123f845444ae0fc206d278cee, type: 3}
       propertyPath: m_Speed
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3606852676734007301, guid: f19a012123f845444ae0fc206d278cee, type: 3}
       propertyPath: m_RootOrder
@@ -1868,7 +1868,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.4682204, y: 1}
+    m_SensorSize: {x: 2.2648306, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -3519,7 +3519,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5962027678461948147, guid: 03fd91a86e60e3b49b17f7eda154569a, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5962027678461948147, guid: 03fd91a86e60e3b49b17f7eda154569a, type: 3}
       propertyPath: m_AnchorMax.x
@@ -4046,7 +4046,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7688430289019893773, guid: 84b60f57812df6745b1a78d33ece3905, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -21.962097
+      value: -21.962158
       objectReference: {fileID: 0}
     - target: {fileID: 7688430289365332879, guid: 84b60f57812df6745b1a78d33ece3905, type: 3}
       propertyPath: m_AnchorMax.y

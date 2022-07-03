@@ -20,7 +20,7 @@ namespace bomberman
 
         [SerializeField] private LayerMask layer;
         [SerializeField] private GameObject particles;
-        [SerializeField] private GameObject particles2;
+        [SerializeField] private ParticleSystem particles2;
 
         private bool isDamage = true;
         [SerializeField] AudioSource explosion;
@@ -104,31 +104,29 @@ namespace bomberman
                                 isHit.TakeDamage();
                             }
                         }
-                    }
-
-                //for (int i = 0; i < RycastAmount; i++)
-                //{
-
-                //    if (Physics.BoxCast(transform.position, transform.lossyScale / 2, directions[i], out hit, Quaternion.identity, range))
-                //    {
-
-                //        IDamageable isHit = hit.collider.GetComponent<IDamageable>();
-
-                //        if (isHit != null)
-                //        {
-                //            if (hit.collider.CompareTag("Player") || hit.collider.CompareTag("Enemy"))
-                //            {
-                //                isHit.TakeDamage();
-                //            }
-
-                //            if (hit.collider.CompareTag("BrickWall"))
-                //            {
-                //                OnBoxDestroyed?.Invoke();
-                //                isHit.TakeDamage();
-                //            }
-                //        }
-                //    }
+                    }              
                 }
+
+                if (Physics.BoxCast(transform.position, transform.lossyScale / 2, availableDirections[0], out hit, Quaternion.identity, 0f))
+                {
+
+                    IDamageable isHit = hit.collider.GetComponent<IDamageable>();
+
+                    if (isHit != null)
+                    {
+                        if (hit.collider.CompareTag("Player") || hit.collider.CompareTag("Enemy"))
+                        {
+                            isHit.TakeDamage();
+                        }
+
+                        if (hit.collider.CompareTag("BrickWall"))
+                        {
+                            OnBoxDestroyed?.Invoke();
+                            isHit.TakeDamage();
+                        }
+                    }
+                }
+
                 Eliminate();
             }
 
@@ -137,8 +135,8 @@ namespace bomberman
         void Eliminate()
         {
             explosion.UnPause();
-            Instantiate(particles, transform.position, transform.rotation);
-            Instantiate(particles2, transform.position, transform.rotation, gameObject.transform);
+            //Instantiate(particles, transform.position, transform.rotation);
+            Instantiate(particles2, transform.position, Quaternion.identity, gameObject.transform);//se instancia las particulas
             //Instantiate(particles2, transform.position, transform.rotation);
             //Instantiate(particles2, transform.position, transform.rotation);
             //Instantiate(particles2, transform.position, transform.rotation);
@@ -170,7 +168,7 @@ namespace bomberman
                 Gizmos.DrawRay(transform.position, availableDirections[i] * range);
                 //Draw a cube at the maximum distance
                 Gizmos.DrawWireCube(transform.position + availableDirections[i] * range, transform.localScale);
-            }             
+            }         
         }
 
     }
