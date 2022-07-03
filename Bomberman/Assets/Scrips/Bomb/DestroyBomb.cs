@@ -20,7 +20,10 @@ namespace bomberman
 
         [SerializeField] private LayerMask layer;
         [SerializeField] private GameObject particles;
+        [SerializeField] private ParticleSystem particles0;
+        [SerializeField] private ParticleSystem particles1;
         [SerializeField] private ParticleSystem particles2;
+        [SerializeField] private ParticleSystem particles3;
 
         private bool isDamage = true;
         [SerializeField] AudioSource explosion;
@@ -86,7 +89,7 @@ namespace bomberman
 
                 for (int i = 0; i < availableDirections.Count; i++)
                 {
-                    if (Physics.BoxCast(transform.position, transform.lossyScale / 2, availableDirections[i], out hit, Quaternion.identity, range))
+                    if (Physics.BoxCast(transform.position, transform.lossyScale / 3, availableDirections[i], out hit, Quaternion.identity, range))
                     {
 
                         IDamageable isHit = hit.collider.GetComponent<IDamageable>();
@@ -105,27 +108,7 @@ namespace bomberman
                             }
                         }
                     }              
-                }
-
-                if (Physics.BoxCast(transform.position, transform.lossyScale / 2, availableDirections[0], out hit, Quaternion.identity, 0f))
-                {
-
-                    IDamageable isHit = hit.collider.GetComponent<IDamageable>();
-
-                    if (isHit != null)
-                    {
-                        if (hit.collider.CompareTag("Player") || hit.collider.CompareTag("Enemy"))
-                        {
-                            isHit.TakeDamage();
-                        }
-
-                        if (hit.collider.CompareTag("BrickWall"))
-                        {
-                            OnBoxDestroyed?.Invoke();
-                            isHit.TakeDamage();
-                        }
-                    }
-                }
+                }                
 
                 Eliminate();
             }
@@ -135,11 +118,13 @@ namespace bomberman
         void Eliminate()
         {
             explosion.UnPause();
-            //Instantiate(particles, transform.position, transform.rotation);
-            Instantiate(particles2, transform.position, Quaternion.identity, gameObject.transform);//se instancia las particulas
-            //Instantiate(particles2, transform.position, transform.rotation);
-            //Instantiate(particles2, transform.position, transform.rotation);
-            //Instantiate(particles2, transform.position, transform.rotation);
+
+            Instantiate(particles0, transform.position, Quaternion.identity, gameObject.transform);
+            Instantiate(particles1, transform.position, Quaternion.identity, gameObject.transform);
+            Instantiate(particles2, transform.position, Quaternion.identity, gameObject.transform);
+            Instantiate(particles3, transform.position, Quaternion.identity, gameObject.transform);
+                
+            
             CameraShake.Instace.ShakeCamera(shakeInstensity, shakeInsTime);
             Destroy(gameObject, explosion.clip.length);
         }
@@ -171,5 +156,10 @@ namespace bomberman
             }         
         }
 
+        void InstantiateParticles()
+        {
+           // Instantiate(particles, transform.position, transform.rotation);
+          
+        }
     }
 }

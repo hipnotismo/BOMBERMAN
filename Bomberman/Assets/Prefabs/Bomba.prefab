@@ -65,7 +65,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1535
   particles: {fileID: 9208865447284469785, guid: 2ee21828c78a416409398ccf18491115, type: 3}
-  particles2: {fileID: 7906927176384407655, guid: b01d51b19af694741b9d619579e7957b, type: 3}
+  particles0: {fileID: 7906927176384407655, guid: 50c35eed063422a4ba27e2be8fbd2762, type: 3}
+  particles1: {fileID: 7906927176384407655, guid: c42cea11a7adaa743b33f91832665f0e, type: 3}
+  particles2: {fileID: 7906927176384407655, guid: c2fcf076b9d9f314bbfa77a439234795, type: 3}
+  particles3: {fileID: 7906927176384407655, guid: b01d51b19af694741b9d619579e7957b, type: 3}
   explosion: {fileID: 1973992512443103883}
 --- !u!82 &1973992512443103883
 AudioSource:

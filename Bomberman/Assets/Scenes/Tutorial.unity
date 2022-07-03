@@ -4020,6 +4020,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pause Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 7688430288930892447, guid: 84b60f57812df6745b1a78d33ece3905, type: 3}
+      propertyPath: m_Alpha
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7688430288930892447, guid: 84b60f57812df6745b1a78d33ece3905, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7688430288930892447, guid: 84b60f57812df6745b1a78d33ece3905, type: 3}
+      propertyPath: m_Interactable
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7688430288930892447, guid: 84b60f57812df6745b1a78d33ece3905, type: 3}
+      propertyPath: m_BlocksRaycasts
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7688430288984471211, guid: 84b60f57812df6745b1a78d33ece3905, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -4063,6 +4079,10 @@ PrefabInstance:
     - target: {fileID: 7688430289365332879, guid: 84b60f57812df6745b1a78d33ece3905, type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7688430289365332879, guid: 84b60f57812df6745b1a78d33ece3905, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7688430289365332879, guid: 84b60f57812df6745b1a78d33ece3905, type: 3}
       propertyPath: m_AnchoredPosition.x

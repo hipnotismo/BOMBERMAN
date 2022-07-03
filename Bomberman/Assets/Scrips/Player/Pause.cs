@@ -1,27 +1,29 @@
 using UnityEngine;
 
+
 namespace bomberman
 {
     public class Pause : MonoBehaviour
     {
         private static bool GameIsPause;
         CanvasGroup canvasGroup;
-
         private void Awake()
         {
-            canvasGroup = GetComponent<CanvasGroup>();
-            ActivePanel(false);
+             canvasGroup = GetComponent<CanvasGroup>();
+             ActivePanel(false);
         }
 
         void Start()
         {
             Player.OnPauseButton += PauseState;
             InGameMenu.OnRessetButton += Resume;
+            //canvas.gameObject.SetActive(false);
+
         }
 
         private void OnDestroy()
         {
-            ActivePanel(false);
+              ActivePanel(false);
             Player.OnPauseButton -= PauseState;
             InGameMenu.OnRessetButton -= Resume;
         }
@@ -30,11 +32,12 @@ namespace bomberman
         {
             if (active)
             {
-                canvasGroup.alpha = 1;
+                 canvasGroup.alpha = 1;
 
             }
             else
             {
+
                 canvasGroup.alpha = 0;
             }
 
