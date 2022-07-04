@@ -6,7 +6,6 @@ namespace bomberman
     public class SetMenoVolume : MonoBehaviour
     {
        [SerializeField] AudioSource click;
-       [SerializeField] AudioSource explosion;
 
         private void Awake()
         {

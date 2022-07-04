@@ -15,6 +15,7 @@ namespace bomberman
         int RycastAmount = 4;
         float shakeInstensity = 1f;
         float shakeInsTime = 0.2f;
+        bool doOnce;
         List<Vector3> directions = new List<Vector3>();
         List<Vector3> availableDirections = new List<Vector3>();
 
@@ -37,6 +38,7 @@ namespace bomberman
             explosion.volume = PlayerPrefs.GetFloat("FXvolume");
             Debug.Log(PlayerPrefs.GetFloat("FXvolume"));
             explosion.Pause();
+            doOnce = true;
         }
 
         private void Update()
@@ -117,15 +119,21 @@ namespace bomberman
 
         void Eliminate()
         {
-            explosion.UnPause();
+            //    explosion.UnPause();
+            if (doOnce)
+            {
+                AudioManager.inst.ExplosionClips();
 
-            Instantiate(particles0, transform.position, Quaternion.identity, gameObject.transform);
-            Instantiate(particles1, transform.position, Quaternion.identity, gameObject.transform);
-            Instantiate(particles2, transform.position, Quaternion.identity, gameObject.transform);
-            Instantiate(particles3, transform.position, Quaternion.identity, gameObject.transform);
-                
-            
-            CameraShake.Instace.ShakeCamera(shakeInstensity, shakeInsTime);
+                Instantiate(particles0, transform.position, Quaternion.identity, gameObject.transform);
+                Instantiate(particles1, transform.position, Quaternion.identity, gameObject.transform);
+                Instantiate(particles2, transform.position, Quaternion.identity, gameObject.transform);
+                Instantiate(particles3, transform.position, Quaternion.identity, gameObject.transform);
+
+                CameraShake.Instace.ShakeCamera(shakeInstensity, shakeInsTime);
+
+                doOnce = false;
+            }
+           
             Destroy(gameObject, explosion.clip.length);
         }
 

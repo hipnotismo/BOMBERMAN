@@ -1083,6 +1083,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Win canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 4241837903630926085, guid: 1613d13546fae8140ab934b8bf080133, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4241837904059696100, guid: 1613d13546fae8140ab934b8bf080133, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1211,6 +1215,10 @@ PrefabInstance:
     - target: {fileID: 5962027678461948151, guid: 03fd91a86e60e3b49b17f7eda154569a, type: 3}
       propertyPath: m_Name
       value: Life canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 5962027678461948151, guid: 03fd91a86e60e3b49b17f7eda154569a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 03fd91a86e60e3b49b17f7eda154569a, type: 3}
@@ -1377,6 +1385,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ' Lose canvas'
       objectReference: {fileID: 0}
+    - target: {fileID: 6714906282784078484, guid: 485388cf26f43924aba354900606ad1b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6714906283104547371, guid: 485388cf26f43924aba354900606ad1b, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1410,6 +1422,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1279719286873078081, guid: 84b60f57812df6745b1a78d33ece3905, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 5a50422e7296f984690e2947bf6613cb, type: 2}
     - target: {fileID: 7688430287612521715, guid: 84b60f57812df6745b1a78d33ece3905, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1609,6 +1625,14 @@ PrefabInstance:
     - target: {fileID: 7688430289365332879, guid: 84b60f57812df6745b1a78d33ece3905, type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7688430289365332879, guid: 84b60f57812df6745b1a78d33ece3905, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7688430289365332879, guid: 84b60f57812df6745b1a78d33ece3905, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7688430289365332879, guid: 84b60f57812df6745b1a78d33ece3905, type: 3}
       propertyPath: m_AnchoredPosition.x
