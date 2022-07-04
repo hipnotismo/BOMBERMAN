@@ -13,6 +13,7 @@ namespace bomberman
         [SerializeField] List <AudioClip> explosionClips = new List<AudioClip>();
         [SerializeField] AudioSource clickSource;
         [SerializeField] List<AudioClip> clickClips = new List<AudioClip>();
+        [SerializeField] AudioSource backgroundSource;
 
 
         public const string MUSIC_KEY = "MusicVolume";
@@ -21,6 +22,7 @@ namespace bomberman
         private void Awake()
         {
             LoadVolume();
+            PlayBackground();
             if (AudioManager.inst == null)
             {
                 AudioManager.inst = this;
@@ -54,6 +56,12 @@ namespace bomberman
             mixer.SetFloat(VolumeOptions.MIXER_SFX, Mathf.Log10(SFXVolume) * 20);
             Debug.Log(PlayerPrefs.GetFloat(AudioManager.SFX_KEY, 1F));
 
+        }
+
+        void PlayBackground() 
+        {
+            backgroundSource.volume = PlayerPrefs.GetFloat(MUSIC_KEY);
+            backgroundSource.Play();
         }
     }
 }

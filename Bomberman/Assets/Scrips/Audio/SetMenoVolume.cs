@@ -9,7 +9,7 @@ namespace bomberman
 
         private void Awake()
         {
-            click.volume= PlayerPrefs.GetFloat("FXvolume");
+            click.volume= PlayerPrefs.GetFloat("SFXVolume");
         }
     }
 }
