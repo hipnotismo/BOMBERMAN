@@ -6,11 +6,11 @@ namespace bomberman
 {
     public class InGameMenu : MonoBehaviour
     {
-        public AudioSource click;
         public static Action OnRessetButton;
 
         public void ReturnToMenu()
         {
+            AudioManager.inst.ClickClips();
             OnRessetButton?.Invoke();
             SceneManager.LoadScene("MainMenu");
             PlayerPrefs.SetString("LastScene", SceneManager.GetActiveScene().name);
@@ -20,8 +20,8 @@ namespace bomberman
 
         public void Reset()
         {
+            AudioManager.inst.ClickClips();
             Time.timeScale = 1f;
-            click.Play();
             OnRessetButton?.Invoke();
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
@@ -29,14 +29,22 @@ namespace bomberman
 
         public void ExitButton()
         {
+            AudioManager.inst.ClickClips();
             Application.Quit();
         }
 
         public void Options()
         {
+            AudioManager.inst.ClickClips();
             OnRessetButton?.Invoke();
             Time.timeScale = 1f;
             PlayerPrefs.SetString("LastScene", SceneManager.GetActiveScene().name);
+            SceneManager.LoadScene("Options");
+        }
+
+        public void ClickPlay()
+        {
+            AudioManager.inst.ClickClips();
         }
     }
 }
