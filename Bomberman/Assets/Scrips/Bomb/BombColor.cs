@@ -6,7 +6,7 @@ namespace bomberman
 {
     public class BombColor : MonoBehaviour
     {
-        private Material material;
+        private Renderer render;
 
         void Awake()
         {
@@ -14,12 +14,12 @@ namespace bomberman
         }
         void Start()
         {
-            material = gameObject.GetComponent<Material>();
+            render = gameObject.GetComponent<Renderer>();
         }
 
         void ChangeToRed()
         {
-            material.color = Color.red;
+            render.material.color = Color.red;
         }
     }
 }

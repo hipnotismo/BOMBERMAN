@@ -58,7 +58,7 @@ namespace bomberman
         {
             RaycastHit hit;
 
-            if (destroTimer <= halfTime)
+            if (destroTimer >= halfTime)
             {
                 ColorToRed?.Invoke();
             }
