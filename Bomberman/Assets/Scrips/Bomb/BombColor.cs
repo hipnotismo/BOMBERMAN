@@ -12,6 +12,11 @@ namespace bomberman
         {
             DestroyBomb.ColorToRed += ChangeToRed;
         }
+
+        private void OnDestroy()
+        {
+            DestroyBomb.ColorToRed -= ChangeToRed;
+        }
         void Start()
         {
             render = gameObject.GetComponent<Renderer>();

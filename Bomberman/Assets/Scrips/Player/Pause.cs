@@ -15,14 +15,19 @@ namespace bomberman
 
         void Start()
         {
-            Player.OnPauseButton += PauseState;
-            InGameMenu.OnRessetButton += Resume;
+            //Player.OnPauseButton += PauseState;
+            //InGameMenu.OnRessetButton += Resume;
 
         }
 
+        private void OnEnable()
+        {
+            Player.OnPauseButton += PauseState;
+            InGameMenu.OnRessetButton += Resume;
+        }
         private void OnDestroy()
         {
-              ActivePanel(false);
+            ActivePanel(false);
             Player.OnPauseButton -= PauseState;
             InGameMenu.OnRessetButton -= Resume;
         }
