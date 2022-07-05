@@ -25,12 +25,9 @@ namespace bomberman
             {
                 AudioManager.inst = this;
                 DontDestroyOnLoad(gameObject);
-                Debug.Log("Not Destroy");
-                LoadVolume();
             }
             else
             {
-                Debug.Log("Id destroy");
                 Destroy(gameObject);
             }
 
@@ -38,6 +35,7 @@ namespace bomberman
 
         private void Start()
         {
+            LoadVolume();
             PlayBackground();
         }
 
@@ -57,11 +55,8 @@ namespace bomberman
         {
             float musicVolume = PlayerPrefs.GetFloat(MUSIC_KEY,1f);
             float SFXVolume = PlayerPrefs.GetFloat(SFX_KEY, 1f);
-            Debug.Log(musicVolume);
             mixer.SetFloat(VolumeOptions.MIXER_MUSIC, Mathf.Log10(musicVolume) * 20);
             mixer.SetFloat(VolumeOptions.MIXER_SFX, Mathf.Log10(SFXVolume) * 20);
-            Debug.Log(PlayerPrefs.GetFloat(AudioManager.SFX_KEY, 1F));
-
         }
 
         void PlayBackground() 
