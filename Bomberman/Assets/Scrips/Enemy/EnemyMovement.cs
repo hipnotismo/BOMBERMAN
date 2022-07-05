@@ -40,7 +40,7 @@ namespace bomberman
 
         void Update()
         {
-            int layerMask = LayerMask.GetMask("Enemy","Bomb");
+            int layerMask = LayerMask.GetMask("Enemy","Bomb","Player");
 
             // si no tengo un destino
             if (!destiny)
