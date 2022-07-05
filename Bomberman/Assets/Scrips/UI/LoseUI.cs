@@ -12,6 +12,7 @@ namespace bomberman {
             canvasGroup = GetComponent<CanvasGroup>();
 
         }
+
         void Start()
         {
             PlayerLife.OnPlayerDeath += ActiveLoseCanvas;
@@ -25,7 +26,7 @@ namespace bomberman {
             PlayerLife.OnPlayerDeath -= ActiveLoseCanvas;
 
         }
-        // Update is called once per frame
+
         void ActiveLoseCanvas()
         {
             canvasGroup.alpha = 1;
@@ -33,7 +34,5 @@ namespace bomberman {
             canvasGroup.blocksRaycasts = true;
             canvasGroup.interactable = true;
         }
-
-
     }
 }

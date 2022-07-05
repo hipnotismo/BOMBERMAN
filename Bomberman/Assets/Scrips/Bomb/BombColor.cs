@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace bomberman
@@ -17,6 +15,7 @@ namespace bomberman
         {
             DestroyBomb.ColorToRed -= ChangeToRed;
         }
+
         void Start()
         {
             render = gameObject.GetComponent<Renderer>();

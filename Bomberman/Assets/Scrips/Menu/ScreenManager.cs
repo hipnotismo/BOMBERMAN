@@ -22,14 +22,11 @@ namespace bomberman
 
 #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;
-#endif
-            Debug.Log("quit");
-            
+#endif            
         }
 
         public void ReturnToLatScene()
         {
-            Debug.Log("Options");
             Debug.Log(PlayerPrefs.GetString("LastScene"));
 
             SceneManager.LoadScene(PlayerPrefs.GetString("LastScene"));

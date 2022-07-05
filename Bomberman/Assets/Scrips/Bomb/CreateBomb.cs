@@ -17,13 +17,17 @@ namespace bomberman
 
         void Update()
         {
-            if (Input.GetButtonDown("Jump") && CoolDown)
+            if (Time.timeScale ==1)
             {
-                Instantiate(bomb, new Vector3(Mathf.Round(transform.position.x), 0.5f,
-                 transform.position.z), Quaternion.identity);
-                CoolDown = !CoolDown;
-                StartCoroutine(BombDelay());
+                if (Input.GetButtonDown("Jump") && CoolDown)
+                {
+                    Instantiate(bomb, new Vector3(Mathf.Round(transform.position.x), 0.5f,
+                     transform.position.z), Quaternion.identity);
+                    CoolDown = !CoolDown;
+                    StartCoroutine(BombDelay());
+                }
             }
+          
         }
 
         IEnumerator BombDelay()

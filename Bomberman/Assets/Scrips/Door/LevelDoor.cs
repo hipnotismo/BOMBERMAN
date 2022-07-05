@@ -10,6 +10,7 @@ namespace bomberman
         static public Action OnPlayerWin;
 
         private bool active;
+
         private void OnEnable()
         {
             GameManager.EnableDoor += Enable;
@@ -25,14 +26,9 @@ namespace bomberman
             active = false;
         }
 
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
-
         void OnTriggerEnter(Collider other)
         {
+            Debug.Log("Player here");
             if (other.CompareTag("Player"))
             {
                 if (active == true)

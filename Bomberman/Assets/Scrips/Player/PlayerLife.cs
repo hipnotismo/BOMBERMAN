@@ -6,6 +6,7 @@ namespace bomberman
 {
     public class PlayerLife : MonoBehaviour, IDamageable//separar el control de las vidas del control de la UI
     {
+
         public static Action<int> OnLifeUpdate;
         public static Action OnPlayerDeath;
         public static Action OnPlayerDamage;
@@ -36,7 +37,6 @@ namespace bomberman
         {
             if (other.gameObject.tag == "Enemy")
             {
-                Debug.Log("hit");
                 TakeDamage();
                 StartCoroutine(StopCollision());
             }
@@ -51,7 +51,6 @@ namespace bomberman
                 OnPlayerDeath?.Invoke();
                 return;
             }
-            Debug.Log("player hit " + Life);
             PlayerPrefs.SetInt("PlayerLife", Life);
             gameObject.layer = LayerMask.NameToLayer("Ignore collision");
             transform.gameObject.tag = "InmunePlayer";

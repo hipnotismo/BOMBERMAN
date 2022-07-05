@@ -1,30 +1,24 @@
 using UnityEngine;
 
-
 namespace bomberman
 {
     public class Pause : MonoBehaviour
     {
         private static bool GameIsPause;
         CanvasGroup canvasGroup;
+
         private void Awake()
         {
              canvasGroup = GetComponent<CanvasGroup>();
              ActivePanel(false);
         }
-
-        void Start()
-        {
-            //Player.OnPauseButton += PauseState;
-            //InGameMenu.OnRessetButton += Resume;
-
-        }
-
+    
         private void OnEnable()
         {
             Player.OnPauseButton += PauseState;
             InGameMenu.OnRessetButton += Resume;
         }
+
         private void OnDestroy()
         {
             ActivePanel(false);
@@ -67,7 +61,6 @@ namespace bomberman
             Time.timeScale = 1f;
             GameIsPause = false;
             Debug.Log(Time.timeScale);
-
         }
 
         private void SetPause()

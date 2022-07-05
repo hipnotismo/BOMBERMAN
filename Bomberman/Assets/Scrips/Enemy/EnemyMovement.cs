@@ -57,8 +57,6 @@ namespace bomberman
                 //se elegi un elemento random de esa lista
                 listRandom = Random.Range(0, availableDirections.Count);
 
-               
-                //error: redundancia
                 destiny = true;
 
                 //raycast mas largo para saber a cuanta distancia esta el proximo bloque
@@ -69,7 +67,6 @@ namespace bomberman
                 }
 
                 TargetPos = transform.position + (truncatedDistance * availableDirections[listRandom]);
-               // Debug.Log(TargetPos);
 
                 if (availableDirections[listRandom] == directions[0])
                 {
@@ -81,7 +78,6 @@ namespace bomberman
                     if (availableDirections[listRandom] == directions[i])
                     {
                         directionIs = i;
-                        //Debug.Log(directionIs);
                     }
                 }
 
@@ -100,8 +96,7 @@ namespace bomberman
                         else
                         {
                              m_Rigidbody.MovePosition(transform.position + availableDirections[listRandom] * Time.deltaTime * m_Speed);
-                            //transform.position += directions[directionIs];
-                            //StartCoroutine(movementTime());
+                          
                         }
                         break;
                     case 1:
@@ -112,8 +107,7 @@ namespace bomberman
                         else
                         {
                             m_Rigidbody.MovePosition(transform.position + availableDirections[listRandom] * Time.deltaTime * m_Speed);
-                            //transform.position += directions[directionIs];
-                            //StartCoroutine(movementTime());
+                         
                         }
                         break;
                     case 2:
@@ -124,8 +118,7 @@ namespace bomberman
                         else
                         {
                             m_Rigidbody.MovePosition(transform.position + availableDirections[listRandom] * Time.deltaTime * m_Speed);
-                            //transform.position += directions[directionIs];
-                            //StartCoroutine(movementTime());
+                           
                         }
                         break;
                     case 3:
@@ -136,8 +129,7 @@ namespace bomberman
                         else
                         {
                             m_Rigidbody.MovePosition(transform.position + availableDirections[listRandom] * Time.deltaTime * m_Speed);
-                            //transform.position += directions[directionIs];
-                            //StartCoroutine(movementTime());
+                           
                         }
                         break;
                 }
@@ -153,13 +145,7 @@ namespace bomberman
 
         public void TakeDamage()
         {
-            Debug.Log("Yes it works ");
             Destroy(gameObject);
-        }
-
-        IEnumerator movementTime()
-        {
-            yield return new WaitForSeconds(5);
         }
     }
 }

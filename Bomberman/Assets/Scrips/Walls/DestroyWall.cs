@@ -15,7 +15,10 @@ namespace bomberman
 
         public void TakeDamage()
         {
+            transform.gameObject.tag = "InmuneBrick";
+
             Destroy(gameObject);
+
         }
     }
 }

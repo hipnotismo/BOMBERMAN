@@ -18,14 +18,13 @@ namespace bomberman
 
         void Update()
         {
-            if (Input.GetKeyDown(KeyCode.P))
-            {
-                Debug.Log("player press");
-
+            Debug.Log(Time.timeScale);
+          
+          if (Input.GetKeyDown(KeyCode.P))
+          {
                 OnPauseButton?.Invoke();
-            }
-            
-                movement.Movement();
+          }          
+            movement.Movement();
         }       
 
     }
