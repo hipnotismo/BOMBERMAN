@@ -40,6 +40,8 @@ namespace bomberman
 
         void Update()
         {
+            int layerMask = LayerMask.GetMask("Enemy","Bomb");
+
             // si no tengo un destino
             if (!destiny)
             {
@@ -48,7 +50,7 @@ namespace bomberman
                 //se tiran los 4 rayos, los que no tocan ningun bloqeu se guardan en una lsita
                 for (int i = 0; i < RycastAmount; i++)
                 {
-                    if (!Physics.Raycast(transform.position, directions[i], out hit, range))
+                    if (!Physics.Raycast(transform.position, directions[i], out hit, range, layerMask))
                     {
                         availableDirections.Add(directions[i]);
                     }
@@ -59,8 +61,12 @@ namespace bomberman
 
                 destiny = true;
 
+                if (listRandom < 0)
+                {
+                    Debug.Log("hate");
+                }
                 //raycast mas largo para saber a cuanta distancia esta el proximo bloque
-                if (Physics.Raycast(transform.position, availableDirections[listRandom], out hit, megaRange))
+                if (Physics.Raycast(transform.position, availableDirections[listRandom], out hit, Mathf.Infinity))
                 {
                     distance = Vector3.Distance(hit.transform.position, gameObject.transform.position);
                     truncatedDistance = (int)distance;
