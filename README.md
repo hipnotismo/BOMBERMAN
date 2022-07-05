@@ -11,6 +11,7 @@
 * >Andres Pluda
 * >Mail:pludaandres@gmail.com
 * >Instagram: pludaandres
+* >Itch.io: https://andres.itch.io/
 ------------------------------
 * >Rocio Victoria Gimenez
 * >Instagram: @rouxy.art
