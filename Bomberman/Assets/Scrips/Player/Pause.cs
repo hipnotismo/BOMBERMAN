@@ -17,7 +17,6 @@ namespace bomberman
         {
             Player.OnPauseButton += PauseState;
             InGameMenu.OnRessetButton += Resume;
-            //canvas.gameObject.SetActive(false);
 
         }
 

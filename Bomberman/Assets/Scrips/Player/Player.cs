@@ -24,8 +24,8 @@ namespace bomberman
 
                 OnPauseButton?.Invoke();
             }
-
-            movement.Movement();
+            
+                movement.Movement();
         }       
 
     }

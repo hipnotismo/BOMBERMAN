@@ -1,11 +1,11 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace bomberman
 {
     public class CreateBomb : MonoBehaviour
-    {
+    {      
+
         [SerializeField] private GameObject bomb;
         private bool CoolDown;
 

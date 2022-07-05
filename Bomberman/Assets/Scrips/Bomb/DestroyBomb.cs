@@ -8,14 +8,16 @@ namespace bomberman
     {
 
         public static Action OnBoxDestroyed;
+        public static Action ColorToRed;
 
-        [SerializeField] private int destroyTime = 3;
+        [SerializeField] private int destroyTime;
         float destroTimer = 0;
         float range = 1f;
-        int RycastAmount = 4;
+        int rycastAmount = 4;
         float shakeInstensity = 1f;
         float shakeInsTime = 0.2f;
         bool doOnce;
+        float halfTime;
         List<Vector3> directions = new List<Vector3>();
         List<Vector3> availableDirections = new List<Vector3>();
 
@@ -35,10 +37,10 @@ namespace bomberman
             directions.Add(-transform.forward);
             directions.Add(transform.right);
             directions.Add(-transform.right);
-            explosion.volume = PlayerPrefs.GetFloat("FXvolume");
-            Debug.Log(PlayerPrefs.GetFloat("FXvolume"));
-            explosion.Pause();
+            
             doOnce = true;
+            halfTime = destroyTime / 2;
+
         }
 
         private void Update()
@@ -56,10 +58,14 @@ namespace bomberman
         {
             RaycastHit hit;
 
+            if (destroTimer <= halfTime)
+            {
+                ColorToRed?.Invoke();
+            }
             if (destroTimer >= destroyTime)
             {
 
-                for (int i = 0; i < RycastAmount; i++)
+                for (int i = 0; i < rycastAmount; i++)
                 {
 
                     if (Physics.Raycast(transform.position, directions[i], out hit, range))
@@ -119,7 +125,6 @@ namespace bomberman
 
         void Eliminate()
         {
-            //    explosion.UnPause();
             if (doOnce)
             {
                 AudioManager.inst.ExplosionClips();
@@ -159,7 +164,6 @@ namespace bomberman
             for (int i = 0; i < availableDirections.Count; i++)
             {
                 Gizmos.DrawRay(transform.position, availableDirections[i] * range);
-                //Draw a cube at the maximum distance
                 Gizmos.DrawWireCube(transform.position + availableDirections[i] * range, transform.localScale);
             }         
         }
