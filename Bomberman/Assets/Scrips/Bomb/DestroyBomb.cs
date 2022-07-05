@@ -167,11 +167,30 @@ namespace bomberman
 
         void InstantiateParticles()
         {
+            for (int i = 0; i < availableDirections.Count; i++)
+            {
+                if (availableDirections[i] == directions[0])
+                {
+                    Instantiate(particles0, transform.position, Quaternion.identity, gameObject.transform);
+
+                }
+                if (availableDirections[i] == directions[1])
+                {
+                    Instantiate(particles2, transform.position, Quaternion.identity, gameObject.transform);
+
+                }
+                if (availableDirections[i] == directions[2])
+                {
+                    Instantiate(particles1, transform.position, Quaternion.identity, gameObject.transform);
+
+                }
+                if (availableDirections[i] == directions[3])
+                {
+                    Instantiate(particles3, transform.position, Quaternion.identity, gameObject.transform);
+
+                }
+            }
             Instantiate(particles, transform.position, Quaternion.identity, gameObject.transform);
-            Instantiate(particles0, transform.position, Quaternion.identity, gameObject.transform);
-            Instantiate(particles1, transform.position, Quaternion.identity, gameObject.transform);
-            Instantiate(particles2, transform.position, Quaternion.identity, gameObject.transform);
-            Instantiate(particles3, transform.position, Quaternion.identity, gameObject.transform);
         }
     }
 }
