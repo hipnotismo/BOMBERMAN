@@ -128,11 +128,8 @@ namespace bomberman
             if (doOnce)
             {
                 AudioManager.inst.ExplosionClips();
-
-                Instantiate(particles0, transform.position, Quaternion.identity, gameObject.transform);
-                Instantiate(particles1, transform.position, Quaternion.identity, gameObject.transform);
-                Instantiate(particles2, transform.position, Quaternion.identity, gameObject.transform);
-                Instantiate(particles3, transform.position, Quaternion.identity, gameObject.transform);
+                InstantiateParticles();
+               
 
                 CameraShake.Instace.ShakeCamera(shakeInstensity, shakeInsTime);
 
@@ -170,8 +167,11 @@ namespace bomberman
 
         void InstantiateParticles()
         {
-           // Instantiate(particles, transform.position, transform.rotation);
-          
+            Instantiate(particles, transform.position, Quaternion.identity, gameObject.transform);
+            Instantiate(particles0, transform.position, Quaternion.identity, gameObject.transform);
+            Instantiate(particles1, transform.position, Quaternion.identity, gameObject.transform);
+            Instantiate(particles2, transform.position, Quaternion.identity, gameObject.transform);
+            Instantiate(particles3, transform.position, Quaternion.identity, gameObject.transform);
         }
     }
 }
